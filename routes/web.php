@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+require 'admin.php';
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,5 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Auth::routes();
 
-Route::view('/admin', 'admin.dashboard.index');
+Route::get('/home', 'HomeController@index')->name('home');
