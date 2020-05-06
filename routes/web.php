@@ -19,18 +19,12 @@ require 'admin.php';
 //     return view('welcome');
 // });
 
-Route::get('/', 'PagesController@index')->name('pagescontroller');
-Route::get('/about', 'PagesController@about')->name('pagescontroller');
+Route::get('/', 'PagesController@index')->name('pages.index');
+Route::get('/about', 'PagesController@about')->name('pages.about');
 
-// Route::get('/category', 'CategoryController@index')->name('category.index');
-Route::get('/category/{slug}', 'CategoryController@show')->name('category.show');
+Route::get('/{slug}', 'CategoryController@show')->name('category.show')->where('slug', '[\w\d\-\_]+');
 
-Route::get('/product/{slug}', 'CategoryController@detail')->name('category.detail');
-
-// Route::get('detailPage/{slug}', function($slug){
-//     $result =   DB::table('campains')->where('slug', $slug)->get(); 
-//     // .... call controller etc...
-// });
+Route::get('/{slug}/{product}', 'ProductController@show')->name('product.show');
 
 
 

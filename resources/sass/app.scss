@@ -1,5 +1,7 @@
 $font-color: #e633fa;
+$primary-color: #FF7700;
 
-.app-sidebar__user-name {
-    color: $font-color;
+.bg-primary {
+    // color: $font-color !important;
+    background-color: $primary-color!important;
 }

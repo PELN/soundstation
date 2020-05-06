@@ -6,7 +6,9 @@
 <!-- ========================= SECTION PAGETOP ========================= -->
 <section class="section-pagetop bg">
 <div class="container">
-	<h2 class="title-page">Category products</h2>
+	@if($category)
+        <h2>{{$category->name}}</h2>
+    @endif
 	<nav>
 	<ol class="breadcrumb text-white">
 	    <li class="breadcrumb-item"><a href="#">Home</a></li>
