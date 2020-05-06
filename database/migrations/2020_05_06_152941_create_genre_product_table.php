@@ -16,7 +16,7 @@ class CreateGenreProductTable extends Migration
         Schema::create('genre_product', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('genre_id')->index();
-            $table->foreign('genre_id')->references('id')->on('product_genres')->onDelete('cascade');
+            $table->foreign('genre_id')->references('id')->on('genres')->onDelete('cascade');
             $table->unsignedBigInteger('product_id')->index();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });

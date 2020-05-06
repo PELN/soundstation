@@ -1,4 +1,7 @@
 <?php
+if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
+    error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
+}
 
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +27,7 @@ Route::get('/about', 'PagesController@about')->name('pages.about');
 
 Route::get('/{slug}', 'CategoryController@show')->name('category.show')->where('slug', '[\w\d\-\_]+');
 
-Route::get('/product/{slug}', 'ProductController@show')->name('product.show');
+Route::get('/{category}/{slug}', 'ProductController@show')->name('product.show');
 
 
 

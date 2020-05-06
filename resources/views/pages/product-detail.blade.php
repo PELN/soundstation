@@ -26,6 +26,13 @@
 <article class="content-body">
 	<h2 class="title">{{$product->name}}</h2>
 
+	<h3>{{$product->category->name}}</h3>
+
+	<h4>Genres</h4>
+	@foreach ($product->genres as $genre)
+		<p>{{$genre->genre}}</p>
+	@endforeach
+
 	<p>Here goes description consectetur adipisicing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 quis nostrud exercitation ullamco. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod

@@ -21,19 +21,19 @@ class Category extends Model
         'menu'      =>  'boolean'
     ];
 
-    public function setNameAttribute($value) 
+    public function setNameAttribute($value)
     {
         $this->attributes['name'] = $value;
         $this->attributes['slug'] = Str::slug($value);
     }
 
     // adjacency model relationships
-    public function parent() 
+    public function parent()
     {
         return $this->belongsTo(Category::class, 'parent_id');
     }
 
-    public function children() 
+    public function children()
     {
         return $this->hasMany(Category::class, 'parent_id');
     }

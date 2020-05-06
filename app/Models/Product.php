@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
+use App\Models\Category;
+use App\Models\Genre;
 
 class Product extends Model
 {
@@ -39,21 +41,12 @@ class Product extends Model
         $this->attributes['slug'] = Str::slug($value);
     }
 
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function category()
     {
         return $this->belongsTo(Category::class);
-    }
-
-    /**
-    * @return \Illuminate\Database\Eloquent\Relations\HasMany
-    */
-    public function images()
-    {
-        return $this->hasMany(ProductImage::class);
     }
 
     /**
