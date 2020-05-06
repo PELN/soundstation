@@ -24,7 +24,7 @@
 		</aside>
 		<main class="col-sm-6">
 <article class="content-body">
-	<h2 class="title">Great demo product name</h2>
+	<h2 class="title">{{$product->name}}</h2>
 
 	<p>Here goes description consectetur adipisicing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -41,7 +41,7 @@ quis nostrud exercitation ullamco laboris.</p>
 	</ul>
 
 <div class="h3 mb-4"> 
-	<var class="price h4">$815.00</var> 
+	<var class="price h4">DKK {{$product->price}}</var> 
 </div> <!-- price-wrap.// -->
 
 <div class="form-row">
@@ -52,14 +52,14 @@ quis nostrud exercitation ullamco laboris.</p>
 	  		<option> 3 </option>
 	  	</select>
 	</div> <!-- col.// -->
-	<div class="col-2">
+	<!-- <div class="col-2">
 		<select class="form-control">
 	  		<option> Size </option>
 	  		<option> XL </option>
 	  		<option> MD </option>
 	  		<option> XS </option>
 	  	</select>
-	</div> <!-- col.// -->
+	</div> col.// -->
 	<div class="col">
 		<a href="#" class="btn  btn-primary w-100"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </a>
 	</div> <!-- col.// -->

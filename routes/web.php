@@ -24,7 +24,7 @@ Route::get('/about', 'PagesController@about')->name('pages.about');
 
 Route::get('/{slug}', 'CategoryController@show')->name('category.show')->where('slug', '[\w\d\-\_]+');
 
-Route::get('/{slug}/{product}', 'ProductController@show')->name('product.show');
+Route::get('/product/{slug}', 'ProductController@show')->name('product.show');
 
 
 

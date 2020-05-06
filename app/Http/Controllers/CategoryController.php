@@ -16,5 +16,4 @@ class CategoryController extends Controller
 
         return view('pages.product-listing', compact('category'));
     }
-
 }
