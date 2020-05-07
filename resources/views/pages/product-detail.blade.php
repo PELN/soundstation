@@ -10,16 +10,25 @@
 <div class="card">
 	<div class="row no-gutters">
 		<aside class="col-sm-6 border-right">
-<article class="gallery-wrap"> 
-	<div class="img-big-wrap">
-	   <a href="#"><img src="/frontend/images/items/3.jpg"></a>
-	</div> <!-- img-big-wrap.// -->
-	<div class="thumbs-wrap">
-	  <a href="#" class="item-thumb"> <img src="/frontend/images/items/6.jpg"></a>
-	  <a href="#" class="item-thumb"> <img src="/frontend/images/items/6.jpg"></a>
-	  <a href="#" class="item-thumb"> <img src="/frontend/images/items/6.jpg"></a>
-	  <a href="#" class="item-thumb"> <img src="/frontend/images/items/6.jpg"></a>
-	</div> <!-- thumbs-wrap.// -->
+<article class="gallery-wrap">
+
+	@forelse ($product->images as $image)
+		@if($loop->first)
+			<div class="img-big-wrap">
+				<a href="#"><img src="{{ asset('storage/'.$image->path) }}"></a>
+			</div> <!-- img-big-wrap.// -->
+		@else
+			<div class="thumbs-wrap">
+				<a href="#" class="item-thumb"> <img width="152px;" src="{{ asset('storage/'.$image->path) }}"></a>
+			</div> <!-- thumbs-wrap.// -->
+		@endif
+	@empty
+		<div class="img-big-wrap">
+			<a href="#"><img src="{{ asset('storage/image-coming-soon.jpg') }}"></a>
+		</div> <!-- img-big-wrap.// -->
+	@endforelse
+
+
 </article> <!-- gallery-wrap .end// -->
 		</aside>
 		<main class="col-sm-6">

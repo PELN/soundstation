@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use App\Models\Category;
 use App\Models\Genre;
+use App\Models\Image;
 
 class Product extends Model
 {
@@ -55,5 +56,13 @@ class Product extends Model
     public function genres()
     {
         return $this->belongsToMany(Genre::class);
+    }
+
+    /**
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    */
+    public function images()
+    {
+        return $this->hasMany(Image::class);
     }
 }
