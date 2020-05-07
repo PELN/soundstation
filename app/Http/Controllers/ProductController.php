@@ -27,6 +27,13 @@ class ProductController extends Controller
         // dd($product->genres);
         // dd($product->images->first());
 
-        return view('pages.product-detail', compact('product'));
+        // dd($product->description);
+		$lines = preg_split('/[\n\r]+/', $product->description->description);
+        // dd($lines);
+
+        return view('pages.product-detail', [
+            'product' => $product,
+            'lines' => $lines
+        ]);
     }
 }

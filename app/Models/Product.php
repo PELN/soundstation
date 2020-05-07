@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use App\Models\Category;
 use App\Models\Genre;
 use App\Models\Image;
+use App\Models\Description;
 
 class Product extends Model
 {
@@ -64,5 +65,13 @@ class Product extends Model
     public function images()
     {
         return $this->hasMany(Image::class);
+    }
+
+    /**
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    */
+    public function description()
+    {
+        return $this->hasOne(Description::class);
     }
 }
