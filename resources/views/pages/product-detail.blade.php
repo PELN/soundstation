@@ -41,23 +41,31 @@
 				<h3>{{$product->category->name}}</h3>
 
 				<h4>Genres</h4>
+				<ul class="list-normal cols-two">
 				@foreach ($product->genres as $genre)
-					<p>{{$genre->genre}}</p>
+					<li>{{$genre->genre}}</li>
 				@endforeach
+				</ul>
+				<h4>Subgenre</h4>
+				<ul class="list-normal cols-two">
+				@foreach ($product->subgenres as $subgenre)
+					<li>{{$subgenre->subgenre}}</li>
+				@endforeach
+				</ul>
 
 				{{-- <p>Here goes description consectetur adipisicing elit, sed do eiusmod
 			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 			quis nostrud exercitation ullamco. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 			quis nostrud exercitation ullamco laboris.</p> --}}
-				<ul class="list-normal cols-two">
+				{{-- <ul class="list-normal cols-two">
 					<li>Not just for commute </li>
 					<li>Branded tongue and cuff </li>
 					<li>Super fast and amazing </li>
 					<li>Lorem sed do eiusmod tempor </li>
 					<li>Easy fast and ver good </li>
 					<li>Lorem sed do eiusmod tempor  </li>
-				</ul>
+				</ul> --}}
 
 			<div class="h3 mb-4"> 
 				<var class="price h4">DKK {{$product->price}}</var> 
