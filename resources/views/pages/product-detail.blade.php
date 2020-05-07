@@ -38,7 +38,7 @@
 			<article class="content-body">
 				<h2 class="title">{{$product->name}}</h2>
 
-				<h3>{{$product->category->name}}</h3>
+				<h3>{{ $product->artists->implode('artist', ', ') }}</h3>
 
 				<h4>Genres</h4>
 				<ul class="list-normal cols-two">
@@ -71,14 +71,22 @@
 				<var class="price h4">DKK {{$product->price}}</var> 
 			</div> <!-- price-wrap.// -->
 
+			@if($product->quantity >= 1)
+				<div class="badge badge-success">In stock</div>
+			@else
+				<div class="badge badge-danger">Not in stock</div>
+			@endif
+			
 			<div class="form-row">
 				<div class="col-2">
 					<select class="form-control">
-						<option> 1 </option>
-						<option> 2 </option>
-						<option> 3 </option>
+						{{ $quantity = $product->quantity }}
+						@for ($i = 1; $quantity >= $i; $i++)
+							<option>{{ $i }}</option>
+						@endfor
 					</select>
 				</div> <!-- col.// -->
+
 				<!-- <div class="col-2">
 					<select class="form-control">
 						<option> Size </option>
@@ -87,6 +95,7 @@
 						<option> XS </option>
 					</select>
 				</div> col.// -->
+
 				<div class="col">
 					<a href="#" class="btn  btn-primary w-100"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </a>
 				</div> <!-- col.// -->

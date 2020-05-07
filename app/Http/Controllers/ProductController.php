@@ -36,7 +36,6 @@ class ProductController extends Controller
 
         // dd($product->gradings);
 
-
         return view('pages.product-detail', [
             'product' => $product,
             'lines' => $lines
