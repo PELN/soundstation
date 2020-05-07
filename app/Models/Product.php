@@ -15,6 +15,7 @@ use App\Models\Format;
 use App\Models\Label;
 use App\Models\Year;
 use App\Models\CatalogueNumber;
+use App\Models\Grading;
 
 class Product extends Model
 {
@@ -136,5 +137,13 @@ class Product extends Model
     public function cataloguenumber()
     {
         return $this->hasOne(CatalogueNumber::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function gradings()
+    {
+        return $this->belongsToMany(Grading::class);
     }
 }
