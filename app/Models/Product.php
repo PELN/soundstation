@@ -16,6 +16,7 @@ use App\Models\Label;
 use App\Models\Year;
 use App\Models\CatalogueNumber;
 use App\Models\Grading;
+use App\Models\Comment;
 
 class Product extends Model
 {
@@ -145,5 +146,13 @@ class Product extends Model
     public function gradings()
     {
         return $this->belongsToMany(Grading::class);
+    }
+
+    /**
+    * @return \Illuminate\Database\Eloquent\Relations\HasOne
+    */
+    public function comment()
+    {
+        return $this->hasOne(Comment::class);
     }
 }

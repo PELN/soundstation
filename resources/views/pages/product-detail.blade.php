@@ -122,13 +122,20 @@
 
 					<dt class="col-sm-3">Catalogue no.</dt>
 					<dd class="col-sm-9">{{ $product->cataloguenumber->cat_no }}</dd>
+
+					<dt class="col-sm-3">Country</dt>
+					<dd class="col-sm-9">{{ $product->country->implode('country', ', ') }}</dd>
 				</dl>
 			</aside>
 			<aside class="col-md-6">
 				{{-- <h5>Features</h5> --}}
 				<dl class="row">
-					<dt class="col-sm-3">Country</dt>
-					<dd class="col-sm-9">{{ $product->country->implode('country', ', ') }}</dd>
+					<dt class="col-sm-3">Condition</dt>
+					@if($product->media_condition == 0)
+						<dd class="col-sm-9">Used</dd>
+					@else
+						<dd class="col-sm-9">New</dd>
+					@endif
 
 					<dt class="col-sm-3">Year</dt>
 					<dd class="col-sm-9">{{ $product->year[0]->year }}</dd>
@@ -136,6 +143,9 @@
 					<dt class="col-sm-3">Grading</dt>
 					{{-- if grading show that, else custom grading?? or both?? --}}
 					<dd class="col-sm-9">{{ $product->gradings[0]->grading }}</dd>
+
+					<dt class="col-sm-3">Comment</dt>
+					<dd class="col-sm-9">{{ $product->comment->comment }}</dd>
 
 					<dt class="col-sm-3">Genre</dt>
 					<dd class="col-sm-9">{{ $product->genres->implode('genre', ', ') }}</dd>
@@ -146,7 +156,8 @@
 			</aside>
 		</div> <!-- row.// -->
 		<hr>
-
+		
+		<h5>Description</h5>
 		{{-- Split description in lines with regex --}}
 		@foreach ($lines as $line)
 			<p>{{$line}}</p>
