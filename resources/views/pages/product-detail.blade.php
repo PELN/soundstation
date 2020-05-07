@@ -118,7 +118,7 @@
 					<dd class="col-sm-9">{{ $product->formats->implode('format', ', ') }}</dd>
 
 					<dt class="col-sm-3">Label</dt>
-					<dd class="col-sm-9">{{ $product->genres->implode('genre', ', ') }}</dd>
+					<dd class="col-sm-9">{{ $product->labels->implode('label', ', ') }}</dd>
 
 					<dt class="col-sm-3">Catalogue no.</dt>
 					<dd class="col-sm-9">{{ $product->subgenres->implode('subgenre', ', ') }}</dd>

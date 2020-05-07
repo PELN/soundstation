@@ -12,6 +12,7 @@ use App\Models\Description;
 use App\Models\Artist;
 use App\Models\Country;
 use App\Models\Format;
+use App\Models\Label;
 
 class Product extends Model
 {
@@ -110,4 +111,13 @@ class Product extends Model
     {
         return $this->belongsToMany(Format::class);
     }
+
+    /**
+    * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    */
+    public function labels()
+    {
+        return $this->belongsToMany(Label::class);
+    }
+
 }
