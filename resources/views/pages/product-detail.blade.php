@@ -6,85 +6,88 @@
 <section class="section-content padding-y bg">
 <div class="container">
 
+@if(count($product) == 0)
+<h1>SORRY, NO PRODUCT FOUND</h1>
+@else
 <!-- ============================ COMPONENT 2 ================================= -->
 <div class="card">
 	<div class="row no-gutters">
 		<aside class="col-sm-6 border-right">
-<article class="gallery-wrap">
+			<article class="gallery-wrap">
+				@forelse ($product->images as $image)
+					@if($loop->first)
+						<div class="img-big-wrap">
+							<a href="#"><img src="{{ asset('storage/'.$image->path) }}"></a>
+						</div> <!-- img-big-wrap.// -->
+					@else
+						<div class="thumbs-wrap">
+							<a href="#" class="item-thumb"> <img width="152px;" src="{{ asset('storage/'.$image->path) }}"></a>
+						</div> <!-- thumbs-wrap.// -->
+					@endif
+				@empty
+					<div class="img-big-wrap">
+						<a href="#"><img src="{{ asset('storage/image-coming-soon.jpg') }}"></a>
+					</div> <!-- img-big-wrap.// -->
+				@endforelse
 
-	@forelse ($product->images as $image)
-		@if($loop->first)
-			<div class="img-big-wrap">
-				<a href="#"><img src="{{ asset('storage/'.$image->path) }}"></a>
-			</div> <!-- img-big-wrap.// -->
-		@else
-			<div class="thumbs-wrap">
-				<a href="#" class="item-thumb"> <img width="152px;" src="{{ asset('storage/'.$image->path) }}"></a>
-			</div> <!-- thumbs-wrap.// -->
-		@endif
-	@empty
-		<div class="img-big-wrap">
-			<a href="#"><img src="{{ asset('storage/image-coming-soon.jpg') }}"></a>
-		</div> <!-- img-big-wrap.// -->
-	@endforelse
 
-
-</article> <!-- gallery-wrap .end// -->
+			</article> <!-- gallery-wrap .end// -->
 		</aside>
+
 		<main class="col-sm-6">
-<article class="content-body">
-	<h2 class="title">{{$product->name}}</h2>
+			<article class="content-body">
+				<h2 class="title">{{$product->name}}</h2>
 
-	<h3>{{$product->category->name}}</h3>
+				<h3>{{$product->category->name}}</h3>
 
-	<h4>Genres</h4>
-	@foreach ($product->genres as $genre)
-		<p>{{$genre->genre}}</p>
-	@endforeach
+				<h4>Genres</h4>
+				@foreach ($product->genres as $genre)
+					<p>{{$genre->genre}}</p>
+				@endforeach
 
-	<p>Here goes description consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris.</p>
-	<ul class="list-normal cols-two">
-		<li>Not just for commute </li>
-		<li>Branded tongue and cuff </li>
-		<li>Super fast and amazing </li>
-		<li>Lorem sed do eiusmod tempor </li>
-		<li>Easy fast and ver good </li>
-		<li>Lorem sed do eiusmod tempor  </li>
-	</ul>
+				<p>Here goes description consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris.</p>
+				<ul class="list-normal cols-two">
+					<li>Not just for commute </li>
+					<li>Branded tongue and cuff </li>
+					<li>Super fast and amazing </li>
+					<li>Lorem sed do eiusmod tempor </li>
+					<li>Easy fast and ver good </li>
+					<li>Lorem sed do eiusmod tempor  </li>
+				</ul>
 
-<div class="h3 mb-4"> 
-	<var class="price h4">DKK {{$product->price}}</var> 
-</div> <!-- price-wrap.// -->
+			<div class="h3 mb-4"> 
+				<var class="price h4">DKK {{$product->price}}</var> 
+			</div> <!-- price-wrap.// -->
 
-<div class="form-row">
-	<div class="col-2">
-		<select class="form-control">
-	  		<option> 1 </option>
-	  		<option> 2 </option>
-	  		<option> 3 </option>
-	  	</select>
-	</div> <!-- col.// -->
-	<!-- <div class="col-2">
-		<select class="form-control">
-	  		<option> Size </option>
-	  		<option> XL </option>
-	  		<option> MD </option>
-	  		<option> XS </option>
-	  	</select>
-	</div> col.// -->
-	<div class="col">
-		<a href="#" class="btn  btn-primary w-100"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </a>
-	</div> <!-- col.// -->
-	<div class="col">
-		<a href="#" class="btn  btn-light"> <i class="fas fa-heart"></i>  </a>
-	</div> <!-- col.// -->
-</div> <!-- row.// -->
+			<div class="form-row">
+				<div class="col-2">
+					<select class="form-control">
+						<option> 1 </option>
+						<option> 2 </option>
+						<option> 3 </option>
+					</select>
+				</div> <!-- col.// -->
+				<!-- <div class="col-2">
+					<select class="form-control">
+						<option> Size </option>
+						<option> XL </option>
+						<option> MD </option>
+						<option> XS </option>
+					</select>
+				</div> col.// -->
+				<div class="col">
+					<a href="#" class="btn  btn-primary w-100"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </a>
+				</div> <!-- col.// -->
+				<div class="col">
+					<a href="#" class="btn  btn-light"> <i class="fas fa-heart"></i>  </a>
+				</div> <!-- col.// -->
+			</div> <!-- row.// -->
 
-</article> <!-- product-info-aside .// -->
+			</article> <!-- product-info-aside .// -->
 		</main> <!-- col.// -->
 	</div> <!-- row.// -->
 </div> <!-- card.// -->
@@ -140,5 +143,7 @@ quis nostrud exercitation ullamco laboris.</p>
 	</div> <!-- card-body.// -->
 </article> <!-- card.// -->
 <!-- ============================ COMPONENT 4  .//END ================================= -->
+
+@endif
 
 @endsection

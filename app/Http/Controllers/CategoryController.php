@@ -14,7 +14,7 @@ class CategoryController extends Controller
         $category = Category::where('slug', $slug)->where('menu', 1)->first();
 
         // $product = Product::all()->first();
-        // dd($product->category);
+        // dd($category->products);
 
         return view('pages.product-listing', compact('category'));
     }

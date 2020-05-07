@@ -19,6 +19,7 @@ class ProductController extends Controller
         // get product object for view
         $product = Product::where('slug', $slug)->first();
 
+    
         // dd($product->images);
         // dd($product->category->name);
         // dd($category->products);
