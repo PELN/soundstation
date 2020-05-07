@@ -121,15 +121,17 @@
 					<dd class="col-sm-9">{{ $product->labels->implode('label', ', ') }}</dd>
 
 					<dt class="col-sm-3">Catalogue no.</dt>
-					<dd class="col-sm-9">{{ $product->year[0]->year }}</dd>
+					<dd class="col-sm-9">{{ $product->cataloguenumber->cat_no }}</dd>
 
-					<dt class="col-sm-3">Country</dt>
-					<dd class="col-sm-9">{{ $product->country->implode('country', ', ') }}</dd>
+				
 				</dl>
 			</aside>
 			<aside class="col-md-6">
 				{{-- <h5>Features</h5> --}}
 				<dl class="row">
+					<dt class="col-sm-3">Country</dt>
+					<dd class="col-sm-9">{{ $product->country->implode('country', ', ') }}</dd>
+					
 					<dt class="col-sm-3">Year</dt>
 					<dd class="col-sm-9">{{ $product->year[0]->year }}</dd>
 

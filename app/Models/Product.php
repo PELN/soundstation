@@ -14,6 +14,7 @@ use App\Models\Country;
 use App\Models\Format;
 use App\Models\Label;
 use App\Models\Year;
+use App\Models\CatalogueNumber;
 
 class Product extends Model
 {
@@ -127,5 +128,13 @@ class Product extends Model
     public function year()
     {
         return $this->belongsToMany(Year::class);
+    }
+
+    /**
+    * @return \Illuminate\Database\Eloquent\Relations\HasOne
+    */
+    public function cataloguenumber()
+    {
+        return $this->hasOne(CatalogueNumber::class);
     }
 }
