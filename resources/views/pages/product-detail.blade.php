@@ -121,7 +121,7 @@
 					<dd class="col-sm-9">{{ $product->labels->implode('label', ', ') }}</dd>
 
 					<dt class="col-sm-3">Catalogue no.</dt>
-					<dd class="col-sm-9">{{ $product->subgenres->implode('subgenre', ', ') }}</dd>
+					<dd class="col-sm-9">{{ $product->year[0]->year }}</dd>
 
 					<dt class="col-sm-3">Country</dt>
 					<dd class="col-sm-9">{{ $product->country->implode('country', ', ') }}</dd>
@@ -130,6 +130,9 @@
 			<aside class="col-md-6">
 				{{-- <h5>Features</h5> --}}
 				<dl class="row">
+					<dt class="col-sm-3">Year</dt>
+					<dd class="col-sm-9">{{ $product->year[0]->year }}</dd>
+
 					<dt class="col-sm-3">Grading</dt>
 					{{-- if grading show that, else custom grading?? or both?? --}}
 					<dd class="col-sm-9">{{ $product->artists->implode('artist', ', ') }}</dd>
@@ -140,8 +143,7 @@
 					<dt class="col-sm-3">Subgenre</dt>
 					<dd class="col-sm-9">{{ $product->subgenres->implode('subgenre', ', ') }}</dd>
 
-					<dt class="col-sm-3">Year</dt>
-					<dd class="col-sm-9">{{ $product->country->implode('country', ', ') }}</dd>
+					
 				</dl>
 			</aside>
 		</div> <!-- row.// -->

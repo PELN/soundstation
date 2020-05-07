@@ -13,6 +13,7 @@ use App\Models\Artist;
 use App\Models\Country;
 use App\Models\Format;
 use App\Models\Label;
+use App\Models\Year;
 
 class Product extends Model
 {
@@ -120,4 +121,11 @@ class Product extends Model
         return $this->belongsToMany(Label::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function year()
+    {
+        return $this->belongsToMany(Year::class);
+    }
 }
