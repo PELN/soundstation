@@ -35,6 +35,8 @@ class ProductController extends Controller
         // $artist_array = $product->artists;
         // dd($artist_array->implode(', '));
 
+
+
         return view('pages.product-detail', [
             'product' => $product,
             'lines' => $lines

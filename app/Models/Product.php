@@ -10,6 +10,8 @@ use App\Models\Subgenre;
 use App\Models\Image;
 use App\Models\Description;
 use App\Models\Artist;
+use App\Models\Country;
+use App\Models\Format;
 
 class Product extends Model
 {
@@ -91,5 +93,21 @@ class Product extends Model
     public function artists()
     {
         return $this->belongsToMany(Artist::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function country()
+    {
+        return $this->belongsToMany(Country::class);
+    }
+
+    /**
+    * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    */
+    public function formats()
+    {
+        return $this->belongsToMany(Format::class);
     }
 }

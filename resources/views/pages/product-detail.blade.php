@@ -109,9 +109,29 @@
 	<div class="card-body">
 		<div class="row">
 			<aside class="col-md-6">
-				<h5>Parameters</h5>
+				<h5>Specifications</h5>
 				<dl class="row">
 				    <dt class="col-sm-3">Artist</dt>
+					<dd class="col-sm-9">{{ $product->artists->implode('artist', ', ') }}</dd>
+
+					<dt class="col-sm-3">Format</dt>
+					<dd class="col-sm-9">{{ $product->formats->implode('format', ', ') }}</dd>
+
+					<dt class="col-sm-3">Label</dt>
+					<dd class="col-sm-9">{{ $product->genres->implode('genre', ', ') }}</dd>
+
+					<dt class="col-sm-3">Catalogue no.</dt>
+					<dd class="col-sm-9">{{ $product->subgenres->implode('subgenre', ', ') }}</dd>
+
+					<dt class="col-sm-3">Country</dt>
+					<dd class="col-sm-9">{{ $product->country->implode('country', ', ') }}</dd>
+				</dl>
+			</aside>
+			<aside class="col-md-6">
+				{{-- <h5>Features</h5> --}}
+				<dl class="row">
+					<dt class="col-sm-3">Grading</dt>
+					{{-- if grading show that, else custom grading?? or both?? --}}
 					<dd class="col-sm-9">{{ $product->artists->implode('artist', ', ') }}</dd>
 
 					<dt class="col-sm-3">Genre</dt>
@@ -120,23 +140,9 @@
 					<dt class="col-sm-3">Subgenre</dt>
 					<dd class="col-sm-9">{{ $product->subgenres->implode('subgenre', ', ') }}</dd>
 
-					<dt class="col-sm-3">Memory</dt>
-					<dd class="col-sm-9">8 GB RAM or 16 GB RAM</dd>
-					
-					<dt class="col-sm-3">Graphics</dt>
-					<dd class="col-sm-9">Intel Iris Plus Graphics 640</dd>
+					<dt class="col-sm-3">Year</dt>
+					<dd class="col-sm-9">{{ $product->country->implode('country', ', ') }}</dd>
 				</dl>
-			</aside>
-			<aside class="col-md-6">
-				<h5>Features</h5>
-				<ul class="list-check">
-					<li>Best performance of battery</li>
-					<li>5 years warranty for this product</li>
-					<li>Amazing features and high quality</li>
-					<li>Best performance of battery</li>
-					<li>5 years warranty for this product</li>
-					<li>Amazing features and high quality</li>
-				</ul>
 			</aside>
 		</div> <!-- row.// -->
 		<hr>
