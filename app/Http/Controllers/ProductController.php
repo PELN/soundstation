@@ -7,7 +7,6 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Image;
 
-
 class ProductController extends Controller
 {
     public function show($category, $slug) {
@@ -30,6 +29,11 @@ class ProductController extends Controller
         // dd($product->description);
 		$lines = preg_split('/[\n\r]+/', $product->description->description);
         // dd($lines);
+
+        // $test = $product->artists->implode('artist', ', ');
+        // dd($test);
+        // $artist_array = $product->artists;
+        // dd($artist_array->implode(', '));
 
         return view('pages.product-detail', [
             'product' => $product,

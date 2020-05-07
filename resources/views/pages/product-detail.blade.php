@@ -111,20 +111,20 @@
 			<aside class="col-md-6">
 				<h5>Parameters</h5>
 				<dl class="row">
-				      <dt class="col-sm-3">Display</dt>
-				      <dd class="col-sm-9">13.3-inch LED-backlit display with IPS</dd>
+				    <dt class="col-sm-3">Artist</dt>
+					<dd class="col-sm-9">{{ $product->artists->implode('artist', ', ') }}</dd>
 
-				      <dt class="col-sm-3">Processor</dt>
-				      <dd class="col-sm-9">2.3GHz dual-core Intel Core i5</dd>
+					<dt class="col-sm-3">Genre</dt>
+					<dd class="col-sm-9">{{ $product->genres->implode('genre', ', ') }}</dd>
 
-				      <dt class="col-sm-3">Camera</dt>
-				      <dd class="col-sm-9">720p FaceTime HD camera</dd>
+					<dt class="col-sm-3">Subgenre</dt>
+					<dd class="col-sm-9">{{ $product->subgenres->implode('subgenre', ', ') }}</dd>
 
-				      <dt class="col-sm-3">Memory</dt>
-				      <dd class="col-sm-9">8 GB RAM or 16 GB RAM</dd>
-				      
-				      <dt class="col-sm-3">Graphics</dt>
-				      <dd class="col-sm-9">Intel Iris Plus Graphics 640</dd>
+					<dt class="col-sm-3">Memory</dt>
+					<dd class="col-sm-9">8 GB RAM or 16 GB RAM</dd>
+					
+					<dt class="col-sm-3">Graphics</dt>
+					<dd class="col-sm-9">Intel Iris Plus Graphics 640</dd>
 				</dl>
 			</aside>
 			<aside class="col-md-6">

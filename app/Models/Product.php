@@ -9,6 +9,7 @@ use App\Models\Genre;
 use App\Models\Subgenre;
 use App\Models\Image;
 use App\Models\Description;
+use App\Models\Artist;
 
 class Product extends Model
 {
@@ -77,10 +78,18 @@ class Product extends Model
     }
 
     /**
-    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    * @return \Illuminate\Database\Eloquent\Relations\HasOne
     */
     public function description()
     {
         return $this->hasOne(Description::class);
+    }
+
+    /**
+    * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    */
+    public function artists()
+    {
+        return $this->belongsToMany(Artist::class);
     }
 }
