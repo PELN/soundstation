@@ -15,9 +15,10 @@
 			<h2>{{$category->name}}</h2>
 		@endif
 		<nav>
-		<ol class="breadcrumb text-white">
+		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="/">Home</a></li>
 			<li class="breadcrumb-item"><a href="{{ URL::to("{$category->slug}") }}">{{$category->name}}</a></li>
+			{{-- <li class="breadcrumb-item"><a href="{{ URL::to("{$category->slug}/{$product->slug}") }}">{{$product->name}}</a></li> --}}
 		</ol>
 		</nav>
 	</div> <!-- container //  -->

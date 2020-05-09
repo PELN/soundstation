@@ -9,6 +9,22 @@
 @if(count($product) == 0)
 <h1>SORRY, NO PRODUCT FOUND</h1>
 @else
+
+<!-- ========================= SECTION PAGETOP ========================= -->
+<section class="section-pagetop bg">
+	<div class="container">
+		<nav>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="/">Home</a></li>
+			<li class="breadcrumb-item"><a href="{{ URL::to("{$category->slug}") }}">{{$category->name}}</a></li>
+			<li class="breadcrumb-item"><a href="{{ URL::to("{$category->slug}/{$product->slug}") }}">{{$product->name}}</a></li>
+		</ol>
+		</nav>
+	</div> <!-- container //  -->
+</section>
+<!-- ========================= SECTION INTRO END// ========================= -->
+
+
 <!-- ============================ COMPONENT 2 ================================= -->
 <div class="card">
 	<div class="row no-gutters">
