@@ -84,7 +84,6 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link pl-0" data-toggle="dropdown" href="{{ route('category.show', $category->slug) }}" 
                         id="{{ $category->slug}}">{{ $category->name }} <i class="fa fa-chevron-down"></i></a>
-
                         <div class="dropdown-menu" aria-labelledby="{{ $category->slug }}">
                             @foreach($category->items as $item)
                                 <a class="dropdown-item" href="{{ route('category.show', $item->slug) }}">{{ $item->name }}</a>
@@ -98,7 +97,22 @@
                 @endif
             @endforeach
         </ul>
-    </div>
+	</div>
   </div> <!-- container .// -->
 </nav>
+
+{{-- get the requested slug for secondary menu --}}
+@if(request()->slug === 'autographs' || request()->slug === 'record-awards' || request()->slug === 'posters-postcards-artwork' || request()->slug === 'tour-programmes-folders-books' || request()->slug === 'mischellaneous')
+		<ul class="navbar-nav secondary">
+			@foreach($categories as $category)
+				@if($category->items->count() > 0)
+					@foreach($category->items as $item)
+					<li class="nav-item secondary">
+						<a class="nav-link secondary" href="{{ route('category.show', $item->slug) }}">{{ $item->name }}</a>
+					</li>
+					@endforeach
+				@endif
+			@endforeach
+		</ul>
+@endif
 </header> <!-- section-header.// -->

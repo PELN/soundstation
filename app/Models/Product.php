@@ -52,6 +52,12 @@ class Product extends Model
         $this->attributes['slug'] = Str::slug($value);
     }
 
+
+    public function scopePrice($query, $price)
+    {
+       $query->where('price','=', $price);
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

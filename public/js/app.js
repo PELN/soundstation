@@ -19283,6 +19283,12 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+$(document).ready(function () {
+  $('#genre-1').click(function () {
+    alert('clicked');
+  });
+});
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
