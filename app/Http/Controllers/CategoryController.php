@@ -77,7 +77,7 @@ class CategoryController extends Controller
 
         if($filterGenre){
             $filterGenre = Genre::where('genre', $genreInput)->first();
-            echo $filterGenre->products;
+            // echo $filterGenre->products;
             // echo $filterGenre->genre;
         }
         

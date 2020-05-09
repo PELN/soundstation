@@ -6,6 +6,10 @@ $primary-color: #FF7700;
     background-color: $primary-color!important;
 }
 
+.breadcrumb-item a{
+    color: gray;
+    text-decoration: underline;
+}
 
 // .navbar-nav .secondary {
 //     display: flex!important;

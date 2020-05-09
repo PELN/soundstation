@@ -2,3 +2,8 @@
   background-color: #FF7700 !important;
 }
 
+.breadcrumb-item a {
+  color: gray;
+  text-decoration: underline;
+}
+

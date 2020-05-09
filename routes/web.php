@@ -31,7 +31,5 @@ Route::get('/{slug}', 'CategoryController@show')->name('category.show')->where('
 
 Route::get('/{category}/{slug}', 'ProductController@show')->name('product.show');
 
-
-
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
