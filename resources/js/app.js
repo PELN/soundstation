@@ -41,7 +41,10 @@ $(document).ready(function() {
     });
 
    
-    // AJAX   
+    const ajaxParams = [];
+    console.log(ajaxParams)
+    
+    // AJAX
     // $.ajax({
     //     type: 'GET',
     //     url: '',
@@ -52,7 +55,7 @@ $(document).ready(function() {
     //     }
     // });
 
-
+    
     // * add a URL parameter (or changing it if it already exists)
     // * @param {url} string  this is typically document.location.search
     // * @param {key}    string  the key to set
@@ -79,9 +82,7 @@ $(document).ready(function() {
 
         // https://stackoverflow.com/questions/8648892/how-to-convert-url-parameters-to-a-javascript-object
         const paramsObj = Object.fromEntries(new URLSearchParams(location.search));
-        console.log(paramsObj);
-        // var paramsArray = Array.from(new URLSearchParams(window.location.search)).reduce((o, i) => ({ ...o, [i[0]]: i[1] }), {});
-        // console.log(paramsArray)
+        ajaxParams.push(paramsObj);
 
         // return params;
     };

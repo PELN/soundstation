@@ -19326,7 +19326,9 @@ $(document).ready(function () {
     }
 
     ;
-  }); // AJAX   
+  });
+  var ajaxParams = [];
+  console.log(ajaxParams); // AJAX
   // $.ajax({
   //     type: 'GET',
   //     url: '',
@@ -19364,9 +19366,7 @@ $(document).ready(function () {
     }, '', urlWithParams); // https://stackoverflow.com/questions/8648892/how-to-convert-url-parameters-to-a-javascript-object
 
     var paramsObj = Object.fromEntries(new URLSearchParams(location.search));
-    console.log(paramsObj); // var paramsArray = Array.from(new URLSearchParams(window.location.search)).reduce((o, i) => ({ ...o, [i[0]]: i[1] }), {});
-    // console.log(paramsArray)
-    // return params;
+    ajaxParams.push(paramsObj); // return params;
   }; // remove a value from an array in URL by comma
   // https://stackoverflow.com/questions/1306164/remove-value-from-comma-separated-values-string
 
