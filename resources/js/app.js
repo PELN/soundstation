@@ -4,47 +4,43 @@ $(document).ready(function() {
 
     $('.genre').click(function(){
         // if checked, add to genres
-        var genres = [];
-
+        const genres = [];
         $('.genre').each(function() {
             if($(this).is(':checked')){
                 genres.push($(this).val());
-            }
+            };
         });
-        genreToken = genres.toString();
-        console.log(genreToken);
-        addUrlParam(document.location.search, 'genre', genreToken);
+        const genreValue = genres.toString();
+        console.log(genreValue);
+        addUrlParam(document.location.search, 'genre', genreValue);
 
         // if unchecked, remove
         if(!$(this).is(':checked')){
-            console.log('UN-checked');
+            // console.log('UN-checked');
+            // if there are more than one genre, remove a value from param
             if(genres.length > 0)
-                // if there are more than one genre, remove a value from param
-                removeUrlValue(document.location.search, genreToken, ',');
-            else {
-                // remove whole param
-                replaceUrlParam(window.location.protocol + "//" + window.location.host + window.location.pathname, 'genre', genreToken);
+                removeUrlValue(document.location.search, genreValue, ',');
+            else { // remove whole param
+                replaceUrlParam();
             };
         };
     });
 
 
     $('.condition').click(function(){
-        
         if($(this).is(':checked')){
-            conditionToken = ($(this).val());
+            const conditionValue = ($(this).val());
+            // if url already has condition param, dont add it again
+            //https://stackoverflow.com/questions/1314383/how-to-check-if-a-query-string-value-is-present-via-javascript
+            const urlParams = new URLSearchParams(window.location.search);
+            const conditionParam = urlParams.get('condition');
+            if (conditionParam != conditionValue) {
+                addUrlParam(document.location.search, 'condition', conditionValue);
+            };
         };
-
-        // if url already has condition param, dont add it again
-        //https://stackoverflow.com/questions/1314383/how-to-check-if-a-query-string-value-is-present-via-javascript
-        var urlParams = new URLSearchParams(window.location.search);
-        var conditionParam = urlParams.get('condition');
-        if (conditionParam != conditionToken) {
-            addUrlParam(document.location.search, 'condition', conditionToken);
-        }
     });
 
-
+   
     // AJAX   
     // $.ajax({
     //     type: 'GET',
@@ -57,14 +53,13 @@ $(document).ready(function() {
     // });
 
 
-
     // * add a URL parameter (or changing it if it already exists)
     // * @param {url} string  this is typically document.location.search
     // * @param {key}    string  the key to set
-    // * @param {val}    string  value
+    // * @param {value}    string  value
     // https://stackoverflow.com/questions/486896/adding-a-parameter-to-the-url-with-javascript?page=1&tab=votes#tab-top
-    var addUrlParam = function(url, key, val){
-        var newParam = key + '=' + val,
+    var addUrlParam = function(url, key, value){
+        var newParam = key + '=' + value,
             params = '?' + newParam;
     
         // If the "search" string exists, then build params from it
@@ -75,12 +70,19 @@ $(document).ready(function() {
             // If nothing was replaced, then add the new param to the end
             if (params === url) {
                 params += '&' + newParam;
-            }
-        }
+            };
+        };
         console.log('add param', params);
 
-        var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + params;
-        window.history.pushState({path:newurl},'',newurl);
+        const urlWithParams = window.location.protocol + "//" + window.location.host + window.location.pathname + params;
+        window.history.pushState({path:urlWithParams},'',urlWithParams);
+
+        // https://stackoverflow.com/questions/8648892/how-to-convert-url-parameters-to-a-javascript-object
+        const paramsObj = Object.fromEntries(new URLSearchParams(location.search));
+        console.log(paramsObj);
+        // var paramsArray = Array.from(new URLSearchParams(window.location.search)).reduce((o, i) => ({ ...o, [i[0]]: i[1] }), {});
+        // console.log(paramsArray)
+
         // return params;
     };
 
@@ -93,36 +95,26 @@ $(document).ready(function() {
           if(values[i] == value) {
             values.splice(i, 1);
             return values.join(separator);
-          }
-        }
+          };
+        };
         console.log('remove value',url);
-        return url;
-      }
+        // return url;
+      };
     
     // remove a param from URL - if unchecked
     // https://stackoverflow.com/questions/7171099/how-to-replace-url-parameter-with-javascript-jquery/7171293#7171293
-    function replaceUrlParam(url, key, value)
+    function replaceUrlParam()
     {
-        if (value == null) {
-            value = '';
-        }
-        var pattern = new RegExp('\\b('+key+'=).*?(&|#|$)');
-        if (url.search(pattern)>=0) {
-            return url.replace(pattern,'$1' + value + '$2');
-        }
-        url = url.replace(/[?#]$/,'');
-        console.log('replace url', url);
-        
         // if url has condition param, don't remove it
-        var params = new URLSearchParams(window.location.search);
-        var param = params.get('condition');
-        if (param) {
-            var removeUrlButCondition = window.location.protocol + "//" + window.location.host + window.location.pathname + '?condition' + '=' + param;
-            history.replaceState({path:removeUrlButCondition},'',removeUrlButCondition);
+        const urlParams = new URLSearchParams(window.location.search);
+        const conditionParam = urlParams.get('condition');
+        if (conditionParam) {
+            const removeGenreParam = window.location.protocol + "//" + window.location.host + window.location.pathname + '?condition' + '=' + conditionParam;
+            history.replaceState({path:removeGenreParam}, '', removeGenreParam);
         } else { // else remove whole genre param
-            var removeUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
-            history.replaceState({path:removeUrl},'',url);
-        }
-    }
+            const removeParam = window.location.protocol + "//" + window.location.host + window.location.pathname;
+            history.replaceState({path:removeParam}, '', removeParam);
+        };
+    };
 });
 
