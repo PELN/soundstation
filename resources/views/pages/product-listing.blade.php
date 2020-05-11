@@ -117,6 +117,7 @@
 											{{-- {{ request()->fullUrlWithQuery(['genre' => $genre->genre]) }} --}}
 											>
 											<div class="custom-control-label">{{ $genre->genre }}
+												{{-- {{$products->count($genre->genre)}} --}}
 												{{-- @foreach ($category->products as $product) --}}
 												{{-- @foreach($product->genres as $p_genre) --}}
 												{{-- <b class="badge badge-pill badge-light float-right">{{$genre->products->count()}}</b> --}}
@@ -179,17 +180,14 @@
 	<div class="row">
 			{{-- find products within category --}}
 			@foreach ($products as $product)
-			{{-- <h3>{{$product->path}}</h3> --}}
 			<div class="col-md-4">
 			<a href="{{ URL::to("{$category->category_slug}/{$product->slug}") }}">
 				<figure class="card card-product-grid">
 					<div class="img-wrap">
 						<!-- <span class="badge badge-danger"> NEW </span> -->
-						@forelse ($product->path as $imagePath)
-							@if($loop->first)
-								<img src="{{ asset('storage/'.$imagePath) }}">
-							@endif
-						@empty
+						@if($product->path)
+							<img src="{{ asset('storage/'.$product->path) }}">
+						@else
 							<img src="{{ asset('storage/image-coming-soon.jpg') }}">
 						@endforelse
 						{{-- <a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a> --}}

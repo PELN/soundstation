@@ -6,6 +6,7 @@ use Request;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Genre;
+use App\Models\Image;
 use Illuminate\Support\Facades\Input;
 use DB;
 
@@ -48,9 +49,9 @@ class CategoryController extends Controller
         $products = 
             DB::table('products')
             ->join('categories', 'categories.id', '=', 'products.category_id')
-            ->join('genre_product', 'products.id', '=', 'genre_product.product_id')
-            ->join('genres', 'genre_product.genre_id', '=', 'genres.id')
-            ->join('images', 'images.product_id', '=', 'products.id')
+            ->leftJoin('genre_product', 'products.id', '=', 'genre_product.product_id')
+            ->leftJoin('genres', 'genre_product.genre_id', '=', 'genres.id')
+            ->leftJoin('images', 'images.product_id', '=', 'products.id')
             ->where('category_id', $category->id)
                 ->when($genreInput, function ($query) use ($genreInput) {
                     return $query->where('genres.genre', $genreInput);
@@ -60,23 +61,19 @@ class CategoryController extends Controller
                 })
                 ->select(['products.id', 'products.category_id', 'products.name', 'products.slug',  'products.media_condition', 
                 'products.quantity', 'products.price', 'products.sale_price', 'products.status', 'products.featured', 'products.created_at',
-                'images.path', 'images.product_id', 'categories.category', 'categories.category_slug', 'genres.genre'])
+                'images.path', 'categories.category', 'categories.category_slug', 'genres.genre'])
                 ->groupby('products.id')
                 ->get();
-
-        // dd($products);
-
-        // foreach($products as $product){
-        //     dd($product);
-        // }
-
+                
+                // dd($products->count('genre'));
+            
         
 
         // $request = request('genre')
         // $filterGenre = Genre::where('genre', $genreInput)->first();
         // dd($filterGenre->genre);
 
-        if(!empty($genreInput)) {
+        // if(!empty($genreInput)) {
 
             // $productsGenre = Product::where('category_id', $category->id);
             // dd($productsGenre->genres);
@@ -89,7 +86,7 @@ class CategoryController extends Controller
 
             // $filterGenre = Genre::where('genre', $genreInput)->first();
             // dd($filterGenre->products);
-        }
+        // }
 
         // if(!empty($conditionInput)) {
         //     if($conditionInput == 'new'){
@@ -117,8 +114,7 @@ class CategoryController extends Controller
             // 'categories' => $categories,
             'category' => $category,
             'genres' => $genres,
-            'products' => $products,
-            'years' => $years,
+            'products' => $products
             // 'products' => $products,
             // 'genre' => request('genre'),
             // 'condition' => request('condition'),
