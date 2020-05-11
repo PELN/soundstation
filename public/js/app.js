@@ -19284,7 +19284,6 @@ module.exports = function(module) {
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 $(document).ready(function () {
-  // set default query condition=any ???
   $('.genre').click(function () {
     // if checked, add to genres
     var genres = [];
@@ -19311,20 +19310,28 @@ $(document).ready(function () {
   });
   $('.condition').click(function () {
     if ($(this).is(':checked')) {
-      console.log($(this).val());
       conditionToken = $(this).val();
     }
 
-    ; // prevent adding duplicate params on click
+    ; // if url already has condition param, dont add it again
     //https://stackoverflow.com/questions/1314383/how-to-check-if-a-query-string-value-is-present-via-javascript
-    // const params = new URLSearchParams(window.location.search)
-    // if (!params.get('condition')) {
-    //     console.log('already exist');
-    //     addUrlParam(document.location.search, 'condition', conditionToken);
-    // }
 
-    addUrlParam(document.location.search, 'condition', conditionToken);
-  }); // * Add a URL parameter (or changing it if it already exists)
+    var urlParams = new URLSearchParams(window.location.search);
+    var conditionParam = urlParams.get('condition');
+
+    if (conditionParam != conditionToken) {
+      addUrlParam(document.location.search, 'condition', conditionToken);
+    }
+  }); // AJAX   
+  // $.ajax({
+  //     type: 'GET',
+  //     url: '',
+  //     data: 'genre='+filterGenre,
+  //     success: function(response) {
+  //         console.log('response', response);
+  //     }
+  // });
+  // * add a URL parameter (or changing it if it already exists)
   // * @param {url} string  this is typically document.location.search
   // * @param {key}    string  the key to set
   // * @param {val}    string  value
@@ -19398,15 +19405,7 @@ $(document).ready(function () {
         path: removeUrl
       }, '', url);
     }
-  } // $.ajax({
-  //     type: 'GET',
-  //     url: '',
-  //     data: 'genre='+filterGenre,
-  //     success: function(response) {
-  //         console.log('response', response);
-  //     }
-  // });
-
+  }
 });
 
 /***/ }),
