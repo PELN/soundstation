@@ -67,14 +67,8 @@ class CategoryController extends Controller
                 
                 // dd($products->count('genre'));
             
-        
-
-        // $request = request('genre')
-        // $filterGenre = Genre::where('genre', $genreInput)->first();
-        // dd($filterGenre->genre);
 
         // if(!empty($genreInput)) {
-
             // $productsGenre = Product::where('category_id', $category->id);
             // dd($productsGenre->genres);
 
@@ -99,11 +93,6 @@ class CategoryController extends Controller
         //     }
         // }
 
-        // if($filterGenre){
-        //     $filterGenre = Genre::where('genre', $genreInput)->first();
-        //     // echo $filterGenre->products;
-        //     // echo $filterGenre->genre;
-        // }
 
         // if(Request::ajax()){
         //     return response()->json(['response' => 'This is get method']);

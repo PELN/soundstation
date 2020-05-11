@@ -66,13 +66,13 @@
 					<div class="filter-content collapse show" id="collapse_1" style="">
 						<div class="card-body">
 							<label class="custom-control custom-radio">
-							<input type="radio" name="myfilter_radio" checked="" class="custom-control-input">
+							<input type="radio" name="myfilter_radio" checked="" class="condition custom-control-input" value="any">
 							<div class="custom-control-label">Any condition</div>
 							</label>
 
 							<label class="custom-control custom-radio">
 								{{-- <a href={{ request()->fullUrlWithQuery(['condition' => 'new']) }}> --}}
-							<input type="radio" name="myfilter_radio" class="custom-control-input">
+							<input type="radio" name="myfilter_radio" class="condition custom-control-input" value="new">
 								<div class="custom-control-label">
 									New
 								</div>
@@ -80,7 +80,7 @@
 							</label>
 
 							<label class="custom-control custom-radio">
-							<input type="radio" name="myfilter_radio" class="custom-control-input">
+							<input type="radio" name="myfilter_radio" class="condition custom-control-input" value="used">
 							{{-- <a href={{ request()->fullUrlWithQuery(['condition' => 'used']) }}> --}}
 								<div class="custom-control-label">Used </div>
 							{{-- </a> --}}
@@ -95,9 +95,7 @@
 							<i class="icon-control fa fa-chevron-down"></i>
 							<h6 class="title">Genre </h6>
 						</a>
-						{{-- if checked, add to query, if unchecked remove --}}
 						{{-- <a href={{ request()->merge(['genre' => $genre->genre]) }}>Remove filters</a> --}}
-						{{-- <a href={{ request()->remove(['genre']) }}>Remove filters</a> --}}
 					</header>
 					<div class="filter-content collapse show" id="collapse_2" style="">
 						<div class="card-body">
@@ -110,22 +108,9 @@
 											{{-- id="genre"  --}}
 											name="genre"
 											value="{{ $genre->genre }}"
-											{{-- onchange="window.history.replaceState({}, 'genre'
-											, replaceQueryString(location.href, 'genre', $(this).val()));" --}}
-											{{-- onclick="window.location='{{ request()->fullUrlWithQuery(['genre' => $genre->genre]) }}';" --}}
-											{{-- onclick="window.history.pushState(document.location + '?a=parameter');" --}}
-											{{-- {{ request()->fullUrlWithQuery(['genre' => $genre->genre]) }} --}}
 											>
 											<div class="custom-control-label">{{ $genre->genre }}
-												{{-- {{$products->count($genre->genre)}} --}}
-												{{-- @foreach ($category->products as $product) --}}
-												{{-- @foreach($product->genres as $p_genre) --}}
 												{{-- <b class="badge badge-pill badge-light float-right">{{$genre->products->count()}}</b> --}}
-												
-												{{-- {{$filterGenre->products->count('genre')}} --}}
-												
-												{{-- @endforeach --}}
-												{{-- @endforeach --}}
 											</div>
 										{{-- </a> --}}
 										</label>
@@ -158,24 +143,6 @@
 
 	{{-- <a href={{ request()->fullUrlWithQuery(['genre' => 'country']) }}>country</a> --}}
 	{{-- <a href={{ request()->fullUrlWithQuery(['condition' => 'used']) }}>used</a> --}}
-
-
-	{{-- TODO// if no products matches genre, write: no matches --}}
-	{{-- TODO// when genre is chosen, set checkbox to checked and the other way around - they are not connected now --}}
-	{{-- should be possible to choose more genres?? now it is only possible to choose one --}}
-	{{-- make it work with condition - new/used --}}
-
-	{{-- <h4>Genre: {{$filterGenre->genre}}</h4>
-	
-	@if($filterUsedCondition)
-		@foreach($filterUsedCondition as $filterUsed)
-		<h2>Used: {{$filterUsed->name}}</h2>
-		@endforeach
-	@else
-		@foreach($filterNewCondition as $filterNew)
-		<h2>New: {{$filterNew->name}}</h2>
-		@endforeach
-	@endif --}}
 
 	<div class="row">
 			{{-- find products within category --}}
