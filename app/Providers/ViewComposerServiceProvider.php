@@ -18,7 +18,7 @@ class ViewComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('layouts.partials.header', function ($view) {
-            $view->with('categories', Category::orderByRaw('-name ASC')->where('menu', 1)->get()->nest());
+            $view->with('categories', Category::orderByRaw('-category ASC')->where('menu', 1)->get()->nest());
         });
     }
 }

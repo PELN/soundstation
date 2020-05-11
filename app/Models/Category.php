@@ -14,7 +14,7 @@ class Category extends Model
     protected $table = 'categories';
 
     protected $fillable = [
-        'name', 'slug', 'parent_id', 'menu'
+        'category', 'category_slug', 'parent_id', 'menu'
     ];
 
     protected $casts = [
@@ -24,8 +24,8 @@ class Category extends Model
 
     public function setNameAttribute($value)
     {
-        $this->attributes['name'] = $value;
-        $this->attributes['slug'] = Str::slug($value);
+        $this->attributes['category'] = $value;
+        $this->attributes['category_slug'] = Str::slug($value);
     }
 
     // adjacency model relationships

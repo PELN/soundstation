@@ -11,7 +11,7 @@ class ProductController extends Controller
 {
     public function show($category, $slug) {
 
-        $category = Category::where('slug', $category)->first();
+        $category = Category::where('category_slug', $category)->first();
         
         // $image = Image::where('product_id', $product->id)->first();
     

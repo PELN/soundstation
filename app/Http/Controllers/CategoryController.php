@@ -6,8 +6,8 @@ use Request;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Genre;
-use App\Models\Year;
 use Illuminate\Support\Facades\Input;
+use DB;
 
 
 class CategoryController extends Controller
@@ -16,23 +16,13 @@ class CategoryController extends Controller
     public function show($slug) {
 
         // $categories = Category::all();
-
-        $category = Category::where('slug', $slug)->where('menu', 1)->first();
-
-        $products = Product::all();
-
-
-        // foreach ($category->products as $product) {
-        //     dd($product);
-        // }
-
-        // TODO
-        // 1. find products genres within the requested category - use request() ???
-        // 2. show products within the requested genre - product-listing page ??
-        // 3. count the amount of products that has each genre
+        $category = Category::where('category_slug', $slug)->where('menu', 1)->first();
+        
+        // $products = Product::all();
 
         //counts all products genre amount, not by category
         $genres = Genre::all();
+        // dd($genres->products);
 
         // $rows= Genre::withCount('products')->get();
         
@@ -41,7 +31,6 @@ class CategoryController extends Controller
         //     // echo $row;
         // }
     
-
         // foreach($category->products as $product){
         //     foreach($product->genres as $genre){
         //         echo $genre->products;
@@ -52,49 +41,119 @@ class CategoryController extends Controller
         //     dd($genre->products->count());
         // }
 
-        //finds the first genre and returns all products with that genre
-        // $genres = Genre::all()->first();
-        // dd($genres->products);
-        
-        // foreach ($genre->products as $product) {
+        $input = Request::all();
+        $genreInput = $input['genre'];
+        $conditionInput = $input['condition'];
+
+        $products = 
+            DB::table('products')
+            ->join('categories', 'categories.id', '=', 'products.category_id')
+            ->join('genre_product', 'products.id', '=', 'genre_product.product_id')
+            ->join('genres', 'genre_product.genre_id', '=', 'genres.id')
+            ->join('images', 'images.product_id', '=', 'products.id')
+            ->where('category_id', $category->id)
+                ->when($genreInput, function ($query) use ($genreInput) {
+                    return $query->where('genres.genre', $genreInput);
+                })
+                ->when($conditionInput, function ($query) use ($conditionInput) {
+                    return $query->where('media_condition', $conditionInput);
+                })
+                ->select(['products.id', 'products.category_id', 'products.name', 'products.slug',  'products.media_condition', 
+                'products.quantity', 'products.price', 'products.sale_price', 'products.status', 'products.featured', 'products.created_at',
+                'images.path', 'images.product_id', 'categories.category', 'categories.category_slug', 'genres.genre'])
+                ->groupby('products.id')
+                ->get();
+
+        // dd($products);
+
+        // foreach($products as $product){
         //     dd($product);
         // }
-        // dd($genre->products);
 
-        // finds first row in genre_product table (genre_id POP, product_id It Is What It Is)
-        // foreach ($genres->product as $product) {
-        //     dd($product->name);
-        // }
-
-        $input = Request::all();
-        // dd($input['genre']);
         
-        $genreInput = $input['genre'];
 
         // $request = request('genre')
-        $filterGenre = Genre::where('genre', $genreInput)->first();
+        // $filterGenre = Genre::where('genre', $genreInput)->first();
         // dd($filterGenre->genre);
 
-        if($filterGenre){
-            $filterGenre = Genre::where('genre', $genreInput)->first();
-            // echo $filterGenre->products;
-            // echo $filterGenre->genre;
+        if(!empty($genreInput)) {
+
+            // $productsGenre = Product::where('category_id', $category->id);
+            // dd($productsGenre->genres);
+
+            // $product = Product::with(['category', 'genres'])->where('category_id', $category->id)->get();
+            // foreach($product as $row){
+            //     // dd($row->genres);
+            // }
+            // dd($product);
+
+            // $filterGenre = Genre::where('genre', $genreInput)->first();
+            // dd($filterGenre->products);
         }
-        
-        
-        $years = Year::all();
+
+        // if(!empty($conditionInput)) {
+        //     if($conditionInput == 'new'){
+        //         $filterNewCondition = Product::where('media_condition', 1)->where('category_id', $category->id)->get();
+        //         // echo $filterNewCondition;
+        //     }
+        //     else if($conditionInput == 'used') {
+        //         $filterUsedCondition = Product::where('media_condition', 0)->where('category_id', $category->id)->get();
+        //         // echo $filterUsedCondition;
+        //     }
+        // }
+
+        // if($filterGenre){
+        //     $filterGenre = Genre::where('genre', $genreInput)->first();
+        //     // echo $filterGenre->products;
+        //     // echo $filterGenre->genre;
+        // }
+
+        // if(Request::ajax()){
+        //     return response()->json(['response' => 'This is get method']);
+        // };
+
         
         return view('pages.product-listing', [
             // 'categories' => $categories,
             'category' => $category,
             'genres' => $genres,
-            'years' => $years,
-            'genres' => $genres,
             'products' => $products,
+            'years' => $years,
+            // 'products' => $products,
             // 'genre' => request('genre'),
             // 'condition' => request('condition'),
-            'filterGenre' => $filterGenre
+            // 'filterGenre' => $filterGenre,
+            // 'filterNewCondition' => $filterNewCondition,
+            // 'filterUsedCondition' => $filterUsedCondition
         ]);
     }
 
+    // public function filter(Request $request)
+    // {
+
+        // $input = Request::all();
+        // $genreInput = $input['genre'];
+        // // dd($input['genre']);
+
+        // if(!empty($genreInput)) {
+        //     $filterGenre = Genre::where('genre', $genreInput)->first();
+        // }
+
+        // $genre = $request->Input('genre');
+
+        // return "AJAX";
+
+        // return response()->json(['response' => 'This is get method']);
+        
+
+        // if(Request::ajax()){
+        //     // send request back with the chosen genre?
+        //     $filterGenre = Genre::where('genre', $genreInput)->first();
+        //     echo 
+        //     return request()->fullUrlWithQuery(['genre' => $genre->genre]);
+        //     // return $genreInput;
+        // }
+    // }
+
+    
 }

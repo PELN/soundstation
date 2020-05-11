@@ -12,19 +12,18 @@
 <section class="section-pagetop bg">
 	<div class="container">
 		@if($category)
-			<h2>{{$category->name}}</h2>
+			<h2>{{$category->category}}</h2>
 		@endif
 		<nav>
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="/">Home</a></li>
-			<li class="breadcrumb-item"><a href="{{ URL::to("{$category->slug}") }}">{{$category->name}}</a></li>
-			{{-- <li class="breadcrumb-item"><a href="{{ URL::to("{$category->slug}/{$product->slug}") }}">{{$product->name}}</a></li> --}}
+			<li class="breadcrumb-item"><a href="{{ URL::to("{$category->category_slug}") }}">{{$category->category}}</a></li>
+			{{-- <li class="breadcrumb-item"><a href="{{ URL::to("{$category->category_slug}/{$product->slug}") }}">{{$product->name}}</a></li> --}}
 		</ol>
 		</nav>
 	</div> <!-- container //  -->
 </section>
 <!-- ========================= SECTION INTRO END// ========================= -->
-
 
 {{-- @if(request()->slug === 'autographs' || request()->slug === 'record-awards' || request()->slug === 'posters-postcards-artwork' || request()->slug === 'tour-programmes-folders-books' || request()->slug === 'mischellaneous') --}}
 	{{-- @foreach($categories as $category)
@@ -72,50 +71,23 @@
 							</label>
 
 							<label class="custom-control custom-radio">
+								{{-- <a href={{ request()->fullUrlWithQuery(['condition' => 'new']) }}> --}}
 							<input type="radio" name="myfilter_radio" class="custom-control-input">
-							<div class="custom-control-label">Brand new </div>
+								<div class="custom-control-label">
+									New
+								</div>
+							{{-- </a> --}}
 							</label>
 
 							<label class="custom-control custom-radio">
 							<input type="radio" name="myfilter_radio" class="custom-control-input">
-							<div class="custom-control-label">Used items</div>
+							{{-- <a href={{ request()->fullUrlWithQuery(['condition' => 'used']) }}> --}}
+								<div class="custom-control-label">Used </div>
+							{{-- </a> --}}
 							</label>
 						</div><!-- card-body.// -->
 					</div>
 				</article> <!-- filter-group .// -->
-				{{-- <article class="filter-group">
-					<header class="card-header">
-						<a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" class="">
-							<i class="icon-control fa fa-chevron-down"></i>
-							<h6 class="title">Product type</h6>
-						</a>
-					</header>
-					<div class="filter-content collapse show" id="collapse_1" style="">
-						<div class="card-body">
-							<form class="pb-3">
-							<div class="input-group">
-							<input type="text" class="form-control" placeholder="Search">
-							<div class="input-group-append">
-								<button class="btn btn-light" type="button"><i class="fa fa-search"></i></button>
-							</div>
-							</div>
-							</form>
-							
-							<ul class="list-menu">
-							<li><a href="#">People  </a></li>
-							<li><a href="#">Watches </a></li>
-							<li><a href="#">Cinema  </a></li>
-							<li><a href="#">Clothes  </a></li>
-							<li><a href="#">Home items </a></li>
-							<li><a href="#">Animals</a></li>
-							<li><a href="#">People </a></li>
-							</ul>
-
-						</div> <!-- card-body.// -->
-					</div>
-				</article> <!-- filter-group  .// --> --}}
-				
-				
 
 				<article class="filter-group">
 					<header class="card-header">
@@ -123,34 +95,41 @@
 							<i class="icon-control fa fa-chevron-down"></i>
 							<h6 class="title">Genre </h6>
 						</a>
+						{{-- if checked, add to query, if unchecked remove --}}
+						{{-- <a href={{ request()->merge(['genre' => $genre->genre]) }}>Remove filters</a> --}}
+						{{-- <a href={{ request()->remove(['genre']) }}>Remove filters</a> --}}
 					</header>
 					<div class="filter-content collapse show" id="collapse_2" style="">
 						<div class="card-body">
 							@foreach($genres as $genre)
+							<div class="checkbox-filter">
 								<label class="custom-control custom-checkbox">
-									<input type="checkbox" class="custom-control-input" id="genre-{{$genre->id}}">
-									<a href={{ request()->fullUrlWithQuery(['genre' => $genre->genre]) }}><div class="custom-control-label">{{ $genre->genre }}</a>
-										{{-- @foreach ($category->products as $product) --}}
-											{{-- @foreach($product->genres as $p_genre) --}}
-											{{-- <b class="badge badge-pill badge-light float-right">{{$genre->products->count()}}</b> --}}
-											{{-- @endforeach --}}
-										{{-- @endforeach --}}
-									</div>
-								</label>
-							@endforeach
-
-							{{-- <div class="card-body">
-								<label class="custom-control custom-checkbox">
-								<input type="checkbox" class="custom-control-input">
-									@foreach ($category->products as $product)
-										@foreach($product->genres as $genre)
-											<div class="custom-control-label">{{$genre->genre}}
-												<b class="badge badge-pill badge-light float-right">{{$genre->products->count()}}</b>
+									{{-- <a href={{ request()->fullUrlWithQuery(['genre' => $genre->genre]) }}> --}}
+										<input type="checkbox" 
+											class="genre custom-control-input" 
+											{{-- id="genre"  --}}
+											name="genre"
+											value="{{ $genre->genre }}"
+											{{-- onchange="window.history.replaceState({}, 'genre'
+											, replaceQueryString(location.href, 'genre', $(this).val()));" --}}
+											{{-- onclick="window.location='{{ request()->fullUrlWithQuery(['genre' => $genre->genre]) }}';" --}}
+											{{-- onclick="window.history.pushState(document.location + '?a=parameter');" --}}
+											{{-- {{ request()->fullUrlWithQuery(['genre' => $genre->genre]) }} --}}
+											>
+											<div class="custom-control-label">{{ $genre->genre }}
+												{{-- @foreach ($category->products as $product) --}}
+												{{-- @foreach($product->genres as $p_genre) --}}
+												{{-- <b class="badge badge-pill badge-light float-right">{{$genre->products->count()}}</b> --}}
+												
+												{{-- {{$filterGenre->products->count('genre')}} --}}
+												
+												{{-- @endforeach --}}
+												{{-- @endforeach --}}
 											</div>
-										@endforeach
-									@endforeach
-							</div> <!-- card-body.// --> --}}
-
+										{{-- </a> --}}
+										</label>
+									</div>
+							@endforeach
 						</div> <!-- card-body.// -->
 					</div>
 				</article> <!-- filter-group .// -->
@@ -177,7 +156,7 @@
 	</header><!-- sect-heading -->
 
 	{{-- <a href={{ request()->fullUrlWithQuery(['genre' => 'country']) }}>country</a> --}}
-	<a href={{ request()->fullUrlWithQuery(['condition' => 'new']) }}>new</a>
+	{{-- <a href={{ request()->fullUrlWithQuery(['condition' => 'used']) }}>used</a> --}}
 
 
 	{{-- TODO// if no products matches genre, write: no matches --}}
@@ -185,48 +164,30 @@
 	{{-- should be possible to choose more genres?? now it is only possible to choose one --}}
 	{{-- make it work with condition - new/used --}}
 
-	<h4>Genre: {{$filterGenre->genre}}</h4>
+	{{-- <h4>Genre: {{$filterGenre->genre}}</h4>
+	
+	@if($filterUsedCondition)
+		@foreach($filterUsedCondition as $filterUsed)
+		<h2>Used: {{$filterUsed->name}}</h2>
+		@endforeach
+	@else
+		@foreach($filterNewCondition as $filterNew)
+		<h2>New: {{$filterNew->name}}</h2>
+		@endforeach
+	@endif --}}
 
 	<div class="row">
-		{{-- find products within genre --}}
-		@forelse($filterGenre->products as $genre_product)
-		{{-- {{ $genre_product }} --}}
-		<div class="col-md-4">
-			<a href="{{ URL::to("{$category->slug}/{$product->slug}") }}">
-				<figure class="card card-product-grid">
-					<div class="img-wrap"> 
-						@forelse ($genre_product->images as $image)
-							@if($loop->first)
-							<img src="{{ asset('storage/'.$image->path) }}">
-							@endif
-						@empty
-							<img src="{{ asset('storage/image-coming-soon.jpg') }}">
-						@endforelse
-					</div> <!-- img-wrap.// -->
-					<figcaption class="info-wrap">
-						<div class="fix-height">
-							<a href="#" class="title">{{$genre_product->name}}</a>
-							<div class="price-wrap mt-2">
-								<span class="price">DKK {{$genre_product->price}}</span>
-								{{-- <del class="price-old">$1980</del> --}}
-							</div> <!-- price-wrap.// -->
-						</div>
-						<a href="#" class="btn btn-block btn-primary">Add to cart </a>
-					</figcaption>
-				</figure>
-				</a>
-			</div> <!-- col.// -->
-		@empty
 			{{-- find products within category --}}
-			@foreach ($category->products as $product)
+			@foreach ($products as $product)
+			{{-- <h3>{{$product->path}}</h3> --}}
 			<div class="col-md-4">
-			<a href="{{ URL::to("{$category->slug}/{$product->slug}") }}">
+			<a href="{{ URL::to("{$category->category_slug}/{$product->slug}") }}">
 				<figure class="card card-product-grid">
-					<div class="img-wrap"> 
+					<div class="img-wrap">
 						<!-- <span class="badge badge-danger"> NEW </span> -->
-						@forelse ($product->images as $image)
+						@forelse ($product->path as $imagePath)
 							@if($loop->first)
-								<img src="{{ asset('storage/'.$image->path) }}">
+								<img src="{{ asset('storage/'.$imagePath) }}">
 							@endif
 						@empty
 							<img src="{{ asset('storage/image-coming-soon.jpg') }}">
@@ -247,7 +208,6 @@
 				</a>
 			</div> <!-- col.// -->
 			@endforeach
-		@endforelse
 	</div> <!-- row end.// -->
 
 
