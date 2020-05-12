@@ -125,7 +125,7 @@
 	<main class="col-md-9">
 	<header class="border-bottom mb-4 pb-3">
 		<div class="form-inline">
-			<span class="mr-md-auto">{{$category->products->count()}} Items found </span>
+			<span class="mr-md-auto">{{$category->products->count()}} Products found </span>
 			<select class="mr-2 form-control">
 				<option>Latest items</option>
 				<option>Trending</option>

@@ -25,11 +25,14 @@ require 'admin.php';
 Route::get('/', 'PagesController@index')->name('pages.index');
 Route::get('/about', 'PagesController@about')->name('pages.about');
 
-
+Route::get('/ajaxFilter', 'CategoryController@ajaxFilter')->name('category.ajaxFilter');
 Route::get('/{slug}', 'CategoryController@show')->name('category.show')->where('slug', '[\w\d\-\_]+');
-// Route::get('filter', 'CategoryController@filter')->name('category.filter');
+
+// Route::get('/{slug}/{request}', 'CategoryController@filter')->name('category.filter');
 
 Route::get('/{category}/{slug}', 'ProductController@show')->name('product.show');
+
+
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

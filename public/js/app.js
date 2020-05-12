@@ -19326,18 +19326,7 @@ $(document).ready(function () {
     }
 
     ;
-  });
-  var ajaxParams = [];
-  console.log(ajaxParams); // AJAX
-  // $.ajax({
-  //     type: 'GET',
-  //     url: '',
-  //     data: 'genre='+filterGenre,
-  //     success: function(response) {
-  //         console.log('response', response);
-  //     }
-  // });
-  // * add a URL parameter (or changing it if it already exists)
+  }); // * add a URL parameter (or changing it if it already exists)
   // * @param {url} string  this is typically document.location.search
   // * @param {key}    string  the key to set
   // * @param {value}    string  value
@@ -19363,10 +19352,28 @@ $(document).ready(function () {
     var urlWithParams = window.location.protocol + "//" + window.location.host + window.location.pathname + params;
     window.history.pushState({
       path: urlWithParams
-    }, '', urlWithParams); // https://stackoverflow.com/questions/8648892/how-to-convert-url-parameters-to-a-javascript-object
+    }, '', urlWithParams);
+    var ajaxParams = []; // console.log('ajax params',ajaxParams)
+    // https://stackoverflow.com/questions/8648892/how-to-convert-url-parameters-to-a-javascript-object
 
     var paramsObj = Object.fromEntries(new URLSearchParams(location.search));
-    ajaxParams.push(paramsObj); // return params;
+    ajaxParams.push(paramsObj); // console.log('test',JSON.stringify(ajaxParams));
+
+    console.log(paramsObj); // const data = new Object();
+    // data.Genre = 
+    // data.Condition = 
+
+    $.ajax({
+      type: 'GET',
+      url: 'ajaxFilter',
+      data: paramsObj,
+      dataType: 'JSON' // contentType: 'application/json; charset=utf-8',
+
+    }).done(function (response) {
+      console.log('response from controller', response); // console.log('ajax params in ajasx',ajaxParams);
+    }).fail(function (err) {
+      console.log('error', err);
+    }); // return params;
   }; // remove a value from an array in URL by comma
   // https://stackoverflow.com/questions/1306164/remove-value-from-comma-separated-values-string
 
