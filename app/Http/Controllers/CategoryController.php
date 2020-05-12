@@ -89,6 +89,9 @@ class CategoryController extends Controller
                 $products->where('media_condition', 0);
             }
         } else {
+            if($conditionFilter == 'any'){
+                $products->whereIn('media_condition', [0, 1]);
+            }
             $products->whereIn('media_condition', [0, 1]);
         }
         
