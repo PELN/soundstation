@@ -13,14 +13,9 @@ use DB;
 
 class CategoryController extends Controller
 {
-
     public function show($slug) {
 
-        // $categories = Category::all();
         $category = Category::where('category_slug', $slug)->where('menu', 1)->first();
-        
-        // $products = Product::all();
-
         $genres = Genre::all();
         // dd($genres->products);
 
@@ -55,16 +50,8 @@ class CategoryController extends Controller
                 ->get();
                 
                 // dd($products->count('genre'));
-            
-
-
-        // if(Request::ajax()){
-        //     return response()->json(['response' => 'This is get method']);
-        // };
-
         
         return view('pages.product-listing', [
-            // 'categories' => $categories,
             'category' => $category,
             'genres' => $genres,
             'products' => $products
@@ -73,29 +60,64 @@ class CategoryController extends Controller
 
     public function ajaxFilter(Request $request)
     {
-
-        $input = Request::all();
-
-        $genreInput = $input['genre'];
-        $conditionInput = $input['condition'];
+        $category = Category::where('category_slug', $slug)->first();
         
-        if (!empty($genreInput)) {
+        $input = Request::all();
+        $genreFilter = $input['genre'];
+        $conditionFilter = $input['condition'];
+        
+        // if (!empty($genreFilter)) {
+        $genreFilters = explode(',', $genreFilter);
+        // dd($genreFilters);
 
-            $separatedGenreInput = explode(',', $genreInput);
+        // $testArr = ['rock','pop'];
 
-            return response()->json(['response' => $separatedGenreInput]);
+        $query = DB::table('products')
+        ->join('categories', 'categories.id', '=', 'products.category_id')
+        ->leftJoin('genre_product', 'products.id', '=', 'genre_product.product_id')
+        ->leftJoin('genres', 'genre_product.genre_id', '=', 'genres.id')
+        ->leftJoin('images', 'images.product_id', '=', 'products.id');
+
+        $query->where('category_slug', 'vinyls')
+            // ->when($genreFilter, function ($query) use ($genreFilter) {
+            //     return $query->where($testArr);
+            // })
+            // ->when($conditionFilter, function ($query) use ($conditionFilter) {
+            //     return $query->where('media_condition', $conditionFilter);
+            // })
+            ->select(['products.id', 'products.category_id', 'products.name', 'products.slug',  'products.media_condition', 
+            'products.quantity', 'products.price', 'products.sale_price', 'products.status', 'products.featured', 'products.created_at',
+            'images.path', 'categories.category', 'categories.category_slug', 'genres.genre']);
+            // ->groupby('products.id')
+        
+        if(count($genreFilters) > 0) {
+            $query->where('genre', $genreFilters);
+        }
+
+        if(count($genreFilters) > 1) {
+            foreach ($genreFilters as $genre) {
+                $query->orWhere('genre', $genre);
+            }
         }
         
-        
+        $collection = $query->get();
+
+        // foreach($collection as $product){
+        //     dd($product);
+        // }
+
+        dd($collection);
+            
+
+            // return response()->json($products);
+        // }
         
         // if ($input) {
         //     return response()->json(['response' => $input]);
         // }
             
         // return json_encode($request);
-
     }
-
 }
 
 
@@ -123,3 +145,15 @@ class CategoryController extends Controller
         // }
 
         // return response()->json(['response'=> 'This is get method']);
+
+
+
+    // ***************************************************************
+    // GETS PRODUCTS WITHIN A GENRE FROM REQUEST (FILTER)
+    // https://laracasts.com/discuss/channels/general-discussion/confused-on-how-to-access-data-over-multiple-many-to-many-relations
+    // $input = Request::all();
+    // $genreFilter = $input['genre'];
+    // $genres = Genre::with('products')->where('genre', $genreFilter)->get();
+    // foreach($genres as $genre){
+    //     dd($genre->products);
+    // }

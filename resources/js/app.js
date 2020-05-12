@@ -11,7 +11,7 @@ $(document).ready(function() {
             };
         });
         const genreValue = genres.toString();
-        console.log(genreValue);
+        // console.log(genreValue);
         addUrlParam(document.location.search, 'genre', genreValue);
 
         // if unchecked, remove
@@ -63,24 +63,19 @@ $(document).ready(function() {
                 params += '&' + newParam;
             };
         };
-        console.log('add param', params);
+        // console.log('add param', params);
 
         const urlWithParams = window.location.protocol + "//" + window.location.host + window.location.pathname + params;
         window.history.pushState({path:urlWithParams},'',urlWithParams);
 
-        const ajaxParams = [];
+        // const ajaxParams = [];
         // console.log('ajax params',ajaxParams)
 
         // https://stackoverflow.com/questions/8648892/how-to-convert-url-parameters-to-a-javascript-object
         const paramsObj = Object.fromEntries(new URLSearchParams(location.search));
-        ajaxParams.push(paramsObj);
+        // ajaxParams.push(paramsObj);
         // console.log('test',JSON.stringify(ajaxParams));
         console.log(paramsObj);
-
-        // const data = new Object();
-        // data.Genre = 
-        // data.Condition = 
-
 
         $.ajax({
             type: 'GET',
