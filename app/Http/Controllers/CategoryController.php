@@ -69,45 +69,52 @@ class CategoryController extends Controller
         // if (!empty($genreFilter)) {
         $genreFilters = explode(',', $genreFilter);
         // dd($genreFilters);
+        // dd(array($genreFilters));
+        $testArr = ['rock'];
 
-        // $testArr = ['rock','pop'];
+        // return response()->json($genreFilters[0] == 'rock');
 
-        $query = DB::table('products')
+
+        $products = DB::table('products')
         ->join('categories', 'categories.id', '=', 'products.category_id')
         ->leftJoin('genre_product', 'products.id', '=', 'genre_product.product_id')
         ->leftJoin('genres', 'genre_product.genre_id', '=', 'genres.id')
-        ->leftJoin('images', 'images.product_id', '=', 'products.id');
+        ->leftJoin('images', 'images.product_id', '=', 'products.id')
+        ->where('category_slug', 'cds')
+        ->where(function($query) use ($genreFilters) {
+                $query->whereIn('genre', $genreFilters);
 
-        $query->where('category_slug', 'vinyls')
-            // ->when($genreFilter, function ($query) use ($genreFilter) {
-            //     return $query->where($testArr);
-            // })
-            // ->when($conditionFilter, function ($query) use ($conditionFilter) {
-            //     return $query->where('media_condition', $conditionFilter);
-            // })
-            ->select(['products.id', 'products.category_id', 'products.name', 'products.slug',  'products.media_condition', 
-            'products.quantity', 'products.price', 'products.sale_price', 'products.status', 'products.featured', 'products.created_at',
-            'images.path', 'categories.category', 'categories.category_slug', 'genres.genre']);
-            // ->groupby('products.id')
+            // if(count($genreFilters) > 0) 
+                // $query->where('genre', '=', ['pop','rock']);
+                // ->orWhere('genre', '=', $genreFilters[1]);
+                // foreach ($genreFilters as $genre) {
+                //     $query->orWhere('genre', $genre);
+                // }
+            // }
+        })
+        // ->when($genreFilter, function ($query) use ($genreFilter) {
+        //     return $query->where($genreFilters);
+        // })
+        // ->when($conditionFilter, function ($query) use ($conditionFilter) {
+        //     return $query->where('media_condition', $conditionFilter);
+        // })
+        ->select(['products.id', 'products.category_id', 'products.name', 'products.slug',  'products.media_condition', 
+        'products.quantity', 'products.price', 'products.sale_price', 'products.status', 'products.featured', 'products.created_at',
+        'images.path', 'categories.category', 'categories.category_slug', 'genres.genre'])
+        ->groupby('products.id')
+        ->get();
         
-        if(count($genreFilters) > 0) {
-            $query->where('genre', $genreFilters);
-        }
+        // if(count($genreFilters) > 0) {
+        //     $query->where('genre', $genreFilters);
+        // }
 
-        if(count($genreFilters) > 1) {
-            foreach ($genreFilters as $genre) {
-                $query->orWhere('genre', $genre);
-            }
-        }
-        
-        $collection = $query->get();
+        // $collection = $products->get();
 
         // foreach($collection as $product){
         //     dd($product);
         // }
 
-        dd($collection);
-            
+        dd($products);
 
             // return response()->json($products);
         // }
