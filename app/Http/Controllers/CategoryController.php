@@ -40,7 +40,8 @@ class CategoryController extends Controller
                 'images.path', 'categories.category', 'categories.category_slug', 'genres.genre', 'artists.artist'])
                 ->orderBy('products.created_at', 'ASC')
                 ->groupby('products.id')
-                ->get();
+                ->paginate(6);
+                // ->get();
                 
         return view('pages.product-listing', [
             'category' => $category,
@@ -72,7 +73,6 @@ class CategoryController extends Controller
                         $query->whereIn('genre', $genreFilters);
                 });
             }
-
             if($conditionFilter) {
                 if($conditionFilter == 'new'){
                     $products->where('media_condition', 1);
