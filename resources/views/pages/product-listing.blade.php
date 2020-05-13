@@ -109,11 +109,11 @@
 				<header class="border-bottom mb-4 pb-3">
 					<div class="form-inline">
 						<span class="mr-md-auto">{{$category->products->count()}} Products found </span>
-						<select class="mr-2 form-control">
-							<option>Latest items</option>
-							<option>Trending</option>
-							<option>Most Popular</option>
-							<option>Cheapest</option>
+						<select id="sort-by" class="mr-2 form-control">
+							<option value="newest">Newest products</option>
+							<option value="oldest">Oldest products</option>
+							<option value="price-low">Price (Low)</option>
+							<option value="price-high">Price (High)</option>
 						</select>
 						{{-- <div class="btn-group">
 							<a href="#" class="btn btn-outline-secondary" data-toggle="tooltip" title="List view"> 

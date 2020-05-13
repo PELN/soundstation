@@ -38,6 +38,7 @@ class CategoryController extends Controller
                 ->select(['products.id', 'products.category_id', 'products.name', 'products.slug',  'products.media_condition', 
                 'products.quantity', 'products.price', 'products.sale_price', 'products.status', 'products.featured', 'products.created_at',
                 'images.path', 'categories.category', 'categories.category_slug', 'genres.genre', 'artists.artist'])
+                ->orderBy('products.created_at', 'ASC')
                 ->groupby('products.id')
                 ->get();
                 
@@ -56,18 +57,18 @@ class CategoryController extends Controller
             $genreFilter = $input['genre'];
             $conditionFilter = $input['condition'];
             $genreFilters = explode(',', $genreFilter);
-
+            
             $products = DB::table('products')
             ->join('categories', 'categories.id', '=', 'products.category_id')
             ->leftJoin('genre_product', 'products.id', '=', 'genre_product.product_id')
             ->leftJoin('genres', 'genre_product.genre_id', '=', 'genres.id')
             ->leftJoin('images', 'images.product_id', '=', 'products.id')
             ->leftJoin('artist_product', 'products.id', '=', 'artist_product.product_id')
-            ->leftJoin('artists', 'artist_product.artist_id', '=', 'artists.id');
+            ->leftJoin('artists', 'artist_product.artist_id', '=', 'artists.id')
+            ->where('category_slug', $category);
 
-            if ($genreFilters) {
-                $products->where('category_slug', $category)
-                ->where(function($query) use ($genreFilters) {
+            if ($genreFilters != [""]) {
+                $products->where(function($query) use ($genreFilters) {
                         $query->whereIn('genre', $genreFilters);
                 });
             }
@@ -88,6 +89,7 @@ class CategoryController extends Controller
             $collection = $products->select(['products.id', 'products.category_id', 'products.name', 'products.slug',  'products.media_condition', 
             'products.quantity', 'products.price', 'products.sale_price', 'products.status', 'products.featured', 'products.created_at',
             'images.path', 'categories.category', 'categories.category_slug', 'genres.genre', 'artists.artist'])
+            ->orderBy('products.created_at', 'ASC')
             ->groupby('products.id')
             ->get();
 
