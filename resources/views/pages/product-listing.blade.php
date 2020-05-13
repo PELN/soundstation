@@ -144,6 +144,41 @@
 	{{-- <a href={{ request()->fullUrlWithQuery(['genre' => 'country']) }}>country</a> --}}
 	{{-- <a href={{ request()->fullUrlWithQuery(['condition' => 'used']) }}>used</a> --}}
 
+	@if(true)
+	
+	<div class="results">
+		<h1>filter results</h1>
+			<div class="row">
+				<div class="col-md-4">
+				<a href="{{ URL::to("{$category->category_slug}/{$product->slug}") }}">
+					<figure class="card card-product-grid">
+						<div class="img-wrap">
+							<!-- <span class="badge badge-danger"> NEW </span> -->
+							{{-- @if($product->path)
+								<img src="{{ asset('storage/'.$product->path) }}">
+							@else
+								<img src="{{ asset('storage/image-coming-soon.jpg') }}">
+							@endforelse --}}
+							{{-- <a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a> --}}
+						</div> <!-- img-wrap.// -->
+						<figcaption class="info-wrap">
+							<div class="fix-height">
+								<a href="#" class="title"></a>
+								<div class="price-wrap mt-2">
+									<span class="price"></span>
+									{{-- <del class="price-old">$1980</del> --}}
+								</div> <!-- price-wrap.// -->
+							</div>
+							<a href="#" class="btn btn-block btn-primary">Add to cart </a>
+						</figcaption>
+					</figure>
+					</a>
+				</div> <!-- col.// -->
+		</div> <!-- row end.// -->
+	</div>
+
+	@else
+
 	<div class="row">
 			{{-- find products within category --}}
 			@foreach ($products as $product)
@@ -175,6 +210,7 @@
 			@endforeach
 	</div> <!-- row end.// -->
 
+	@endif
 
 			<nav class="mt-4" aria-label="Page navigation sample">
 				<ul class="pagination">

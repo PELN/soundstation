@@ -40,10 +40,7 @@ $(document).ready(function() {
         };
     });
 
-   
- 
-
-    
+      
     // * add a URL parameter (or changing it if it already exists)
     // * @param {url} string  this is typically document.location.search
     // * @param {key}    string  the key to set
@@ -68,14 +65,13 @@ $(document).ready(function() {
         const urlWithParams = window.location.protocol + "//" + window.location.host + window.location.pathname + params;
         window.history.pushState({path:urlWithParams},'',urlWithParams);
 
-        // const ajaxParams = [];
-        // console.log('ajax params',ajaxParams)
-
+        // Get data to send with ajax
         // https://stackoverflow.com/questions/8648892/how-to-convert-url-parameters-to-a-javascript-object
         const paramsObj = Object.fromEntries(new URLSearchParams(location.search));
-        // ajaxParams.push(paramsObj);
-        // console.log('test',JSON.stringify(ajaxParams));
+        paramsObj.pathName = window.location.pathname.replace(/\//g, "");
         console.log(paramsObj);
+        // const pathName = window.location.pathname;
+        // console.log(pathName.replace(/\//g, ""));
 
         $.ajax({
             type: 'GET',
@@ -85,7 +81,21 @@ $(document).ready(function() {
             // contentType: 'application/json; charset=utf-8',
         }).done(function (response) {
             console.log('response from controller', response);
-            // console.log('ajax params in ajasx',ajaxParams);
+
+            // response.forEach(product => {
+            //     $('.title').text(product.name);
+            //     $('.price').text(product.price);
+            // });
+
+            for (let product of response) {
+                $('.results').append(
+                    '<div class="row">test</div>'
+                );
+
+                $('.results .title').append(product.name);
+                $('.results .price').append(product.price);
+               
+            }
 
         }).fail(function (err) {
             console.log('error', err);

@@ -26,9 +26,9 @@ class CategoryController extends Controller
         //     // echo $row;
         // }
 
-        $input = Request::all();
-        $genreInput = $input['genre'];
-        $conditionInput = $input['condition'];
+        // $input = Request::all();
+        // $genreInput = $input['genre'];
+        // $conditionInput = $input['condition'];
 
         $products = 
             DB::table('products')
@@ -37,12 +37,12 @@ class CategoryController extends Controller
             ->leftJoin('genres', 'genre_product.genre_id', '=', 'genres.id')
             ->leftJoin('images', 'images.product_id', '=', 'products.id')
             ->where('category_id', $category->id)
-                ->when($genreInput, function ($query) use ($genreInput) {
-                    return $query->where('genres.genre', $genreInput);
-                })
-                ->when($conditionInput, function ($query) use ($conditionInput) {
-                    return $query->where('media_condition', $conditionInput);
-                })
+                // ->when($genreInput, function ($query) use ($genreInput) {
+                //     return $query->where('genres.genre', $genreInput);
+                // })
+                // ->when($conditionInput, function ($query) use ($conditionInput) {
+                //     return $query->where('media_condition', $conditionInput);
+                // })
                 ->select(['products.id', 'products.category_id', 'products.name', 'products.slug',  'products.media_condition', 
                 'products.quantity', 'products.price', 'products.sale_price', 'products.status', 'products.featured', 'products.created_at',
                 'images.path', 'categories.category', 'categories.category_slug', 'genres.genre'])
@@ -59,61 +59,64 @@ class CategoryController extends Controller
     }
 
     public function ajaxFilter(Request $request)
-    {
-        $category = Category::where('category_slug', $slug)->first();
-        
-        $input = Request::all();
-        $genreFilter = $input['genre'];
-        $conditionFilter = $input['condition'];
-        $genreFilters = explode(',', $genreFilter);
+    {    
+        try {
+            $input = Request::all();
+            $category = $input['pathName'];
+            $genreFilter = $input['genre'];
+            $conditionFilter = $input['condition'];
+            $genreFilters = explode(',', $genreFilter);
 
-        // return response()->json($genreFilters[0] == 'rock');
+            // return response()->json($genreFilters[0] == 'rock');
 
+            $products = DB::table('products')
+            ->join('categories', 'categories.id', '=', 'products.category_id')
+            ->leftJoin('genre_product', 'products.id', '=', 'genre_product.product_id')
+            ->leftJoin('genres', 'genre_product.genre_id', '=', 'genres.id')
+            ->leftJoin('images', 'images.product_id', '=', 'products.id');
 
-        $products = DB::table('products')
-        ->join('categories', 'categories.id', '=', 'products.category_id')
-        ->leftJoin('genre_product', 'products.id', '=', 'genre_product.product_id')
-        ->leftJoin('genres', 'genre_product.genre_id', '=', 'genres.id')
-        ->leftJoin('images', 'images.product_id', '=', 'products.id');
-
-        if ($genreFilters) {
-            $products->where('category_slug', 'vinyls')
-            ->where(function($query) use ($genreFilters) {
-                    $query->whereIn('genre', $genreFilters);
-            });
-        }
-        if(!empty($conditionFilter)) {
-            if($conditionFilter == 'new'){
-                $products->where('media_condition', 1);
-            } else if($conditionFilter == 'used') {
-                $products->where('media_condition', 0);
+            if ($genreFilters) {
+                $products->where('category_slug', $category)
+                ->where(function($query) use ($genreFilters) {
+                        $query->whereIn('genre', $genreFilters);
+                });
             }
-        } else {
-            if($conditionFilter == 'any'){
+            if(!empty($conditionFilter)) {
+                if($conditionFilter == 'new'){
+                    $products->where('media_condition', 1);
+                } else if($conditionFilter == 'used') {
+                    $products->where('media_condition', 0);
+                }
+            } else {
+                if($conditionFilter == 'any'){
+                    $products->whereIn('media_condition', [0, 1]);
+                }
                 $products->whereIn('media_condition', [0, 1]);
             }
-            $products->whereIn('media_condition', [0, 1]);
+            
+            $collection = $products->select(['products.id', 'products.category_id', 'products.name', 'products.slug',  'products.media_condition', 
+            'products.quantity', 'products.price', 'products.sale_price', 'products.status', 'products.featured', 'products.created_at',
+            'images.path', 'categories.category', 'categories.category_slug', 'genres.genre'])
+            ->groupby('products.id')
+            ->get();
+
+            // dd($collection);
+
+            return response()->json($collection);
+        }
+        catch(\Exception $e) {
+            echo json_encode($e->getMessage());
         }
         
-        $collection = $products->select(['products.id', 'products.category_id', 'products.name', 'products.slug',  'products.media_condition', 
-        'products.quantity', 'products.price', 'products.sale_price', 'products.status', 'products.featured', 'products.created_at',
-        'images.path', 'categories.category', 'categories.category_slug', 'genres.genre'])
-        ->groupby('products.id')
-        ->get();
-
-        dd($collection);
-
-            // return response()->json($products);
-        // }
-        
-        // if ($input) {
-        //     return response()->json(['response' => $input]);
-        // }
-            
-        // return json_encode($request);
     }
 }
 
+
+    // if ($input) {
+    //     return response()->json(['response' => $input]);
+    // }
+        
+    // return json_encode($request);
 
 
     // $data = $request->data;

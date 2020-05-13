@@ -19281,6 +19281,12 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 $(document).ready(function () {
@@ -19352,14 +19358,14 @@ $(document).ready(function () {
     var urlWithParams = window.location.protocol + "//" + window.location.host + window.location.pathname + params;
     window.history.pushState({
       path: urlWithParams
-    }, '', urlWithParams); // const ajaxParams = [];
-    // console.log('ajax params',ajaxParams)
+    }, '', urlWithParams); // Get data to send with ajax
     // https://stackoverflow.com/questions/8648892/how-to-convert-url-parameters-to-a-javascript-object
 
-    var paramsObj = Object.fromEntries(new URLSearchParams(location.search)); // ajaxParams.push(paramsObj);
-    // console.log('test',JSON.stringify(ajaxParams));
+    var paramsObj = Object.fromEntries(new URLSearchParams(location.search));
+    paramsObj.pathName = window.location.pathname.replace(/\//g, "");
+    console.log(paramsObj); // const pathName = window.location.pathname;
+    // console.log(pathName.replace(/\//g, ""));
 
-    console.log(paramsObj);
     $.ajax({
       type: 'GET',
       url: 'ajaxFilter',
@@ -19367,7 +19373,26 @@ $(document).ready(function () {
       dataType: 'JSON' // contentType: 'application/json; charset=utf-8',
 
     }).done(function (response) {
-      console.log('response from controller', response); // console.log('ajax params in ajasx',ajaxParams);
+      console.log('response from controller', response); // response.forEach(product => {
+      //     $('.title').text(product.name);
+      //     $('.price').text(product.price);
+      // });
+
+      var _iterator = _createForOfIteratorHelper(response),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var product = _step.value;
+          $('.results').append('<div class="row">test</div>');
+          $('.results .title').append(product.name);
+          $('.results .price').append(product.price);
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
     }).fail(function (err) {
       console.log('error', err);
     }); // return params;
