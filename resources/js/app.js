@@ -11,17 +11,14 @@ $(document).ready(function() {
             };
         });
         const genreValue = genres.toString();
-        // console.log(genreValue);
 
         addUrlParam(document.location.search, 'genre', genreValue);
 
         // if unchecked, remove
         if(!$(this).is(':checked')){
-            // console.log('UN-checked');
-            // if there are more than one genre, remove a value from param
+            // if there is more than one genre, remove a value from param
             if(genres.length > 0)
                 removeUrlValue(document.location.search, genreValue, ',');
-                // $('.results').hide();
             else { // remove whole param
                 replaceUrlParam();
             };
@@ -40,17 +37,6 @@ $(document).ready(function() {
             };
         };
     });
-
-    $('.remove-filter').click(function() {
-        console.log('clicked remove');
-    });
-
-    // $('input[type="checkbox"]').click(function() {
-    //     var inputValue = $(this).attr("value");
-    //     $("." + inputValue).toggle();
-    //     console.log('input value toggle', inputValue);
-    // }); 
-
       
     // * add a URL parameter (or changing it if it already exists)
     // * @param {url} string  this is typically document.location.search
@@ -89,8 +75,11 @@ $(document).ready(function() {
     // show loader
     // show new data
     function removeProducts() {
-        $('#filterResult .row').empty();
+        $('#filter-result .row').empty();
     }
+
+    $('#loader').hide();
+    $('#no-match').hide();
 
     function ajaxFunc(paramsObj) {
         $.ajax({
@@ -99,17 +88,31 @@ $(document).ready(function() {
             data: paramsObj,
             dataType: 'JSON',
             beforeSend: function() {
-                $("#loaderDiv").show();
+                $("#loader").show();
             },
             // contentType: 'application/json; charset=utf-8',
         }).done(function (response) {
             console.log('response from controller', response);
             
             removeProducts();
-            $("#loaderDiv").hide();
+            $("#loader").hide();
+
+            // if checkbox is checked and the response is empty show 'no products match'
+            // if(response.length === 0) {
+            //     $('#no-match').show();
+            // } else {
+            //     $('#no-match').hide();
+            // }
+
+            if(response.length === 0){
+                $('#all-products').show();
+            } else {
+                $('#all-products').hide();
+            }
+            
 
             for (let product of response) {
-                $('#filterResult .row').append(
+                $('#filter-result .row').append(
                     // '<div class="row">' +
                         '<div class="col-md-4">' +
                             '<a href=" '+ product.category_slug + '/' + product.slug +' ">' +
@@ -124,11 +127,21 @@ $(document).ready(function() {
                                     '<figcaption class="info-wrap">' +
                                         '<div class="fix-height">' +
                                             '<a href="#" class="title"> ' + product.name + ' </a>' +
+                                            '<p class="artist"> ' + product.artist + '</p>' +
                                             '<div class="price-wrap mt-2">' +
                                                 '<span class="price"> ' + product.price + ' </span>' +
                                             '</div>' +
                                         '</div>' +
-                                        '<a href="#" class="btn btn-block btn-primary">Add to cart </a>' +
+
+                                        '<div class="form-row">' +
+                                            '<div class="col">' +
+                                                '<a href="#" class="btn  btn-primary w-100"><span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i></a>' +
+                                            '</div>' +
+                                            '<div class="col">' +
+                                                '<a href="#" class="btn  btn-light"> <i class="fas fa-heart"></i></a>' +
+                                            '</div>' +
+									    '</div>' +
+
                                     '</figcaption>' +
                                 '</figure>' +
                             '</a>' +

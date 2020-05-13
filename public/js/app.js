@@ -19300,18 +19300,15 @@ $(document).ready(function () {
 
       ;
     });
-    var genreValue = genres.toString(); // console.log(genreValue);
-
+    var genreValue = genres.toString();
     addUrlParam(document.location.search, 'genre', genreValue); // if unchecked, remove
 
     if (!$(this).is(':checked')) {
-      // console.log('UN-checked');
-      // if there are more than one genre, remove a value from param
-      if (genres.length > 0) removeUrlValue(document.location.search, genreValue, ','); // $('.results').hide();
-      else {
-          // remove whole param
-          replaceUrlParam();
-        }
+      // if there is more than one genre, remove a value from param
+      if (genres.length > 0) removeUrlValue(document.location.search, genreValue, ',');else {
+        // remove whole param
+        replaceUrlParam();
+      }
       ;
     }
 
@@ -19333,15 +19330,7 @@ $(document).ready(function () {
     }
 
     ;
-  });
-  $('.remove-filter').click(function () {
-    console.log('clicked remove');
-  }); // $('input[type="checkbox"]').click(function() {
-  //     var inputValue = $(this).attr("value");
-  //     $("." + inputValue).toggle();
-  //     console.log('input value toggle', inputValue);
-  // }); 
-  // * add a URL parameter (or changing it if it already exists)
+  }); // * add a URL parameter (or changing it if it already exists)
   // * @param {url} string  this is typically document.location.search
   // * @param {key}    string  the key to set
   // * @param {value}    string  value
@@ -19380,8 +19369,11 @@ $(document).ready(function () {
 
 
   function removeProducts() {
-    $('#filterResult .row').empty();
+    $('#filter-result .row').empty();
   }
+
+  $('#loader').hide();
+  $('#no-match').hide();
 
   function ajaxFunc(paramsObj) {
     $.ajax({
@@ -19390,13 +19382,24 @@ $(document).ready(function () {
       data: paramsObj,
       dataType: 'JSON',
       beforeSend: function beforeSend() {
-        $("#loaderDiv").show();
+        $("#loader").show();
       } // contentType: 'application/json; charset=utf-8',
 
     }).done(function (response) {
       console.log('response from controller', response);
       removeProducts();
-      $("#loaderDiv").hide();
+      $("#loader").hide(); // if checkbox is checked and the response is empty show 'no products match'
+      // if(response.length === 0) {
+      //     $('#no-match').show();
+      // } else {
+      //     $('#no-match').hide();
+      // }
+
+      if (response.length === 0) {
+        $('#all-products').show();
+      } else {
+        $('#all-products').hide();
+      }
 
       var _iterator = _createForOfIteratorHelper(response),
           _step;
@@ -19404,8 +19407,8 @@ $(document).ready(function () {
       try {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
           var product = _step.value;
-          $('#filterResult .row').append( // '<div class="row">' +
-          '<div class="col-md-4">' + '<a href=" ' + product.category_slug + '/' + product.slug + ' ">' + '<figure class="card card-product-grid">' + '<div class="img-wrap">' + (product.path ? '<img src="/storage/' + product.path + '")>' : '<img src="/storage/image-coming-soon.jpg">') + '</div>' + '<figcaption class="info-wrap">' + '<div class="fix-height">' + '<a href="#" class="title"> ' + product.name + ' </a>' + '<div class="price-wrap mt-2">' + '<span class="price"> ' + product.price + ' </span>' + '</div>' + '</div>' + '<a href="#" class="btn btn-block btn-primary">Add to cart </a>' + '</figcaption>' + '</figure>' + '</a>' + '</div>');
+          $('#filter-result .row').append( // '<div class="row">' +
+          '<div class="col-md-4">' + '<a href=" ' + product.category_slug + '/' + product.slug + ' ">' + '<figure class="card card-product-grid">' + '<div class="img-wrap">' + (product.path ? '<img src="/storage/' + product.path + '")>' : '<img src="/storage/image-coming-soon.jpg">') + '</div>' + '<figcaption class="info-wrap">' + '<div class="fix-height">' + '<a href="#" class="title"> ' + product.name + ' </a>' + '<p class="artist"> ' + product.artist + '</p>' + '<div class="price-wrap mt-2">' + '<span class="price"> ' + product.price + ' </span>' + '</div>' + '</div>' + '<div class="form-row">' + '<div class="col">' + '<a href="#" class="btn  btn-primary w-100"><span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i></a>' + '</div>' + '<div class="col">' + '<a href="#" class="btn  btn-light"> <i class="fas fa-heart"></i></a>' + '</div>' + '</div>' + '</figcaption>' + '</figure>' + '</a>' + '</div>');
         }
       } catch (err) {
         _iterator.e(err);

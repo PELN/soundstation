@@ -13,8 +13,8 @@ use DB;
 
 class CategoryController extends Controller
 {
-    public function show($slug) {
-
+    public function show($slug) 
+    {
         $category = Category::where('category_slug', $slug)->where('menu', 1)->first();
         $genres = Genre::all();
         // dd($genres->products);
@@ -26,31 +26,21 @@ class CategoryController extends Controller
         //     // echo $row;
         // }
 
-        // $input = Request::all();
-        // $genreInput = $input['genre'];
-        // $conditionInput = $input['condition'];
-
         $products = 
             DB::table('products')
             ->join('categories', 'categories.id', '=', 'products.category_id')
             ->leftJoin('genre_product', 'products.id', '=', 'genre_product.product_id')
             ->leftJoin('genres', 'genre_product.genre_id', '=', 'genres.id')
             ->leftJoin('images', 'images.product_id', '=', 'products.id')
+            ->leftJoin('artist_product', 'products.id', '=', 'artist_product.product_id')
+            ->leftJoin('artists', 'artist_product.artist_id', '=', 'artists.id')
             ->where('category_id', $category->id)
-                // ->when($genreInput, function ($query) use ($genreInput) {
-                //     return $query->where('genres.genre', $genreInput);
-                // })
-                // ->when($conditionInput, function ($query) use ($conditionInput) {
-                //     return $query->where('media_condition', $conditionInput);
-                // })
                 ->select(['products.id', 'products.category_id', 'products.name', 'products.slug',  'products.media_condition', 
                 'products.quantity', 'products.price', 'products.sale_price', 'products.status', 'products.featured', 'products.created_at',
-                'images.path', 'categories.category', 'categories.category_slug', 'genres.genre'])
+                'images.path', 'categories.category', 'categories.category_slug', 'genres.genre', 'artists.artist'])
                 ->groupby('products.id')
                 ->get();
                 
-                // dd($products->count('genre'));
-        
         return view('pages.product-listing', [
             'category' => $category,
             'genres' => $genres,
@@ -59,7 +49,7 @@ class CategoryController extends Controller
     }
 
     public function ajaxFilter(Request $request)
-    {    
+    {
         try {
             $input = Request::all();
             $category = $input['pathName'];
@@ -67,13 +57,13 @@ class CategoryController extends Controller
             $conditionFilter = $input['condition'];
             $genreFilters = explode(',', $genreFilter);
 
-            // return response()->json($genreFilters[0] == 'rock');
-
             $products = DB::table('products')
             ->join('categories', 'categories.id', '=', 'products.category_id')
             ->leftJoin('genre_product', 'products.id', '=', 'genre_product.product_id')
             ->leftJoin('genres', 'genre_product.genre_id', '=', 'genres.id')
-            ->leftJoin('images', 'images.product_id', '=', 'products.id');
+            ->leftJoin('images', 'images.product_id', '=', 'products.id')
+            ->leftJoin('artist_product', 'products.id', '=', 'artist_product.product_id')
+            ->leftJoin('artists', 'artist_product.artist_id', '=', 'artists.id');
 
             if ($genreFilters) {
                 $products->where('category_slug', $category)
@@ -81,7 +71,8 @@ class CategoryController extends Controller
                         $query->whereIn('genre', $genreFilters);
                 });
             }
-            if(!empty($conditionFilter)) {
+
+            if($conditionFilter) {
                 if($conditionFilter == 'new'){
                     $products->where('media_condition', 1);
                 } else if($conditionFilter == 'used') {
@@ -96,20 +87,42 @@ class CategoryController extends Controller
             
             $collection = $products->select(['products.id', 'products.category_id', 'products.name', 'products.slug',  'products.media_condition', 
             'products.quantity', 'products.price', 'products.sale_price', 'products.status', 'products.featured', 'products.created_at',
-            'images.path', 'categories.category', 'categories.category_slug', 'genres.genre'])
+            'images.path', 'categories.category', 'categories.category_slug', 'genres.genre', 'artists.artist'])
             ->groupby('products.id')
             ->get();
 
             // dd($collection);
-
+            
             return response()->json($collection);
         }
         catch(\Exception $e) {
             echo json_encode($e->getMessage());
         }
-        
     }
 }
+
+
+
+
+
+
+    
+    // ***************************************************************
+    // function shoow
+
+        // $input = Request::all();
+        // $genreInput = $input['genre'];
+        // $conditionInput = $input['condition'];
+                // ->when($genreInput, function ($query) use ($genreInput) {
+                //     return $query->where('genres.genre', $genreInput);
+                // })
+                // ->when($conditionInput, function ($query) use ($conditionInput) {
+                //     return $query->where('media_condition', $conditionInput);
+                // })
+    // ***************************************************************
+
+
+    // return response()->json($genreFilters[0] == 'rock');
 
 
     // if ($input) {
