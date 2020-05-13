@@ -95,7 +95,7 @@
 							<i class="icon-control fa fa-chevron-down"></i>
 							<h6 class="title">Genre </h6>
 						</a>
-						{{-- <a href={{ request()->merge(['genre' => $genre->genre]) }}>Remove filters</a> --}}
+						<a href="#" class="remove-filter">Remove filters</a>
 					</header>
 					<div class="filter-content collapse show" id="collapse_2" style="">
 						<div class="card-body">
@@ -144,40 +144,14 @@
 	{{-- <a href={{ request()->fullUrlWithQuery(['genre' => 'country']) }}>country</a> --}}
 	{{-- <a href={{ request()->fullUrlWithQuery(['condition' => 'used']) }}>used</a> --}}
 
-	@if(true)
-	
-	<div class="results">
-		<h1>filter results</h1>
-			<div class="row">
-				<div class="col-md-4">
-				<a href="{{ URL::to("{$category->category_slug}/{$product->slug}") }}">
-					<figure class="card card-product-grid">
-						<div class="img-wrap">
-							<!-- <span class="badge badge-danger"> NEW </span> -->
-							{{-- @if($product->path)
-								<img src="{{ asset('storage/'.$product->path) }}">
-							@else
-								<img src="{{ asset('storage/image-coming-soon.jpg') }}">
-							@endforelse --}}
-							{{-- <a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a> --}}
-						</div> <!-- img-wrap.// -->
-						<figcaption class="info-wrap">
-							<div class="fix-height">
-								<a href="#" class="title"></a>
-								<div class="price-wrap mt-2">
-									<span class="price"></span>
-									{{-- <del class="price-old">$1980</del> --}}
-								</div> <!-- price-wrap.// -->
-							</div>
-							<a href="#" class="btn btn-block btn-primary">Add to cart </a>
-						</figcaption>
-					</figure>
-					</a>
-				</div> <!-- col.// -->
-		</div> <!-- row end.// -->
+
+	<div id="filterResult">
+		<div id="loaderDiv">
+			<h2>LOADING....</h2>
+		</div>
+		<div class="row"></div>
 	</div>
 
-	@else
 
 	<div class="row">
 			{{-- find products within category --}}
@@ -210,7 +184,6 @@
 			@endforeach
 	</div> <!-- row end.// -->
 
-	@endif
 
 			<nav class="mt-4" aria-label="Page navigation sample">
 				<ul class="pagination">

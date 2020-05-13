@@ -12,6 +12,7 @@ $(document).ready(function() {
         });
         const genreValue = genres.toString();
         // console.log(genreValue);
+
         addUrlParam(document.location.search, 'genre', genreValue);
 
         // if unchecked, remove
@@ -20,12 +21,12 @@ $(document).ready(function() {
             // if there are more than one genre, remove a value from param
             if(genres.length > 0)
                 removeUrlValue(document.location.search, genreValue, ',');
+                // $('.results').hide();
             else { // remove whole param
                 replaceUrlParam();
             };
         };
     });
-
 
     $('.condition').click(function(){
         if($(this).is(':checked')){
@@ -39,6 +40,16 @@ $(document).ready(function() {
             };
         };
     });
+
+    $('.remove-filter').click(function() {
+        console.log('clicked remove');
+    });
+
+    // $('input[type="checkbox"]').click(function() {
+    //     var inputValue = $(this).attr("value");
+    //     $("." + inputValue).toggle();
+    //     console.log('input value toggle', inputValue);
+    // }); 
 
       
     // * add a URL parameter (or changing it if it already exists)
@@ -70,40 +81,66 @@ $(document).ready(function() {
         const paramsObj = Object.fromEntries(new URLSearchParams(location.search));
         paramsObj.pathName = window.location.pathname.replace(/\//g, "");
         console.log(paramsObj);
-        // const pathName = window.location.pathname;
-        // console.log(pathName.replace(/\//g, ""));
 
+        ajaxFunc(paramsObj);
+    };
+
+    // remove data
+    // show loader
+    // show new data
+    function removeProducts() {
+        $('#filterResult .row').empty();
+    }
+
+    function ajaxFunc(paramsObj) {
         $.ajax({
             type: 'GET',
             url: 'ajaxFilter',
             data: paramsObj,
             dataType: 'JSON',
+            beforeSend: function() {
+                $("#loaderDiv").show();
+            },
             // contentType: 'application/json; charset=utf-8',
         }).done(function (response) {
             console.log('response from controller', response);
-
-            // response.forEach(product => {
-            //     $('.title').text(product.name);
-            //     $('.price').text(product.price);
-            // });
+            
+            removeProducts();
+            $("#loaderDiv").hide();
 
             for (let product of response) {
-                $('.results').append(
-                    '<div class="row">test</div>'
+                $('#filterResult .row').append(
+                    // '<div class="row">' +
+                        '<div class="col-md-4">' +
+                            '<a href=" '+ product.category_slug + '/' + product.slug +' ">' +
+                                '<figure class="card card-product-grid">' +
+                                    '<div class="img-wrap">' +
+                                    ( product.path ? 
+                                            '<img src="/storage/'+ product.path +'")>'
+                                        : 
+                                            '<img src="/storage/image-coming-soon.jpg">' 
+                                        ) +
+                                    '</div>' +
+                                    '<figcaption class="info-wrap">' +
+                                        '<div class="fix-height">' +
+                                            '<a href="#" class="title"> ' + product.name + ' </a>' +
+                                            '<div class="price-wrap mt-2">' +
+                                                '<span class="price"> ' + product.price + ' </span>' +
+                                            '</div>' +
+                                        '</div>' +
+                                        '<a href="#" class="btn btn-block btn-primary">Add to cart </a>' +
+                                    '</figcaption>' +
+                                '</figure>' +
+                            '</a>' +
+                        '</div>'
                 );
-
-                $('.results .title').append(product.name);
-                $('.results .price').append(product.price);
-               
             }
-
+            
         }).fail(function (err) {
             console.log('error', err);
         });
+    }
 
-
-        // return params;
-    };
 
     // remove a value from an array in URL by comma
     // https://stackoverflow.com/questions/1306164/remove-value-from-comma-separated-values-string
@@ -116,9 +153,10 @@ $(document).ready(function() {
             return values.join(separator);
           };
         };
-        console.log('remove value',url);
+        console.log('remove value', url);
         // return url;
       };
+    
     
     // remove a param from URL - if unchecked
     // https://stackoverflow.com/questions/7171099/how-to-replace-url-parameter-with-javascript-jquery/7171293#7171293
