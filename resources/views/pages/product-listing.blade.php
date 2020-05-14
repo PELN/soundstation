@@ -7,7 +7,6 @@
 	<h1>SORRY, NO PRODUCTS FOUND</h1>
 @else
 
-
 <!-- ========================= SECTION PAGETOP ========================= -->
 <section class="section-pagetop bg">
 	<div class="container">
@@ -124,6 +123,7 @@
 					</div>
 				</header><!-- sect-heading -->
 
+
 				<div id="filter-result">
 					<div id="loader">
 						<h2>LOADING....</h2>
@@ -164,7 +164,7 @@
 											<a href="#" class="btn  btn-primary w-100"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </a>
 										</div> <!-- col.// -->
 										<div class="col">
-											<a href="#" class="btn  btn-light"> <i class="fas fa-heart"></i>  </a>
+											<a href="#" class="btn  btn-light"> <i class="fas fa-heart"></i></a>
 										</div> <!-- col.// -->
 									</div> <!-- form row.// -->
 								</figcaption>
@@ -175,11 +175,8 @@
 					</div> <!-- row end.// -->
 				</div>
 
-				
-				<div class="row">
-					<div class="col-12 text-center">
-					{{ $products->links() }}
-					</div>
+				<div id="pagination">
+					{{ $products->appends($input)->links() }}
 				</div>
 
 			</main> <!-- col.// -->

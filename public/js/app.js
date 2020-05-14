@@ -19307,7 +19307,7 @@ $(document).ready(function () {
       // if there is more than one genre, remove a value from param
       if (genres.length > 0) removeUrlValue(document.location.search, genreValue, ',');else {
         // remove whole param
-        replaceUrlParam();
+        removeLastParamKey();
       }
       ;
     }
@@ -19331,7 +19331,12 @@ $(document).ready(function () {
 
     ;
   });
-  console.log($('#sort-by').val()); // * add a URL parameter (or changing it if it already exists)
+  $('#sort-by').on('change', function (e) {
+    var optionSelected = $("option:selected", this);
+    var valueSelected = this.value;
+    console.log(valueSelected);
+    addUrlParam(document.location.search, 'sort', valueSelected);
+  }); // * add a URL parameter (or changing it if it already exists)
   // * @param {url} string  this is typically document.location.search
   // * @param {key}    string  the key to set
   // * @param {value}    string  value
@@ -19361,8 +19366,8 @@ $(document).ready(function () {
     // https://stackoverflow.com/questions/8648892/how-to-convert-url-parameters-to-a-javascript-object
 
     var paramsObj = Object.fromEntries(new URLSearchParams(location.search));
-    paramsObj.pathName = window.location.pathname.replace(/\//g, "");
-    console.log(paramsObj);
+    paramsObj.pathName = window.location.pathname.replace(/\//g, ""); // console.log('params', paramsObj);
+
     ajaxFunc(paramsObj);
   }; // remove data
   // show loader
@@ -19388,21 +19393,27 @@ $(document).ready(function () {
 
     }).done(function (response) {
       console.log('response from controller', response);
+      var paginator = response.paginator.replace(/ajaxFilter/g, response.slug);
+      $('#pagination').children().remove();
+      $('#pagination').append(paginator);
       removeProducts();
-      $("#loader").hide(); // if checkbox is checked and the response is empty show 'no products match'
-      // if(response.length === 0) {
-      //     $('#no-match').show();
-      // } else {
-      //     $('#no-match').hide();
-      // }
+      $("#loader").hide(); // var href = $('a.page-link').attr('href');
+      // $.each(paramsObj, function( key, value ) {
+      //     var x = setQueryVariable(paramsObj, href)
+      //     $('a.page-link').attr('href', x);
+      // });
+      // TODOS
+      // 1. set checkbox to checked, if it is in the url
+      // 2. remove parameters correctly
+      // 3. remove pathname from url
 
-      if (response.length === 0) {
+      if (response.data.length === 0) {
         $('#all-products').show();
       } else {
         $('#all-products').hide();
       }
 
-      var _iterator = _createForOfIteratorHelper(response),
+      var _iterator = _createForOfIteratorHelper(response.data.data),
           _step;
 
       try {
@@ -19418,7 +19429,21 @@ $(document).ready(function () {
     }).fail(function (err) {
       console.log('error', err);
     });
-  } // remove a value from an array in URL by comma
+  } // function setQueryVariable(newQueryString, url) {
+  //     var splitUrl = url.split('?');
+  //     var splitQueries = splitUrl[1].split("&");
+  //     // console.log(splitQueries);
+  //     var queryString = $.param(newQueryString);
+  //     if (queryString.includes("page"))
+  //     {
+  //         return splitUrl[0] + "?" + queryString;
+  //     } else 
+  //     {
+  //         return splitUrl[0] + "?" + splitQueries[0] + "&" +  queryString;
+  //     }
+  //     // console.log('Query string', splitUrl[0] + "?" + splitQueries[0] + "&" + queryString);
+  // }
+  // remove a value from an array in URL by comma
   // https://stackoverflow.com/questions/1306164/remove-value-from-comma-separated-values-string
 
 
@@ -19441,7 +19466,7 @@ $(document).ready(function () {
   // https://stackoverflow.com/questions/7171099/how-to-replace-url-parameter-with-javascript-jquery/7171293#7171293
 
 
-  function replaceUrlParam() {
+  function removeLastParamKey() {
     // if url has condition param, don't remove it
     var urlParams = new URLSearchParams(window.location.search);
     var conditionParam = urlParams.get('condition');

@@ -7,43 +7,28 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Genre;
 use App\Models\Image;
-use Illuminate\Support\Facades\Input;
 use DB;
 
 
 class CategoryController extends Controller
 {
-    public function show($slug) 
+    public function show($slug, Request $request)
     {
         $category = Category::where('category_slug', $slug)->where('menu', 1)->first();
         $genres = Genre::all();
         // dd($genres->products);
 
-        // $rows= Genre::withCount('products')->get();
-        
-        // foreach ($rows as $row) {
-        //     echo $row->products_count;
-        //     // echo $row;
+        //keep track of current page
+        // if(Request::has('page')){
+        //     $page = Request::get('page');
         // }
 
-        $products = 
-            DB::table('products')
-            ->join('categories', 'categories.id', '=', 'products.category_id')
-            ->leftJoin('genre_product', 'products.id', '=', 'genre_product.product_id')
-            ->leftJoin('genres', 'genre_product.genre_id', '=', 'genres.id')
-            ->leftJoin('images', 'images.product_id', '=', 'products.id')
-            ->leftJoin('artist_product', 'products.id', '=', 'artist_product.product_id')
-            ->leftJoin('artists', 'artist_product.artist_id', '=', 'artists.id')
-            ->where('category_id', $category->id)
-                ->select(['products.id', 'products.category_id', 'products.name', 'products.slug',  'products.media_condition', 
-                'products.quantity', 'products.price', 'products.sale_price', 'products.status', 'products.featured', 'products.created_at',
-                'images.path', 'categories.category', 'categories.category_slug', 'genres.genre', 'artists.artist'])
-                ->orderBy('products.created_at', 'ASC')
-                ->groupby('products.id')
-                ->paginate(6);
-                // ->get();
-                
+        $input = Request::all();
+
+        $products = $this->getData($input, $slug);
+
         return view('pages.product-listing', [
+            'input' => $input,
             'category' => $category,
             'genres' => $genres,
             'products' => $products
@@ -52,14 +37,40 @@ class CategoryController extends Controller
 
     public function ajaxFilter(Request $request)
     {
+        
         try {
-            $input = Request::all();
+            $input = Request::all();            
+            // dd($collection);
             $category = $input['pathName'];
-            $genreFilter = $input['genre'];
-            $conditionFilter = $input['condition'];
-            $genreFilters = explode(',', $genreFilter);
-            
-            $products = DB::table('products')
+
+            $collection = $this->getData($input, $category);
+            $paginator = view('components.pagination', [
+                'input' => $input,
+                'product' => $collection])->render();
+                
+            if (Request::ajax()) { 
+                return response()->json([
+                    "data" => $collection,
+                    "paginator" => $paginator,
+                    "slug" => $category
+                ]);
+            }
+        }
+        catch(\Exception $e) {
+            echo json_encode($e->getMessage());
+        }
+    }
+    
+    private function getData($queryString, $category) 
+    {
+        $genreFilter = $queryString['genre'];
+        $conditionFilter = $queryString['condition'];
+        $genreFilters = explode(',', $genreFilter);
+        $page = $queryString['page'];
+        $sortNewest = $queryString['newest'];
+        $sortOldest = $queryString['oldest'];
+
+        $products = DB::table('products')
             ->join('categories', 'categories.id', '=', 'products.category_id')
             ->leftJoin('genre_product', 'products.id', '=', 'genre_product.product_id')
             ->leftJoin('genres', 'genre_product.genre_id', '=', 'genres.id')
@@ -68,38 +79,33 @@ class CategoryController extends Controller
             ->leftJoin('artists', 'artist_product.artist_id', '=', 'artists.id')
             ->where('category_slug', $category);
 
-            if ($genreFilters != [""]) {
-                $products->where(function($query) use ($genreFilters) {
-                        $query->whereIn('genre', $genreFilters);
-                });
+        if ($genreFilters != [""]) {
+            $products->where(function($query) use ($genreFilters) {
+                    $query->whereIn('genre', $genreFilters);
+            });
+        }
+        if ($conditionFilter) {
+            if ($conditionFilter == 'new'){
+                $products->where('media_condition', 1);
+            } else if ($conditionFilter == 'used') {
+                $products->where('media_condition', 0);
             }
-            if($conditionFilter) {
-                if($conditionFilter == 'new'){
-                    $products->where('media_condition', 1);
-                } else if($conditionFilter == 'used') {
-                    $products->where('media_condition', 0);
-                }
-            } else {
-                if($conditionFilter == 'any'){
-                    $products->whereIn('media_condition', [0, 1]);
-                }
+        } else {
+            if ($conditionFilter == 'any'){
                 $products->whereIn('media_condition', [0, 1]);
             }
-            
-            $collection = $products->select(['products.id', 'products.category_id', 'products.name', 'products.slug',  'products.media_condition', 
-            'products.quantity', 'products.price', 'products.sale_price', 'products.status', 'products.featured', 'products.created_at',
-            'images.path', 'categories.category', 'categories.category_slug', 'genres.genre', 'artists.artist'])
-            ->orderBy('products.created_at', 'ASC')
-            ->groupby('products.id')
-            ->get();
+            $products->whereIn('media_condition', [0, 1]);
+        }
+        
+        $collection = $products->select(['products.id', 'products.category_id', 'products.name', 'products.slug',  'products.media_condition', 
+        'products.quantity', 'products.price', 'products.sale_price', 'products.status', 'products.featured', 'products.created_at',
+        'images.path', 'categories.category', 'categories.category_slug', 'genres.genre', 'artists.artist'])
+        ->orderBy('products.created_at', 'ASC')
+        ->groupby('products.id')
+        ->paginate(3);
+        // ->get();
 
-            // dd($collection);
-            
-            return response()->json($collection);
-        }
-        catch(\Exception $e) {
-            echo json_encode($e->getMessage());
-        }
+        return $collection;
     }
 }
 

@@ -20,7 +20,7 @@ $(document).ready(function() {
             if(genres.length > 0)
                 removeUrlValue(document.location.search, genreValue, ',');
             else { // remove whole param
-                replaceUrlParam();
+                removeLastParamKey();
             };
         };
     });
@@ -38,9 +38,13 @@ $(document).ready(function() {
         };
     });
 
-    
-   console.log($('#sort-by').val());
-    
+
+   $('#sort-by').on('change', function(e) {
+        const optionSelected = $("option:selected", this);
+        const valueSelected = this.value;
+        console.log(valueSelected);
+        addUrlParam(document.location.search, 'sort', valueSelected);
+   });
       
     // * add a URL parameter (or changing it if it already exists)
     // * @param {url} string  this is typically document.location.search
@@ -70,10 +74,11 @@ $(document).ready(function() {
         // https://stackoverflow.com/questions/8648892/how-to-convert-url-parameters-to-a-javascript-object
         const paramsObj = Object.fromEntries(new URLSearchParams(location.search));
         paramsObj.pathName = window.location.pathname.replace(/\//g, "");
-        console.log(paramsObj);
+        // console.log('params', paramsObj);
 
         ajaxFunc(paramsObj);
     };
+
 
     // remove data
     // show loader
@@ -97,24 +102,33 @@ $(document).ready(function() {
             // contentType: 'application/json; charset=utf-8',
         }).done(function (response) {
             console.log('response from controller', response);
-            
+            var paginator = response.paginator.replace(/ajaxFilter/g, response.slug);
+            $('#pagination').children().remove();
+            $('#pagination').append(paginator);
+
             removeProducts();
             $("#loader").hide();
+            
+            // var href = $('a.page-link').attr('href');
+                    
+            // $.each(paramsObj, function( key, value ) {
+            //     var x = setQueryVariable(paramsObj, href)
+            //     $('a.page-link').attr('href', x);
+            // });
 
-            // if checkbox is checked and the response is empty show 'no products match'
-            // if(response.length === 0) {
-            //     $('#no-match').show();
-            // } else {
-            //     $('#no-match').hide();
-            // }
+            // TODOS
+            // 1. set checkbox to checked, if it is in the url
+            // 2. remove parameters correctly
+            // 3. remove pathname from url
+    
 
-            if(response.length === 0){
+            if(response.data.length === 0){
                 $('#all-products').show();
             } else {
                 $('#all-products').hide();
             }
-            
-            for (let product of response) {
+
+            for (let product of response.data.data) {
                 $('#filter-result .row').append(
                     '<div class="col-md-4">' +
                         '<a href=" '+ product.category_slug + '/' + product.slug +' ">' +
@@ -147,13 +161,31 @@ $(document).ready(function() {
                         '</a>' +
                     '</div>'
                 );
-            }
+            }            
             
         }).fail(function (err) {
             console.log('error', err);
         });
     }
 
+
+    // function setQueryVariable(newQueryString, url) {
+    //     var splitUrl = url.split('?');
+    //     var splitQueries = splitUrl[1].split("&");
+    //     // console.log(splitQueries);
+
+    //     var queryString = $.param(newQueryString);
+    //     if (queryString.includes("page"))
+    //     {
+    //         return splitUrl[0] + "?" + queryString;
+
+    //     } else 
+    //     {
+    //         return splitUrl[0] + "?" + splitQueries[0] + "&" +  queryString;
+
+    //     }
+    //     // console.log('Query string', splitUrl[0] + "?" + splitQueries[0] + "&" + queryString);
+    // }
 
     // remove a value from an array in URL by comma
     // https://stackoverflow.com/questions/1306164/remove-value-from-comma-separated-values-string
@@ -173,7 +205,7 @@ $(document).ready(function() {
     
     // remove a param from URL - if unchecked
     // https://stackoverflow.com/questions/7171099/how-to-replace-url-parameter-with-javascript-jquery/7171293#7171293
-    function replaceUrlParam()
+    function removeLastParamKey()
     {
         // if url has condition param, don't remove it
         const urlParams = new URLSearchParams(window.location.search);
