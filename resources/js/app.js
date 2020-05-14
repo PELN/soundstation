@@ -40,7 +40,7 @@ $(document).ready(function() {
 
 
    $('#sort-by').on('change', function(e) {
-        const optionSelected = $("option:selected", this);
+        // const optionSelected = $("option:selected", this);
         const valueSelected = this.value;
         console.log(valueSelected);
         addUrlParam(document.location.search, 'sort', valueSelected);
@@ -79,14 +79,12 @@ $(document).ready(function() {
         ajaxFunc(paramsObj);
     };
 
-
     // remove data
     // show loader
     // show new data
     function removeProducts() {
         $('#filter-result .row').empty();
     }
-
     $('#loader').hide();
     $('#no-match').hide();
 
@@ -106,21 +104,15 @@ $(document).ready(function() {
             $('#pagination').children().remove();
             $('#pagination').append(paginator);
 
+            // remove data and load new objects
             removeProducts();
             $("#loader").hide();
-            
-            // var href = $('a.page-link').attr('href');
-                    
-            // $.each(paramsObj, function( key, value ) {
-            //     var x = setQueryVariable(paramsObj, href)
-            //     $('a.page-link').attr('href', x);
-            // });
+        
 
             // TODOS
-            // 1. set checkbox to checked, if it is in the url
-            // 2. remove parameters correctly
-            // 3. remove pathname from url
-    
+            // 1. set checkbox to checked, if it is in the url (local storage)
+            // 2. remove pathname from url
+            // 3. sorting
 
             if(response.data.length === 0){
                 $('#all-products').show();
@@ -168,24 +160,6 @@ $(document).ready(function() {
         });
     }
 
-
-    // function setQueryVariable(newQueryString, url) {
-    //     var splitUrl = url.split('?');
-    //     var splitQueries = splitUrl[1].split("&");
-    //     // console.log(splitQueries);
-
-    //     var queryString = $.param(newQueryString);
-    //     if (queryString.includes("page"))
-    //     {
-    //         return splitUrl[0] + "?" + queryString;
-
-    //     } else 
-    //     {
-    //         return splitUrl[0] + "?" + splitQueries[0] + "&" +  queryString;
-
-    //     }
-    //     // console.log('Query string', splitUrl[0] + "?" + splitQueries[0] + "&" + queryString);
-    // }
 
     // remove a value from an array in URL by comma
     // https://stackoverflow.com/questions/1306164/remove-value-from-comma-separated-values-string

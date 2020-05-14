@@ -18,11 +18,6 @@ class CategoryController extends Controller
         $genres = Genre::all();
         // dd($genres->products);
 
-        //keep track of current page
-        // if(Request::has('page')){
-        //     $page = Request::get('page');
-        // }
-
         $input = Request::all();
 
         $products = $this->getData($input, $slug);
@@ -97,11 +92,17 @@ class CategoryController extends Controller
             $products->whereIn('media_condition', [0, 1]);
         }
         
-        $collection = $products->select(['products.id', 'products.category_id', 'products.name', 'products.slug',  'products.media_condition', 
+        $products->select(['products.id', 'products.category_id', 'products.name', 'products.slug',  'products.media_condition', 
         'products.quantity', 'products.price', 'products.sale_price', 'products.status', 'products.featured', 'products.created_at',
-        'images.path', 'categories.category', 'categories.category_slug', 'genres.genre', 'artists.artist'])
-        ->orderBy('products.created_at', 'ASC')
-        ->groupby('products.id')
+        'images.path', 'categories.category', 'categories.category_slug', 'genres.genre', 'artists.artist']);
+
+        if ($sortNewest){
+            $products->orderBy('products.created_at', 'ASC');
+        } else if ($sortOldest){
+            $products->orderBy('products.created_at', 'DESC');
+        }
+        
+        $collection = $products->groupby('products.id')
         ->paginate(3);
         // ->get();
 
