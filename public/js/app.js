@@ -19318,29 +19318,6 @@ $(document).ready(function () {
 
     ;
   });
-  var storedGenres = JSON.parse(localStorage.getItem("genres"));
-  console.log('local storage: ', storedGenres); // make a new array with the genres in local storrage
-
-  if (storedGenres !== null) {
-    // tick checkboxes for each value
-    storedGenres.forEach(function (value) {
-      $('input[value="' + value + '"]').prop('checked', true);
-    });
-  } // function removeId(array, element) {
-  //     const index = array.indexOf(element);
-  //     array.splice(index, 1);
-  // }
-  // if url is empty from parameters - uncheck all checkboxes
-
-
-  var urlParams = new URLSearchParams(window.location.search); // const conditionParam = urlParams.get('condition');
-
-  if (urlParams == "") {
-    console.log('it is empty', urlParams);
-    $('.genre').prop('checked', false);
-    localStorage.removeItem('genres');
-  }
-
   $('.condition').click(function () {
     if ($(this).is(':checked')) {
       var conditionValue = $(this).val(); // if url already has condition param, dont add it again
@@ -19351,6 +19328,7 @@ $(document).ready(function () {
       var conditionParam = _urlParams.get('condition');
 
       if (conditionParam != conditionValue) {
+        localStorage.setItem("condition", conditionValue);
         addUrlParam(document.location.search, 'condition', conditionValue);
       }
 
@@ -19361,15 +19339,48 @@ $(document).ready(function () {
   });
   $('#sort-by').on('change', function (e) {
     var selectedValue = $("#sort-by option:selected").val();
+    localStorage.setItem("sort", selectedValue);
     addUrlParam(document.location.search, 'sort', selectedValue);
-  }); // TODOS
-  // 1. set checkbox to checked, if it is in the url (local storage)
-  // 2. remove pathname from url
-  // * add a URL parameter (or changing it if it already exists)
+  }); // ***** LOCAL STORAGE *****
+  // check the values that are stored in local storage 
+
+  var storedGenres = JSON.parse(localStorage.getItem("genres"));
+
+  if (storedGenres !== null) {
+    // tick checkboxes for each value
+    storedGenres.forEach(function (value) {
+      $('input[value="' + value + '"]').prop('checked', true);
+    });
+  } // check the value that is stored in local storage 
+
+
+  var storedCondition = localStorage.getItem("condition");
+
+  if (storedCondition !== null) {
+    $('input[value="' + storedCondition + '"]').prop('checked', true);
+  } // select the value that is stored in local storage 
+
+
+  var storedSort = localStorage.getItem("sort");
+
+  if (storedSort !== null) {
+    $('option[value="' + storedSort + '"]').prop('selected', true);
+  } // if url doesn't have parameters - uncheck all/set default values
+
+
+  var urlParams = new URLSearchParams(window.location.search);
+
+  if (urlParams == "") {
+    localStorage.removeItem('genres');
+    localStorage.removeItem('condition');
+    $('.genre').prop('checked', false);
+    $('input[value="any"]').prop('checked', true);
+  } // * add a URL parameter (or changing it if it already exists)
   // * @param {url} string  this is typically document.location.search
   // * @param {key}    string  the key to set
   // * @param {value}    string  value
   // https://stackoverflow.com/questions/486896/adding-a-parameter-to-the-url-with-javascript?page=1&tab=votes#tab-top
+
 
   var addUrlParam = function addUrlParam(url, key, value) {
     var newParam = key + '=' + value,
@@ -19400,9 +19411,7 @@ $(document).ready(function () {
     var param = searchParams.get('sort');
     paramsObj.sort = param;
     ajaxFunc(paramsObj);
-  }; // remove data
-  // show loader
-  // show new data
+  }; // remove data -> show loader -> show new data
 
 
   function removeProducts() {

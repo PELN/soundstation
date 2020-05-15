@@ -12,7 +12,6 @@ $(document).ready(function() {
         const genreValue = genres.toString();
 
         localStorage.setItem("genres", JSON.stringify(genres));
-
         addUrlParam(document.location.search, 'genre', genreValue);
 
         // if unchecked, remove
@@ -26,32 +25,6 @@ $(document).ready(function() {
         };
     });
 
-    const storedGenres = JSON.parse(localStorage.getItem("genres"));
-    console.log('local storage: ',storedGenres);
-    // make a new array with the genres in local storrage
-
-    if(storedGenres !== null ){
-        // tick checkboxes for each value
-        storedGenres.forEach(function(value) {
-            $('input[value="'+ value +'"]').prop('checked', true);
-        });
-    }
-    
-    // function removeId(array, element) {
-    //     const index = array.indexOf(element);
-    //     array.splice(index, 1);
-    // }
-
-    // if url is empty from parameters - uncheck all checkboxes
-    const urlParams = new URLSearchParams(window.location.search);
-    // const conditionParam = urlParams.get('condition');
-    if (urlParams == ""){
-        console.log('it is empty',urlParams);
-        $('.genre').prop('checked', false);
-        localStorage.removeItem('genres');
-    }
-
-
     $('.condition').click(function(){
         if($(this).is(':checked')){
             const conditionValue = ($(this).val());
@@ -60,25 +33,47 @@ $(document).ready(function() {
             const urlParams = new URLSearchParams(window.location.search);
             const conditionParam = urlParams.get('condition');
             if (conditionParam != conditionValue) {
+                localStorage.setItem("condition", conditionValue);
                 addUrlParam(document.location.search, 'condition', conditionValue);
             };
         };
     });
 
-
    $('#sort-by').on('change', function(e) {
         const selectedValue = $("#sort-by option:selected").val();
+        localStorage.setItem("sort", selectedValue);
         addUrlParam(document.location.search, 'sort', selectedValue);
    });
-      
+    
 
+    // ***** LOCAL STORAGE *****
+    // check the values that are stored in local storage 
+    const storedGenres = JSON.parse(localStorage.getItem("genres"));
+    if(storedGenres !== null ){
+        // tick checkboxes for each value
+        storedGenres.forEach(function(value) {
+            $('input[value="'+ value +'"]').prop('checked', true);
+        });
+    }
+    // check the value that is stored in local storage 
+    const storedCondition = localStorage.getItem("condition");
+    if(storedCondition !== null) {
+        $('input[value="'+ storedCondition +'"]').prop('checked', true);
+    }
+    // select the value that is stored in local storage 
+    const storedSort = localStorage.getItem("sort");
+    if(storedSort !== null) {
+        $('option[value="'+ storedSort +'"]').prop('selected', true);
+    }
+    // if url doesn't have parameters - uncheck all/set default values
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams == ""){
+        localStorage.removeItem('genres');
+        localStorage.removeItem('condition');
+        $('.genre').prop('checked', false);
+        $('input[value="any"]').prop('checked', true);
+    }
    
-
-        // TODOS
-        // 1. set checkbox to checked, if it is in the url (local storage)
-        // 2. remove pathname from url
-
-
 
     // * add a URL parameter (or changing it if it already exists)
     // * @param {url} string  this is typically document.location.search
@@ -116,9 +111,7 @@ $(document).ready(function() {
         ajaxFunc(paramsObj);
     };
 
-    // remove data
-    // show loader
-    // show new data
+    // remove data -> show loader -> show new data
     function removeProducts() {
         $('#filter-result .row').empty();
     }
