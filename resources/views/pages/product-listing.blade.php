@@ -77,7 +77,6 @@
 								<i class="icon-control fa fa-chevron-down"></i>
 								<h6 class="title">Genre </h6>
 							</a>
-							{{-- <a href="#" class="remove-filter">Remove filters</a> --}}
 						</header>
 						<div class="filter-content collapse show" id="collapse_2" style="">
 							<div class="card-body">
@@ -127,9 +126,9 @@
 					<div id="loader">
 						<h2>LOADING....</h2>
 					</div>
-					<div id="no-match">
+					{{-- <div id="no-match">
 						<h2>NO PRODUCTS MATCH....</h2>
-					</div>
+					</div> --}}
 					<div class="row"></div>
 				</div>
 				

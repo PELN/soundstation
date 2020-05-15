@@ -15,5 +15,7 @@ mix.copyDirectory('resources/backend', 'public/backend');
 mix.copyDirectory('resources/frontend', 'public/frontend');
 
 mix.js('resources/js/app.js', 'public/js')
+    .js('resources/frontend/js/ajaxFilter.js', 'public/js')
+    .js('resources/frontend/js/ajaxSearch.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
 

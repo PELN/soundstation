@@ -6,7 +6,7 @@ use Request;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Genre;
-use App\Models\Image;
+// use App\Models\Image;
 use DB;
 
 
@@ -28,6 +28,22 @@ class CategoryController extends Controller
             'genres' => $genres,
             'products' => $products
         ]);
+    }
+
+    public function ajaxSearch(Request $request)
+    {
+        $input = Request::all();
+        $query = $input['query'];
+        // dd($text);
+
+        // $products = Product::where('name', 'LIKE', "{%$text%}")->get();
+
+        $products = DB::table('products')->where('name', 'LIKE', '%'.$query.'%')->get();
+
+        if (Request::ajax()) { 
+            return response()->json($products);
+        }
+
     }
 
     public function ajaxFilter(Request $request)

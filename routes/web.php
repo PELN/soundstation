@@ -25,6 +25,7 @@ require 'admin.php';
 Route::get('/', 'PagesController@index')->name('pages.index');
 Route::get('/about', 'PagesController@about')->name('pages.about');
 
+Route::get('/ajaxSearch', 'CategoryController@ajaxSearch')->name('category.ajaxSearch');
 Route::get('/ajaxFilter', 'CategoryController@ajaxFilter')->name('category.ajaxFilter');
 Route::get('/{slug}', 'CategoryController@show')->name('category.show')->where('slug', '[\w\d\-\_]+');
 

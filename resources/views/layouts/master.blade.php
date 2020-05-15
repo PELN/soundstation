@@ -40,6 +40,8 @@
     <script src="{{ asset('frontend/js/jquery-2.0.0.min.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('frontend/js/script.js') }}"></script>
+    <script src="{{ asset('frontend/js/ajaxFilter.js') }}"></script>
+    <script src="{{ asset('frontend/js/ajaxSearch.js') }}"></script>
 {{-- 
     <script src="{{ asset('frontend/plugins/slickslider/slick.js') }}"></script>
     <script src="{{ asset('frontend/plugins/slickslider/slick.min.js') }}"></script>
