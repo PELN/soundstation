@@ -32,17 +32,23 @@ class CategoryController extends Controller
 
     public function ajaxFilter(Request $request)
     {
-        
         try {
             $input = Request::all();            
-            // dd($collection);
             $category = $input['pathName'];
+            unset($input['pathName']);
 
             $collection = $this->getData($input, $category);
+            
+            // if collection is empty, redirect to page 1
+            if($collection->lastPage() == 1){
+                // return redirect
+            }
+
             $paginator = view('components.pagination', [
                 'input' => $input,
                 'product' => $collection])->render();
-                
+            
+            
             if (Request::ajax()) { 
                 return response()->json([
                     "data" => $collection,
@@ -61,10 +67,7 @@ class CategoryController extends Controller
         $genreFilter = $queryString['genre'];
         $conditionFilter = $queryString['condition'];
         $genreFilters = explode(',', $genreFilter);
-        $sort = $queryString['sort'];
-        
-        $page = $queryString['page'];
-        // dd($sortOldest);
+        $sort = $queryString['sort'];        
 
         $products = DB::table('products')
             ->join('categories', 'categories.id', '=', 'products.category_id')

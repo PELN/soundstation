@@ -105,7 +105,8 @@
 			<main class="col-md-9">
 				<header class="border-bottom mb-4 pb-3">
 					<div class="form-inline">
-						<span class="mr-md-auto">{{$category->products->count()}} Products found </span>
+						<span id="categoryCount" class="mr-md-auto">{{$products->total()}} Products found</span>
+						<span id="filteredCount" class="mr-md-auto"></span>
 						<select id="sort-by" class="mr-2 form-control">
 							<option value="newest">Newest products</option>
 							<option value="oldest">Oldest products</option>
@@ -134,7 +135,6 @@
 				
 				<div id="all-products">
 					<div class="row">
-						{{-- find products within category --}}
 						@foreach ($products as $product)
 						<div class="col-md-4">
 						<a href="{{ URL::to("{$category->category_slug}/{$product->slug}") }}">

@@ -104,8 +104,8 @@ $(document).ready(function() {
         const paramsObj = Object.fromEntries(new URLSearchParams(location.search));
         paramsObj.pathName = window.location.pathname.replace(/\//g, "");
         
-        const searchParams = new URLSearchParams(window.location.search)
-        const param = searchParams.get('sort')
+        const searchParams = new URLSearchParams(window.location.search);
+        const param = searchParams.get('sort');
         paramsObj.sort = param;
 
         ajaxFunc(paramsObj);
@@ -117,6 +117,9 @@ $(document).ready(function() {
     }
     $('#loader').hide();
     $('#no-match').hide();
+
+    $('#filteredCount').hide();
+
 
     function ajaxFunc(paramsObj) {
         $.ajax({
@@ -138,12 +141,30 @@ $(document).ready(function() {
             removeProducts();
             $("#loader").hide();
 
-
             if(response.data.length === 0){
                 $('#all-products').show();
             } else {
                 $('#all-products').hide();
             }
+
+            // redirect to page 1 if there are no results matching
+            console.log(response.data.data.length === 0);
+            if(response.data.data.length === 0) {
+                setGetParameter('page', '1');
+                // $('#pagination').children().remove();
+                // $('#filter-result .row').append(
+                //     '<div>' +
+                //         '<h1>No results match</h1>' +
+                //     '</div>'
+                // )
+            }
+            
+            // count filtered products
+            console.log('products total count',response.data.total);
+            $('#filteredCount').text(response.data.total + ' Products found');
+            $('#filteredCount').show();
+            $('#categoryCount').hide();
+
 
             // load new data
             for (let product of response.data.data) {
@@ -184,6 +205,30 @@ $(document).ready(function() {
         }).fail(function (err) {
             console.log('error', err);
         });
+    }
+
+    // redirect to page 1 if product filters are empty
+    function setGetParameter(paramName, paramValue) {
+        var url = window.location.href;
+        var hash = location.hash;
+        url = url.replace(hash, '');
+        if (url.indexOf(paramName + "=") >= 0)
+        {
+            var prefix = url.substring(0, url.indexOf(paramName + "=")); 
+            var suffix = url.substring(url.indexOf(paramName + "="));
+            suffix = suffix.substring(suffix.indexOf("=") + 1);
+            suffix = (suffix.indexOf("&") >= 0) ? suffix.substring(suffix.indexOf("&")) : "";
+            url = prefix + paramName + "=" + paramValue + suffix;
+        }
+        else
+        {
+        if (url.indexOf("?") < 0)
+            url += "?" + paramName + "=" + paramValue;
+        else
+            url += "&" + paramName + "=" + paramValue;
+        }
+        $('#loader').show();
+        window.location.href = url + hash;
     }
 
 

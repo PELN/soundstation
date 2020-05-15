@@ -19420,6 +19420,7 @@ $(document).ready(function () {
 
   $('#loader').hide();
   $('#no-match').hide();
+  $('#filteredCount').hide();
 
   function ajaxFunc(paramsObj) {
     $.ajax({
@@ -19444,8 +19445,25 @@ $(document).ready(function () {
         $('#all-products').show();
       } else {
         $('#all-products').hide();
-      } // load new data
+      } // redirect to page 1 if there are no results matching
 
+
+      console.log(response.data.data.length === 0);
+
+      if (response.data.data.length === 0) {
+        setGetParameter('page', '1'); // $('#pagination').children().remove();
+        // $('#filter-result .row').append(
+        //     '<div>' +
+        //         '<h1>No results match</h1>' +
+        //     '</div>'
+        // )
+      } // count filtered products
+
+
+      console.log('products total count', response.data.total);
+      $('#filteredCount').text(response.data.total + ' Products found');
+      $('#filteredCount').show();
+      $('#categoryCount').hide(); // load new data
 
       var _iterator = _createForOfIteratorHelper(response.data.data),
           _step;
@@ -19463,6 +19481,26 @@ $(document).ready(function () {
     }).fail(function (err) {
       console.log('error', err);
     });
+  } // redirect to page 1 if product filters are empty
+
+
+  function setGetParameter(paramName, paramValue) {
+    var url = window.location.href;
+    var hash = location.hash;
+    url = url.replace(hash, '');
+
+    if (url.indexOf(paramName + "=") >= 0) {
+      var prefix = url.substring(0, url.indexOf(paramName + "="));
+      var suffix = url.substring(url.indexOf(paramName + "="));
+      suffix = suffix.substring(suffix.indexOf("=") + 1);
+      suffix = suffix.indexOf("&") >= 0 ? suffix.substring(suffix.indexOf("&")) : "";
+      url = prefix + paramName + "=" + paramValue + suffix;
+    } else {
+      if (url.indexOf("?") < 0) url += "?" + paramName + "=" + paramValue;else url += "&" + paramName + "=" + paramValue;
+    }
+
+    $('#loader').show();
+    window.location.href = url + hash;
   } // remove a value from an array in URL by comma
   // https://stackoverflow.com/questions/1306164/remove-value-from-comma-separated-values-string
 
