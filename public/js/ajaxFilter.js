@@ -220,7 +220,8 @@ $(document).ready(function () {
     paramsObj.pathName = window.location.pathname.replace(/\//g, "");
     var searchParams = new URLSearchParams(window.location.search);
     var param = searchParams.get('sort');
-    paramsObj.sort = param;
+    paramsObj.sort = param; // TODO: add search param to object
+
     ajaxFunc(paramsObj);
   }; // remove data -> show loader -> show new data
 

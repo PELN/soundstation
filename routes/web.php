@@ -27,6 +27,7 @@ Route::get('/about', 'PagesController@about')->name('pages.about');
 
 Route::get('/ajaxSearch', 'SearchController@ajaxSearch')->name('search.ajaxSearch');
 Route::get('{category}/ajaxSearch', 'SearchController@ajaxSearch')->name('search.ajaxSearch');
+Route::get('/search-result-page', 'SearchController@index')->name('search.index');
 
 Route::get('/ajaxFilter', 'CategoryController@ajaxFilter')->name('category.ajaxFilter');
 Route::get('/{slug}', 'CategoryController@show')->name('category.show')->where('slug', '[\w\d\-\_]+');

@@ -1,6 +1,5 @@
 <?php
 namespace App\Http\Controllers;
-
 use DB;
 use Request;
 use App\Models\Category;
@@ -18,7 +17,7 @@ class CategoryController extends Controller
         $input = Request::all();
 
         $products = $this->getData($input, $slug);
-
+        
         return view('pages.product-listing', [
             'input' => $input,
             'category' => $category,

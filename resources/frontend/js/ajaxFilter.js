@@ -108,6 +108,8 @@ $(document).ready(function() {
         const param = searchParams.get('sort');
         paramsObj.sort = param;
 
+        // TODO: add search param to object
+
         ajaxFunc(paramsObj);
     };
 
@@ -164,7 +166,7 @@ $(document).ready(function() {
             $('#categoryCount').hide();
 
             // load new data
-            for (let product of response.data.data) {
+            for (const product of response.data.data) {
                 $('#filter-result .row').append(
                     '<div class="col-md-4">' +
                         '<a href=" '+ product.category_slug + '/' + product.slug +' ">' +
@@ -197,7 +199,7 @@ $(document).ready(function() {
                         '</a>' +
                     '</div>'
                 );
-            }            
+            }
             
         }).fail(function (err) {
             console.log('error', err);

@@ -110,7 +110,7 @@ $(document).ready(function () {
           $('#searchResults').html("");
         } else {
           $('#searchResults').fadeIn();
-          $("#searchResults").html(response);
+          $("#searchResults").html(response.output);
         }
       }
     });

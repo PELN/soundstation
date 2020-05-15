@@ -34,26 +34,19 @@
 			<img class="logo" src="/frontend/images/soundstationlogo.jpg">
 		</a> <!-- brand-wrap.// -->
 	</div>
+	
 	<div class="col-lg-6 col-12 col-sm-12">
-		{{-- <form action="#" class="search"> --}}
-			<div class="input-group w-100">
-			    <input type="text" id="txtSearch" class="form-control" placeholder="Search">
-			    <div class="input-group-append">
-			      <button class="btn btn-primary" type="submit">
-			        <i class="fa fa-search"></i>
-			      </button>
-				</div>
-		    </div>
-		{{-- </form> <!-- search-wrap .end// --> --}}
-		<div id="searchResults">
-			{{-- <ul class="list-group" id="searchList"> --}}
-				{{-- <li class="list-group-item">First item</li>
-				<li class="list-group-item">Second item</li>
-				<li class="list-group-item">Third item</li>
-				<li class="list-group-item">Fourth item</li> --}}
-			{{-- </ul> --}}
+		<div class="input-group w-100">
+			<input type="text" id="txtSearch" class="form-control" placeholder="Search">
+			<div class="input-group-append">
+				<button class="btn btn-primary" type="submit">
+				<i class="fa fa-search"></i>
+				</button>
+			</div>
 		</div>
+		<div id="searchResults"></div>
 	</div> <!-- col.// -->
+
 	<div class="col-lg-4 col-sm-6 col-12">
 		<div class="widgets-wrap float-md-right">
         <div class="widget-header icontext">
