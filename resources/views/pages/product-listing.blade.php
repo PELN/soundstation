@@ -84,19 +84,17 @@
 								@foreach($genres as $genre)
 								<div class="checkbox-filter">
 									<label class="custom-control custom-checkbox">
-										{{-- <a href={{ request()->fullUrlWithQuery(['genre' => $genre->genre]) }}> --}}
-											<input type="checkbox" 
-												class="genre custom-control-input" 
-												{{-- id="genre"  --}}
-												name="genre"
-												value="{{ $genre->genre }}"
-												>
-												<div class="custom-control-label">{{ $genre->genre }}
-													{{-- <b class="badge badge-pill badge-light float-right">{{$genre->products->count()}}</b> --}}
-												</div>
-											{{-- </a> --}}
-											</label>
+										<input type="checkbox" 
+											class="genre custom-control-input" 
+											id="genre-{{$genre->id}}" 
+											name="genre"
+											value="{{ $genre->genre }}"
+										>
+										<div class="custom-control-label">{{ $genre->genre }}
+												{{-- <b class="badge badge-pill badge-light float-right">{{$genre->products->count()}}</b> --}}
 										</div>
+									</label>
+								</div>
 								@endforeach
 							</div> <!-- card-body.// -->
 						</div>

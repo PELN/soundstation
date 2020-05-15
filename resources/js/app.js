@@ -1,7 +1,6 @@
 require('./bootstrap');
 
 $(document).ready(function() {
-
     $('.genre').click(function(){
         // if checked, add to genres
         const genres = [];
@@ -12,18 +11,46 @@ $(document).ready(function() {
         });
         const genreValue = genres.toString();
 
+        localStorage.setItem("genres", JSON.stringify(genres));
+
         addUrlParam(document.location.search, 'genre', genreValue);
 
         // if unchecked, remove
         if(!$(this).is(':checked')){
             // if there is more than one genre, remove a value from param
-            if(genres.length > 0)
+            if(genres.length > 0) {
                 removeUrlValue(document.location.search, genreValue, ',');
-            else { // remove whole param
+            } else { // remove whole param
                 removeLastParamKey();
             };
         };
     });
+
+    const storedGenres = JSON.parse(localStorage.getItem("genres"));
+    console.log('local storage: ',storedGenres);
+    // make a new array with the genres in local storrage
+
+    if(storedGenres !== null ){
+        // tick checkboxes for each value
+        storedGenres.forEach(function(value) {
+            $('input[value="'+ value +'"]').prop('checked', true);
+        });
+    }
+    
+    // function removeId(array, element) {
+    //     const index = array.indexOf(element);
+    //     array.splice(index, 1);
+    // }
+
+    // if url is empty from parameters - uncheck all checkboxes
+    const urlParams = new URLSearchParams(window.location.search);
+    // const conditionParam = urlParams.get('condition');
+    if (urlParams == ""){
+        console.log('it is empty',urlParams);
+        $('.genre').prop('checked', false);
+        localStorage.removeItem('genres');
+    }
+
 
     $('.condition').click(function(){
         if($(this).is(':checked')){
@@ -40,12 +67,19 @@ $(document).ready(function() {
 
 
    $('#sort-by').on('change', function(e) {
-        // const optionSelected = $("option:selected", this);
-        const valueSelected = this.value;
-        console.log(valueSelected);
-        addUrlParam(document.location.search, 'sort', valueSelected);
+        const selectedValue = $("#sort-by option:selected").val();
+        addUrlParam(document.location.search, 'sort', selectedValue);
    });
       
+
+   
+
+        // TODOS
+        // 1. set checkbox to checked, if it is in the url (local storage)
+        // 2. remove pathname from url
+
+
+
     // * add a URL parameter (or changing it if it already exists)
     // * @param {url} string  this is typically document.location.search
     // * @param {key}    string  the key to set
@@ -74,7 +108,10 @@ $(document).ready(function() {
         // https://stackoverflow.com/questions/8648892/how-to-convert-url-parameters-to-a-javascript-object
         const paramsObj = Object.fromEntries(new URLSearchParams(location.search));
         paramsObj.pathName = window.location.pathname.replace(/\//g, "");
-        // console.log('params', paramsObj);
+        
+        const searchParams = new URLSearchParams(window.location.search)
+        const param = searchParams.get('sort')
+        paramsObj.sort = param;
 
         ajaxFunc(paramsObj);
     };
@@ -104,15 +141,10 @@ $(document).ready(function() {
             $('#pagination').children().remove();
             $('#pagination').append(paginator);
 
-            // remove data and load new objects
+            // remove data
             removeProducts();
             $("#loader").hide();
-        
 
-            // TODOS
-            // 1. set checkbox to checked, if it is in the url (local storage)
-            // 2. remove pathname from url
-            // 3. sorting
 
             if(response.data.length === 0){
                 $('#all-products').show();
@@ -120,6 +152,7 @@ $(document).ready(function() {
                 $('#all-products').hide();
             }
 
+            // load new data
             for (let product of response.data.data) {
                 $('#filter-result .row').append(
                     '<div class="col-md-4">' +

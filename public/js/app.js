@@ -19301,26 +19301,54 @@ $(document).ready(function () {
       ;
     });
     var genreValue = genres.toString();
+    localStorage.setItem("genres", JSON.stringify(genres));
     addUrlParam(document.location.search, 'genre', genreValue); // if unchecked, remove
 
     if (!$(this).is(':checked')) {
       // if there is more than one genre, remove a value from param
-      if (genres.length > 0) removeUrlValue(document.location.search, genreValue, ',');else {
+      if (genres.length > 0) {
+        removeUrlValue(document.location.search, genreValue, ',');
+      } else {
         // remove whole param
         removeLastParamKey();
       }
+
       ;
     }
 
     ;
   });
+  var storedGenres = JSON.parse(localStorage.getItem("genres"));
+  console.log('local storage: ', storedGenres); // make a new array with the genres in local storrage
+
+  if (storedGenres !== null) {
+    // tick checkboxes for each value
+    storedGenres.forEach(function (value) {
+      $('input[value="' + value + '"]').prop('checked', true);
+    });
+  } // function removeId(array, element) {
+  //     const index = array.indexOf(element);
+  //     array.splice(index, 1);
+  // }
+  // if url is empty from parameters - uncheck all checkboxes
+
+
+  var urlParams = new URLSearchParams(window.location.search); // const conditionParam = urlParams.get('condition');
+
+  if (urlParams == "") {
+    console.log('it is empty', urlParams);
+    $('.genre').prop('checked', false);
+    localStorage.removeItem('genres');
+  }
+
   $('.condition').click(function () {
     if ($(this).is(':checked')) {
       var conditionValue = $(this).val(); // if url already has condition param, dont add it again
       //https://stackoverflow.com/questions/1314383/how-to-check-if-a-query-string-value-is-present-via-javascript
 
-      var urlParams = new URLSearchParams(window.location.search);
-      var conditionParam = urlParams.get('condition');
+      var _urlParams = new URLSearchParams(window.location.search);
+
+      var conditionParam = _urlParams.get('condition');
 
       if (conditionParam != conditionValue) {
         addUrlParam(document.location.search, 'condition', conditionValue);
@@ -19332,11 +19360,12 @@ $(document).ready(function () {
     ;
   });
   $('#sort-by').on('change', function (e) {
-    // const optionSelected = $("option:selected", this);
-    var valueSelected = this.value;
-    console.log(valueSelected);
-    addUrlParam(document.location.search, 'sort', valueSelected);
-  }); // * add a URL parameter (or changing it if it already exists)
+    var selectedValue = $("#sort-by option:selected").val();
+    addUrlParam(document.location.search, 'sort', selectedValue);
+  }); // TODOS
+  // 1. set checkbox to checked, if it is in the url (local storage)
+  // 2. remove pathname from url
+  // * add a URL parameter (or changing it if it already exists)
   // * @param {url} string  this is typically document.location.search
   // * @param {key}    string  the key to set
   // * @param {value}    string  value
@@ -19366,8 +19395,10 @@ $(document).ready(function () {
     // https://stackoverflow.com/questions/8648892/how-to-convert-url-parameters-to-a-javascript-object
 
     var paramsObj = Object.fromEntries(new URLSearchParams(location.search));
-    paramsObj.pathName = window.location.pathname.replace(/\//g, ""); // console.log('params', paramsObj);
-
+    paramsObj.pathName = window.location.pathname.replace(/\//g, "");
+    var searchParams = new URLSearchParams(window.location.search);
+    var param = searchParams.get('sort');
+    paramsObj.sort = param;
     ajaxFunc(paramsObj);
   }; // remove data
   // show loader
@@ -19395,19 +19426,17 @@ $(document).ready(function () {
       console.log('response from controller', response);
       var paginator = response.paginator.replace(/ajaxFilter/g, response.slug);
       $('#pagination').children().remove();
-      $('#pagination').append(paginator); // remove data and load new objects
+      $('#pagination').append(paginator); // remove data
 
       removeProducts();
-      $("#loader").hide(); // TODOS
-      // 1. set checkbox to checked, if it is in the url (local storage)
-      // 2. remove pathname from url
-      // 3. sorting
+      $("#loader").hide();
 
       if (response.data.length === 0) {
         $('#all-products').show();
       } else {
         $('#all-products').hide();
-      }
+      } // load new data
+
 
       var _iterator = _createForOfIteratorHelper(response.data.data),
           _step;

@@ -61,9 +61,10 @@ class CategoryController extends Controller
         $genreFilter = $queryString['genre'];
         $conditionFilter = $queryString['condition'];
         $genreFilters = explode(',', $genreFilter);
+        $sort = $queryString['sort'];
+        
         $page = $queryString['page'];
-        $sortNewest = $queryString['newest'];
-        $sortOldest = $queryString['oldest'];
+        // dd($sortOldest);
 
         $products = DB::table('products')
             ->join('categories', 'categories.id', '=', 'products.category_id')
@@ -96,10 +97,14 @@ class CategoryController extends Controller
         'products.quantity', 'products.price', 'products.sale_price', 'products.status', 'products.featured', 'products.created_at',
         'images.path', 'categories.category', 'categories.category_slug', 'genres.genre', 'artists.artist']);
 
-        if ($sortNewest){
+        if ($sort == 'newest'){
             $products->orderBy('products.created_at', 'ASC');
-        } else if ($sortOldest){
+        } else if ($sort == 'oldest'){
             $products->orderBy('products.created_at', 'DESC');
+        } else if ($sort == 'price-low') {
+            $products->orderBy('products.price', 'ASC');
+        } else if ($sort == 'price-high') {
+            $products->orderBy('products.price', 'DESC');
         }
         
         $collection = $products->groupby('products.id')
