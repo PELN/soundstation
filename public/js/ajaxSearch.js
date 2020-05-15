@@ -104,13 +104,20 @@ $(document).ready(function () {
         query: $('#txtSearch').val()
       },
       success: function success(response) {
-        console.log(response); //  response = JSON.parse(response);
-        //  for (var patient of response) {
-        //      console.log(patient);
-        //  }
-        // $("#searchResults").html(response);
+        console.log(response);
+
+        if (query == "") {
+          $('#searchResults').html("");
+        } else {
+          $('#searchResults').fadeIn();
+          $("#searchResults").html(response);
+        }
       }
     });
+  });
+  $("#searchResults").on('click', 'li', function () {
+    $('#searchItem').val($(this).text());
+    $('#searchResults').fadeOut();
   });
 });
 

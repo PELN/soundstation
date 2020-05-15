@@ -9,20 +9,24 @@ $(document).ready(function() {
         $.ajax({
             type:"GET",
             url: 'ajaxSearch',
-            data: {query: $('#txtSearch').val()},
+            data: { query: $('#txtSearch').val() },
             success: function(response) {
                 console.log(response);
 
-                
-                //  response = JSON.parse(response);
-                //  for (var patient of response) {
-                //      console.log(patient);
-                //  }
-
-                // $("#searchResults").html(response);
+                if( query == "" ) {
+                    $('#searchResults').html("");
+                } else {
+                    $('#searchResults').fadeIn();  
+                    $("#searchResults").html(response);
+                }
 
              }
         });
+    });
+
+    $("#searchResults").on('click', 'li', function(){  
+        $('#searchItem').val($(this).text());
+        $('#searchResults').fadeOut();
     });
 
 });

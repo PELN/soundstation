@@ -1,14 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Request;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Genre;
-// use App\Models\Image;
 use DB;
-
 
 class CategoryController extends Controller
 {
@@ -36,12 +33,25 @@ class CategoryController extends Controller
         $query = $input['query'];
         // dd($text);
 
-        // $products = Product::where('name', 'LIKE', "{%$text%}")->get();
-
         $products = DB::table('products')->where('name', 'LIKE', '%'.$query.'%')->get();
 
-        if (Request::ajax()) { 
-            return response()->json($products);
+        if (Request::ajax()) {
+            
+            $output = '';
+            
+            if (count($products) > 0) {
+                $output = '<ul class="list-group" style="display: block; position: relative; z-index: 1; cursor: pointer;">';
+                foreach ($products as $product){
+                    $output .= '<li id="searchItem" class="list-group-item">'.$product->name.'</li>';
+                }
+                $output .= '</ul>';
+            }
+            else {
+                $output .= '<li class="list-group-item">'.'No results'.'</li>';
+            }
+        
+            return $output;
+            // return response()->json($products);
         }
 
     }
