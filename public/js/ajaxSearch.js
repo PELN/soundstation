@@ -104,8 +104,7 @@ $(document).ready(function () {
         query: $('#txtSearch').val()
       },
       success: function success(response) {
-        console.log(response);
-
+        // console.log(response);
         if (query == "") {
           $('#searchResults').html("");
         } else {
