@@ -6,9 +6,9 @@
 <section class="section-content padding-y bg">
 <div class="container">
 
-@if(count($product) == 0)
+{{-- @if(count($product) == 0)
 <h1>SORRY, NO PRODUCT FOUND</h1>
-@else
+@else --}}
 
 <!-- ========================= SECTION PAGETOP ========================= -->
 <section class="section-pagetop bg">
@@ -23,7 +23,6 @@
 	</div> <!-- container //  -->
 </section>
 <!-- ========================= SECTION INTRO END// ========================= -->
-
 
 <!-- ============================ COMPONENT 2 ================================= -->
 <div class="card">
@@ -45,8 +44,6 @@
 						<a href="#"><img src="{{ asset('storage/image-coming-soon.jpg') }}"></a>
 					</div> <!-- img-big-wrap.// -->
 				@endforelse
-
-
 			</article> <!-- gallery-wrap .end// -->
 		</aside>
 
@@ -69,56 +66,33 @@
 				@endforeach
 				</ul>
 
-				{{-- <p>Here goes description consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris.</p> --}}
-				{{-- <ul class="list-normal cols-two">
-					<li>Not just for commute </li>
-					<li>Branded tongue and cuff </li>
-					<li>Super fast and amazing </li>
-					<li>Lorem sed do eiusmod tempor </li>
-					<li>Easy fast and ver good </li>
-					<li>Lorem sed do eiusmod tempor  </li>
-				</ul> --}}
+				<div class="h3 mb-4"> 
+					<var class="price h4">DKK {{$product->price}}</var> 
+				</div> <!-- price-wrap.// -->
 
-			<div class="h3 mb-4"> 
-				<var class="price h4">DKK {{$product->price}}</var> 
-			</div> <!-- price-wrap.// -->
+				@if($product->quantity >= 1)
+					<div class="badge badge-success">In stock</div>
+				@else
+					<div class="badge badge-danger">Not in stock</div>
+				@endif
+				
+				<div class="form-row">
+					<div class="col-2">
+						<select class="form-control">
+							{{ $quantity = $product->quantity }}
+							@for ($i = 1; $quantity >= $i; $i++)
+								<option>{{ $i }}</option>
+							@endfor
+						</select>
+					</div> <!-- col.// -->
 
-			@if($product->quantity >= 1)
-				<div class="badge badge-success">In stock</div>
-			@else
-				<div class="badge badge-danger">Not in stock</div>
-			@endif
-			
-			<div class="form-row">
-				<div class="col-2">
-					<select class="form-control">
-						{{ $quantity = $product->quantity }}
-						@for ($i = 1; $quantity >= $i; $i++)
-							<option>{{ $i }}</option>
-						@endfor
-					</select>
-				</div> <!-- col.// -->
-
-				<!-- <div class="col-2">
-					<select class="form-control">
-						<option> Size </option>
-						<option> XL </option>
-						<option> MD </option>
-						<option> XS </option>
-					</select>
-				</div> col.// -->
-
-				<div class="col">
-					<a href="#" class="btn  btn-primary w-100"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </a>
-				</div> <!-- col.// -->
-				<div class="col">
-					<a href="#" class="btn  btn-light"> <i class="fas fa-heart"></i>  </a>
-				</div> <!-- col.// -->
-			</div> <!-- row.// -->
+					<div class="col">
+						<a href="#" class="btn  btn-primary w-100"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </a>
+					</div> <!-- col.// -->
+					<div class="col">
+						<a href="#" class="btn  btn-light"> <i class="fas fa-heart"></i>  </a>
+					</div> <!-- col.// -->
+				</div> <!-- row.// -->
 
 			</article> <!-- product-info-aside .// -->
 		</main> <!-- col.// -->
@@ -126,8 +100,6 @@
 </div> <!-- card.// -->
 
 <!-- ============================ COMPONENT 2 END .// ================================= -->
-
-
 
 <!-- ============================ COMPONENT 4  ================================= -->
 <article class="card">
@@ -161,12 +133,10 @@
 					@else
 						<dd class="col-sm-9">New</dd>
 					@endif
-
 					<dt class="col-sm-3">Year</dt>
 					<dd class="col-sm-9">{{ $product->year[0]->year }}</dd>
 
 					<dt class="col-sm-3">Grading</dt>
-					{{-- if grading show that, else custom grading?? or both?? --}}
 					<dd class="col-sm-9">{{ $product->gradings[0]->grading }}</dd>
 
 					<dt class="col-sm-3">Comment</dt>
@@ -192,6 +162,6 @@
 </article> <!-- card.// -->
 <!-- ============================ COMPONENT 4  .//END ================================= -->
 
-@endif
+{{-- @endif --}}
 
 @endsection

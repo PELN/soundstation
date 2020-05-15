@@ -116,7 +116,7 @@ $(document).ready(function () {
     });
   });
   $("#searchResults").on('click', 'li', function () {
-    $('#searchItem').val($(this).text());
+    // $('#searchItem').val($(this).text());
     $('#searchResults').fadeOut();
   });
 });

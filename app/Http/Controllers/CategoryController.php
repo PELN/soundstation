@@ -1,11 +1,11 @@
 <?php
 namespace App\Http\Controllers;
 
+use DB;
 use Request;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Genre;
-use DB;
 
 class CategoryController extends Controller
 {
@@ -25,35 +25,6 @@ class CategoryController extends Controller
             'genres' => $genres,
             'products' => $products
         ]);
-    }
-
-    public function ajaxSearch(Request $request)
-    {
-        $input = Request::all();
-        $query = $input['query'];
-        // dd($text);
-
-        $products = DB::table('products')->where('name', 'LIKE', '%'.$query.'%')->get();
-
-        if (Request::ajax()) {
-            
-            $output = '';
-            
-            if (count($products) > 0) {
-                $output = '<ul class="list-group" style="display: block; position: relative; z-index: 1; cursor: pointer;">';
-                foreach ($products as $product){
-                    $output .= '<li id="searchItem" class="list-group-item">'.$product->name.'</li>';
-                }
-                $output .= '</ul>';
-            }
-            else {
-                $output .= '<li class="list-group-item">'.'No results'.'</li>';
-            }
-        
-            return $output;
-            // return response()->json($products);
-        }
-
     }
 
     public function ajaxFilter(Request $request)
