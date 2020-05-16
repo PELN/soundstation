@@ -129,7 +129,7 @@
             },
             // contentType: 'application/json; charset=utf-8',
         }).done(function (response) {
-            // console.log('response from controller', response);
+            console.log('response from controller', response);
             
             const paginator = response.paginator.replace(/ajaxFilter/g, response.slug);
             $('#pagination').children().remove();
@@ -157,9 +157,7 @@
             }
             
             // count filtered products
-            if (!response.data.total == "undefined"){
-                $('#filteredCount').text(response.data.total + ' Products found');
-            }
+            $('#filteredCount').text(response.collection.total + ' Products found');
             $('#filteredCount').show();
             $('#categoryCount').hide();
 

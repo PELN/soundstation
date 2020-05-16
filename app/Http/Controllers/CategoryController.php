@@ -43,7 +43,8 @@ class CategoryController extends Controller
             return response()->json([
                 'data' => $products,
                 'paginator' => $paginator,
-                'slug' => $category
+                'slug' => $category,
+                'collection' => $collection
             ]);
         }
     }

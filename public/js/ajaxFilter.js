@@ -239,7 +239,7 @@ function ajaxFunc(paramsObj) {
     } // contentType: 'application/json; charset=utf-8',
 
   }).done(function (response) {
-    // console.log('response from controller', response);
+    console.log('response from controller', response);
     var paginator = response.paginator.replace(/ajaxFilter/g, response.slug);
     $('#pagination').children().remove();
     $('#pagination').append(paginator); // remove data
@@ -264,10 +264,7 @@ function ajaxFunc(paramsObj) {
     } // count filtered products
 
 
-    if (!response.data.total == "undefined") {
-      $('#filteredCount').text(response.data.total + ' Products found');
-    }
-
+    $('#filteredCount').text(response.collection.total + ' Products found');
     $('#filteredCount').show();
     $('#categoryCount').hide(); // TODO: FIX - why does it refresh page on clicks?
 
