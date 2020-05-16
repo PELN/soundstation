@@ -58,7 +58,7 @@ class CategoryController extends Controller
         }
     }
     
-    private function getData($queryString, $category) 
+    protected function getData($queryString, $category) 
     {
         $genreFilter = $queryString['genre'];
         $conditionFilter = $queryString['condition'];

@@ -34,7 +34,7 @@
 			<img class="logo" src="/frontend/images/soundstationlogo.jpg">
 		</a> <!-- brand-wrap.// -->
 	</div>
-	
+
 	<div class="col-lg-6 col-12 col-sm-12">
 		<div class="input-group w-100">
 			<input type="text" id="txtSearch" class="form-control" placeholder="Search">
