@@ -37,7 +37,7 @@ class CategoryController extends Controller
             'product' => $collection])->render();
         
         $products = view('components.product', [
-            'collection' => $collection])->render();
+            'products' => $collection])->render();
 
         if (Request::ajax()) { 
             return response()->json([

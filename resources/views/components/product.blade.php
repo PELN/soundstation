@@ -1,5 +1,5 @@
 @foreach ($products as $product)
-    <div class="col-md-3">
+    <div class="col-md-4">
         <a href="{{ URL::to("{$product->category_slug}/{$product->slug}") }}">
             <figure class="card card-product-grid">
                 <div class="img-wrap">
