@@ -39,7 +39,7 @@
 		<div class="input-group w-100">
 			<input type="text" id="txtSearch" class="form-control" placeholder="Search">
 			<div class="input-group-append">
-				<button class="btn btn-primary" type="submit">
+				<button class="btn btn-primary" id="searchBtn" type="submit">
 				<i class="fa fa-search"></i>
 				</button>
 			</div>

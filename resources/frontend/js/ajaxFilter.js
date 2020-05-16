@@ -1,6 +1,7 @@
 // require('../../js/bootstrap');
 
-$(document).ready(function() {
+// $(document).ready(function() {
+
     $('.genre').click(function(){
         // if checked, add to genres
         const genres = [];
@@ -115,7 +116,6 @@ $(document).ready(function() {
         $('#filter-result .row').empty();
     }
     $('#loader').hide(); // hide loader if no filter has been set
-
     $('#filteredCount').hide(); // hide filtered count if no filter has been set
 
     function ajaxFunc(paramsObj) {
@@ -158,12 +158,12 @@ $(document).ready(function() {
             
             // count filtered products
             if (!response.data.total == "undefined"){
-
                 $('#filteredCount').text(response.data.total + ' Products found');
             }
             $('#filteredCount').show();
             $('#categoryCount').hide();
 
+            // TODO: FIX - why does it refresh page on clicks?
             $('#filter-result .row').html(response.data); // render data in product-listing blade
             
         }).fail(function (err) {
@@ -227,5 +227,5 @@ $(document).ready(function() {
             history.replaceState({path:removeParam}, '', removeParam);
         };
     };
-});
+// });
 

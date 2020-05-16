@@ -4,7 +4,7 @@ $(document).ready(function() {
     $('#txtSearch').on('keyup', function(){
 
         const query = $('#txtSearch').val();
-        console.log(query);
+        // console.log(query);
 
         $.ajax({
             type:"GET",
@@ -20,7 +20,19 @@ $(document).ready(function() {
                     // render the search-result-box.blade file to header search results 
                     $("#searchResults").html(response.searchResults);
                 }
-             }
+
+                $('#searchBtn').on('click', function(){
+                    window.location="/search-result-page?search="+query;
+                });
+
+                $('#txtSearch').on('keypress',function(e) {
+                    if(e.which == 13) {
+                        window.location="/search-result-page?search="+query;
+                    }
+                });
+            
+            }
+
         });
     });
 

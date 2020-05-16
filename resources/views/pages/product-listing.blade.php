@@ -90,7 +90,7 @@
 											value="{{ $genre->genre }}"
 										>
 										<div class="custom-control-label">{{ $genre->genre }}
-												{{-- <b class="badge badge-pill badge-light float-right">{{$genre->products->count()}}</b> --}}
+											{{-- <b class="badge badge-pill badge-light float-right">{{$genre->products->count()}}</b> --}}
 										</div>
 									</label>
 								</div>
@@ -126,9 +126,6 @@
 					<div id="loader">
 						<h2>LOADING....</h2>
 					</div>
-					{{-- <div id="no-match">
-						<h2>NO PRODUCTS MATCH....</h2>
-					</div> --}}
 					<div class="row"></div>
 				</div>
 				

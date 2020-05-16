@@ -95,8 +95,8 @@
 
 $(document).ready(function () {
   $('#txtSearch').on('keyup', function () {
-    var query = $('#txtSearch').val();
-    console.log(query);
+    var query = $('#txtSearch').val(); // console.log(query);
+
     $.ajax({
       type: "GET",
       url: 'ajaxSearch',
@@ -112,6 +112,15 @@ $(document).ready(function () {
 
           $("#searchResults").html(response.searchResults);
         }
+
+        $('#searchBtn').on('click', function () {
+          window.location = "/search-result-page?search=" + query;
+        });
+        $('#txtSearch').on('keypress', function (e) {
+          if (e.which == 13) {
+            window.location = "/search-result-page?search=" + query;
+          }
+        });
       }
     });
   });
