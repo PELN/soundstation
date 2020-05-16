@@ -6,7 +6,7 @@
 	<div class="container">
 		{{-- <div class="row"> --}}
             <h2>Search results for "{{$query}}"</h2>
-            <p>{{count($products)}} Products Found</p>
+            <p>{{$products->total()}} Products Found</p>
                 <div id="all-results">
                     <div class="row">
                         @foreach ($products as $product)
