@@ -41,7 +41,6 @@ class CategoryController extends Controller
 
         if (Request::ajax()) { 
             return response()->json([
-                // "data" => $collection,
                 'data' => $products,
                 'paginator' => $paginator,
                 'slug' => $category
@@ -107,67 +106,12 @@ class CategoryController extends Controller
 
 
 
-
-
-
-    
-    // ***************************************************************
-    // function shoow
-
-        // $input = Request::all();
-        // $genreInput = $input['genre'];
-        // $conditionInput = $input['condition'];
-                // ->when($genreInput, function ($query) use ($genreInput) {
-                //     return $query->where('genres.genre', $genreInput);
-                // })
-                // ->when($conditionInput, function ($query) use ($conditionInput) {
-                //     return $query->where('media_condition', $conditionInput);
-                // })
-    // ***************************************************************
-
-
-    // return response()->json($genreFilters[0] == 'rock');
-
-
-    // if ($input) {
-    //     return response()->json(['response' => $input]);
-    // }
-        
-    // return json_encode($request);
-
-
-    // $data = $request->data;
-    // echo json_encode($data);
-    // exit;
-
-    // return response()->json($request);
-
-
-    // $input = Request::all();
-    // $genreInput = $input['genre'];
-    // dd($genreInput);
-
-
-    // return response()->json(json_decode($request));
-    
-    // if(Request::ajax()){
-        //     // send request back with the chosen genre?
-        //     $filterGenre = Genre::where('genre', $genreInput)->first();
-        //     echo 
-        //     return request()->fullUrlWithQuery(['genre' => $genre->genre]);
-        //     // return $genreInput;
-        // }
-
-        // return response()->json(['response'=> 'This is get method']);
-
-
-
-    // ***************************************************************
-    // GETS PRODUCTS WITHIN A GENRE FROM REQUEST (FILTER)
-    // https://laracasts.com/discuss/channels/general-discussion/confused-on-how-to-access-data-over-multiple-many-to-many-relations
-    // $input = Request::all();
-    // $genreFilter = $input['genre'];
-    // $genres = Genre::with('products')->where('genre', $genreFilter)->get();
-    // foreach($genres as $genre){
-    //     dd($genre->products);
-    // }
+// ***************************************************************
+// GETS PRODUCTS WITHIN A GENRE FROM REQUEST (FILTER)
+// https://laracasts.com/discuss/channels/general-discussion/confused-on-how-to-access-data-over-multiple-many-to-many-relations
+// $input = Request::all();
+// $genreFilter = $input['genre'];
+// $genres = Genre::with('products')->where('genre', $genreFilter)->get();
+// foreach($genres as $genre){
+//     dd($genre->products);
+// }

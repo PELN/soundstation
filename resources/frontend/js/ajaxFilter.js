@@ -164,7 +164,7 @@ $(document).ready(function() {
             $('#filteredCount').show();
             $('#categoryCount').hide();
 
-            $('#filter-result .row').html(response.data);
+            $('#filter-result .row').html(response.data); // render data in product-listing blade
             
         }).fail(function (err) {
             console.log('error', err);
