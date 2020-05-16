@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
@@ -18,9 +16,8 @@ class ProductController extends Controller
         // get product object for view
         $product = Product::where('slug', $slug)->first();
 
-
+        // split lines in description
 		$lines = preg_split('/[\n\r]+/', $product->description->description);
-        // dd($lines);
 
         return view('pages.product-detail', [
             'category' => $category,

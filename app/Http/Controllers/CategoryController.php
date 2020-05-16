@@ -12,8 +12,6 @@ class CategoryController extends Controller
     {
         $category = Category::where('category_slug', $slug)->where('menu', 1)->first();
         $genres = Genre::all();
-        // dd($genres->products);
-
         $input = Request::all();
 
         $products = $this->getData($input, $slug);
@@ -28,31 +26,29 @@ class CategoryController extends Controller
 
     public function ajaxFilter(Request $request)
     {
-        try {
-            $input = Request::all();            
-            $category = $input['pathName'];
-            unset($input['pathName']);
+        $input = Request::all();            
+        $category = $input['pathName'];
+        unset($input['pathName']);
 
-            $collection = $this->getData($input, $category);
+        $collection = $this->getData($input, $category);
 
-            $paginator = view('components.pagination', [
-                'input' => $input,
-                'product' => $collection])->render();
-            
-            if (Request::ajax()) { 
-                return response()->json([
-                    "data" => $collection,
-                    "paginator" => $paginator,
-                    "slug" => $category
-                ]);
-            }
-        }
-        catch(\Exception $e) {
-            echo json_encode($e->getMessage());
+        $paginator = view('components.pagination', [
+            'input' => $input,
+            'product' => $collection])->render();
+        
+        $products = view('components.product', [
+            'collection' => $collection])->render();
+
+        if (Request::ajax()) { 
+            return response()->json([
+                // "data" => $collection,
+                'data' => $products,
+                'paginator' => $paginator,
+                'slug' => $category
+            ]);
         }
     }
     
-    // change querystring to query
     protected function getData($queryString, $category) 
     {
         $genreFilter = $queryString['genre'];

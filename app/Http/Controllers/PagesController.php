@@ -14,12 +14,4 @@ class PagesController extends Controller
         return view('pages.about');
     }
 
-    // public function category($slug) {
-
-    //     return view('pages.product-listing');
-    // }
-
-    public function product() {
-        return view('pages.product-detail');
-    }
 }

@@ -94,7 +94,6 @@ $(document).ready(function() {
                 params += '&' + newParam;
             };
         };
-        // console.log('add param', params);
 
         const urlWithParams = window.location.protocol + "//" + window.location.host + window.location.pathname + params;
         window.history.pushState({path:urlWithParams},'',urlWithParams);
@@ -102,13 +101,11 @@ $(document).ready(function() {
         // Get data to send with ajax
         // https://stackoverflow.com/questions/8648892/how-to-convert-url-parameters-to-a-javascript-object
         const paramsObj = Object.fromEntries(new URLSearchParams(location.search));
-        paramsObj.pathName = window.location.pathname.replace(/\//g, "");
+        paramsObj.pathName = window.location.pathname.replace(/\//g, ""); // add pathName/category to obj
         
         const searchParams = new URLSearchParams(window.location.search);
-        const param = searchParams.get('sort');
+        const param = searchParams.get('sort'); // add sort to obj
         paramsObj.sort = param;
-
-        // TODO: add search param to object
 
         ajaxFunc(paramsObj);
     };
@@ -118,10 +115,8 @@ $(document).ready(function() {
         $('#filter-result .row').empty();
     }
     $('#loader').hide(); // hide loader if no filter has been set
-    // $('#no-match').hide();
 
     $('#filteredCount').hide(); // hide filtered count if no filter has been set
-
 
     function ajaxFunc(paramsObj) {
         $.ajax({
@@ -134,8 +129,9 @@ $(document).ready(function() {
             },
             // contentType: 'application/json; charset=utf-8',
         }).done(function (response) {
-            console.log('response from controller', response);
-            var paginator = response.paginator.replace(/ajaxFilter/g, response.slug);
+            // console.log('response from controller', response);
+            
+            const paginator = response.paginator.replace(/ajaxFilter/g, response.slug);
             $('#pagination').children().remove();
             $('#pagination').append(paginator);
 
@@ -150,7 +146,7 @@ $(document).ready(function() {
             }
 
             // redirect to page 1 if no results match
-            if(response.data.data.length === 0) {
+            if(response.data.length === 0) {
                 setGetParameter('page', '1');
                 // $('#pagination').children().remove();
                 // $('#filter-result .row').append(
@@ -161,45 +157,14 @@ $(document).ready(function() {
             }
             
             // count filtered products
-            $('#filteredCount').text(response.data.total + ' Products found');
+            if (!response.data.total == "undefined"){
+
+                $('#filteredCount').text(response.data.total + ' Products found');
+            }
             $('#filteredCount').show();
             $('#categoryCount').hide();
 
-            // load new data
-            for (const product of response.data.data) {
-                $('#filter-result .row').append(
-                    '<div class="col-md-4">' +
-                        '<a href=" '+ product.category_slug + '/' + product.slug +' ">' +
-                            '<figure class="card card-product-grid">' +
-                                '<div class="img-wrap">' +
-                                ( product.path ? 
-                                        '<img src="/storage/'+ product.path +'")>'
-                                    : 
-                                        '<img src="/storage/image-coming-soon.jpg">' 
-                                    ) +
-                                '</div>' +
-                                '<figcaption class="info-wrap">' +
-                                    '<div class="fix-height">' +
-                                        '<a href="#" class="title"> ' + product.name + ' </a>' +
-                                        '<p class="artist"> ' + product.artist + '</p>' +
-                                        '<div class="price-wrap mt-2">' +
-                                            '<span class="price"> ' + product.price + ' </span>' +
-                                        '</div>' +
-                                    '</div>' +
-                                    '<div class="form-row">' +
-                                        '<div class="col">' +
-                                            '<a href="#" class="btn  btn-primary w-100"><span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i></a>' +
-                                        '</div>' +
-                                        '<div class="col">' +
-                                            '<a href="#" class="btn  btn-light"> <i class="fas fa-heart"></i></a>' +
-                                        '</div>' +
-                                    '</div>' +
-                                '</figcaption>' +
-                            '</figure>' +
-                        '</a>' +
-                    '</div>'
-                );
-            }
+            $('#filter-result .row').html(response.data);
             
         }).fail(function (err) {
             console.log('error', err);

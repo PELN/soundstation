@@ -93,12 +93,6 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 // require('../../js/bootstrap');
 $(document).ready(function () {
   $('.genre').click(function () {
@@ -208,8 +202,7 @@ $(document).ready(function () {
       ;
     }
 
-    ; // console.log('add param', params);
-
+    ;
     var urlWithParams = window.location.protocol + "//" + window.location.host + window.location.pathname + params;
     window.history.pushState({
       path: urlWithParams
@@ -217,11 +210,12 @@ $(document).ready(function () {
     // https://stackoverflow.com/questions/8648892/how-to-convert-url-parameters-to-a-javascript-object
 
     var paramsObj = Object.fromEntries(new URLSearchParams(location.search));
-    paramsObj.pathName = window.location.pathname.replace(/\//g, "");
-    var searchParams = new URLSearchParams(window.location.search);
-    var param = searchParams.get('sort');
-    paramsObj.sort = param; // TODO: add search param to object
+    paramsObj.pathName = window.location.pathname.replace(/\//g, ""); // add pathName/category to obj
 
+    var searchParams = new URLSearchParams(window.location.search);
+    var param = searchParams.get('sort'); // add sort to obj
+
+    paramsObj.sort = param;
     ajaxFunc(paramsObj);
   }; // remove data -> show loader -> show new data
 
@@ -231,7 +225,6 @@ $(document).ready(function () {
   }
 
   $('#loader').hide(); // hide loader if no filter has been set
-  // $('#no-match').hide();
 
   $('#filteredCount').hide(); // hide filtered count if no filter has been set
 
@@ -246,7 +239,7 @@ $(document).ready(function () {
       } // contentType: 'application/json; charset=utf-8',
 
     }).done(function (response) {
-      console.log('response from controller', response);
+      // console.log('response from controller', response);
       var paginator = response.paginator.replace(/ajaxFilter/g, response.slug);
       $('#pagination').children().remove();
       $('#pagination').append(paginator); // remove data
@@ -261,7 +254,7 @@ $(document).ready(function () {
       } // redirect to page 1 if no results match
 
 
-      if (response.data.data.length === 0) {
+      if (response.data.length === 0) {
         setGetParameter('page', '1'); // $('#pagination').children().remove();
         // $('#filter-result .row').append(
         //     '<div>' +
@@ -271,23 +264,13 @@ $(document).ready(function () {
       } // count filtered products
 
 
-      $('#filteredCount').text(response.data.total + ' Products found');
-      $('#filteredCount').show();
-      $('#categoryCount').hide(); // load new data
-
-      var _iterator = _createForOfIteratorHelper(response.data.data),
-          _step;
-
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var product = _step.value;
-          $('#filter-result .row').append('<div class="col-md-4">' + '<a href=" ' + product.category_slug + '/' + product.slug + ' ">' + '<figure class="card card-product-grid">' + '<div class="img-wrap">' + (product.path ? '<img src="/storage/' + product.path + '")>' : '<img src="/storage/image-coming-soon.jpg">') + '</div>' + '<figcaption class="info-wrap">' + '<div class="fix-height">' + '<a href="#" class="title"> ' + product.name + ' </a>' + '<p class="artist"> ' + product.artist + '</p>' + '<div class="price-wrap mt-2">' + '<span class="price"> ' + product.price + ' </span>' + '</div>' + '</div>' + '<div class="form-row">' + '<div class="col">' + '<a href="#" class="btn  btn-primary w-100"><span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i></a>' + '</div>' + '<div class="col">' + '<a href="#" class="btn  btn-light"> <i class="fas fa-heart"></i></a>' + '</div>' + '</div>' + '</figcaption>' + '</figure>' + '</a>' + '</div>');
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
+      if (!response.data.total == "undefined") {
+        $('#filteredCount').text(response.data.total + ' Products found');
       }
+
+      $('#filteredCount').show();
+      $('#categoryCount').hide();
+      $('#filter-result .row').html(response.data);
     }).fail(function (err) {
       console.log('error', err);
     });
