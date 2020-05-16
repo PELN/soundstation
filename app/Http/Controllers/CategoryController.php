@@ -34,16 +34,10 @@ class CategoryController extends Controller
             unset($input['pathName']);
 
             $collection = $this->getData($input, $category);
-            
-            // if collection is empty, redirect to page 1
-            if($collection->lastPage() == 1){
-                // return redirect
-            }
 
             $paginator = view('components.pagination', [
                 'input' => $input,
                 'product' => $collection])->render();
-            
             
             if (Request::ajax()) { 
                 return response()->json([
@@ -58,6 +52,7 @@ class CategoryController extends Controller
         }
     }
     
+    // change querystring to query
     protected function getData($queryString, $category) 
     {
         $genreFilter = $queryString['genre'];

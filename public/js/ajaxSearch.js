@@ -108,8 +108,9 @@ $(document).ready(function () {
         if (query == "") {
           $('#searchResults').html("");
         } else {
-          $('#searchResults').fadeIn();
-          $("#searchResults").html(response.output);
+          $('#searchResults').fadeIn(); // render the search-result-box.blade file to header search results 
+
+          $("#searchResults").html(response.searchResults);
         }
       }
     });

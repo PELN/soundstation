@@ -17,9 +17,9 @@ $(document).ready(function() {
                     $('#searchResults').html("");
                 } else {
                     $('#searchResults').fadeIn();  
-                    $("#searchResults").html(response.output);
+                    // render the search-result-box.blade file to header search results 
+                    $("#searchResults").html(response.searchResults);
                 }
-
              }
         });
     });
