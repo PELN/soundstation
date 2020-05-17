@@ -154,7 +154,7 @@
 		
 		<h5>Description</h5>
 		{{-- Split description in lines with regex --}}
-		@foreach ($lines as $line)
+		@foreach ($splitDescLines as $line)
 			<p>{{$line}}</p>
 		@endforeach
 

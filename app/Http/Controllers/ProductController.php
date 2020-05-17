@@ -11,7 +11,6 @@ class ProductController extends Controller
     public function show($category, $slug) 
     {
         $category = Category::where('category_slug', $category)->first();
-        // get product object for view
         $product = Product::where('slug', $slug)->first();
         $genres = $product->genres;
         $subset = $genres->map(function ($genre) {
@@ -19,17 +18,17 @@ class ProductController extends Controller
                 ->only(['genre'])
                 ->all();
         });
-        // dd($subset);
 
         // split lines in description
-		$lines = preg_split('/[\n\r]+/', $product->description->description);
+        $splitDescLines = preg_split('/[\n\r]+/', $product->description->description);
+        
         // get related products for slider (by category and genre)
         $relatedProducts = $this->showRelatedProducts($product, $category, $subset);
 
         return view('pages.product-detail', [
             'category' => $category,
             'product' => $product,
-            'lines' => $lines,
+            'splitDescLines' => $splitDescLines,
             'relatedProducts' => $relatedProducts
         ]);
     }
@@ -37,8 +36,6 @@ class ProductController extends Controller
     // show related products by category and genre of the product being displayed
     protected function showRelatedProducts($product, $category, $genres) 
     {
-        
-
         // find products by category AND genres except the current product
         $products = DB::table('products')
         ->join('categories', 'categories.id', '=', 'products.category_id')
@@ -47,7 +44,6 @@ class ProductController extends Controller
         ->leftJoin('genres', 'genre_product.genre_id', '=', 'genres.id')
         ->where('name', '!=', $product->name)
         ->where('category_slug', $category->category_slug)
-        // dd($products);
         ->where(function($query) use ($genres) {
                 $query->whereIn('genre', $genres);
             });
