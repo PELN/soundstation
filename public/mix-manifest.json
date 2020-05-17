@@ -1,7 +1,4 @@
 {
-    "/js/ajaxFilter.js": "/js/ajaxFilter.js",
-    "/js/ajaxSearch.js": "/js/ajaxSearch.js",
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/css/main.css": "/css/main.css"
+    "/frontend/css/app.css": "/frontend/css/app.css",
+    "/frontend/css/base.css": "/frontend/css/base.css"
 }

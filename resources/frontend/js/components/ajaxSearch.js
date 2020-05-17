@@ -9,7 +9,7 @@ $(document).ready(function() {
             url: 'ajaxSearch',
             data: { query: $('#txtSearch').val() },
             success: function(response) {
-                console.log(response);
+                // console.log(response);
                 if( query == "" ) {
                     $('#searchResults').html("");
                 } else {

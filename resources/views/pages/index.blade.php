@@ -6,7 +6,7 @@
 <!-- ========================= SECTION INTRO ========================= -->
 <section class="section-intro">
 	<div class="intro-banner-wrap">
-		<img src="/frontend/images/banners/banner-request.jpg" class="w-100 img-fluid">
+		<img src="{{ asset('storage/banner-request.jpg') }}" class="w-100 img-fluid">
 	</div>
 </section>
 <!-- ========================= SECTION INTRO END// ========================= -->

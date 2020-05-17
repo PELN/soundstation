@@ -5,8 +5,6 @@ if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
 
 use Illuminate\Support\Facades\Route;
 
-require 'admin.php';
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
