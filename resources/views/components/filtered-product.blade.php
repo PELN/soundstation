@@ -37,6 +37,6 @@
 
 @else 
 
-    <h2>No products matches :(((</h2>
+    <h2>No products match :(((</h2>
 
 @endif

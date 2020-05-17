@@ -1,29 +1,60 @@
 <?php
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
-use App\Models\Image;
+// use App\Models\Image;
+use DB;
 
 class ProductController extends Controller
 {
-    public function show($category, $slug) {
-
+    public function show($category, $slug) 
+    {
         $category = Category::where('category_slug', $category)->first();
-        
-        // $mightAlsoLike = Product::where('slug', '=', $slug)->mightAlsoLike()->get();
-        
         // get product object for view
         $product = Product::where('slug', $slug)->first();
+        $genres = $product->genres;
+        $subset = $genres->map(function ($genre) {
+            return collect($genre->toArray())
+                ->only(['genre'])
+                ->all();
+        });
+        // dd($subset);
 
         // split lines in description
 		$lines = preg_split('/[\n\r]+/', $product->description->description);
+        // get related products for slider (by category and genre)
+        $relatedProducts = $this->showRelatedProducts($product, $category, $subset);
 
         return view('pages.product-detail', [
             'category' => $category,
             'product' => $product,
-            // 'mightAlsoLike' => $mightAlsoLike,
-            'lines' => $lines
+            'lines' => $lines,
+            'relatedProducts' => $relatedProducts
         ]);
     }
+
+    // show related products by category and genre of the product being displayed
+    protected function showRelatedProducts($product, $category, $genres) 
+    {
+        
+
+        // find products by category AND genres except the current product
+        $products = DB::table('products')
+        ->join('categories', 'categories.id', '=', 'products.category_id')
+        ->leftJoin('images', 'images.product_id', '=', 'products.id')
+        ->leftJoin('genre_product', 'products.id', '=', 'genre_product.product_id')
+        ->leftJoin('genres', 'genre_product.genre_id', '=', 'genres.id')
+        ->where('name', '!=', $product->name)
+        ->where('category_slug', $category->category_slug)
+        // dd($products);
+        ->where(function($query) use ($genres) {
+                $query->whereIn('genre', $genres);
+            });
+        $collection = $products->groupby('products.id')
+        ->get();
+        
+        return $collection;
+    }
+
 }

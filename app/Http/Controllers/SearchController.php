@@ -26,7 +26,7 @@ class SearchController extends Controller
 
     public function ajaxSearch(Request $request)
     {  
-        try{
+        // try{
             $input = Request::all();
             $query = $input['query'];
 
@@ -45,9 +45,9 @@ class SearchController extends Controller
                     'searchResults' => $searchResults
                 ]);
             }
-        }  catch (Exception $e){
-            abort(404);
-        }
+        // }  catch (Exception $e){
+        //     abort(404);
+        // }
     }
 
     protected function searchProducts($query) 

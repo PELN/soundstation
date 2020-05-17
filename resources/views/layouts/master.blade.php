@@ -7,11 +7,11 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/bootstrap.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/responsive.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/ui.css') }}" />
-    
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"/>
-{{--     
+    <!-- plugin: slickslider -->
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/slickslider/slick-theme.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/slickslider/slick.css') }}" />
+{{--     
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/fancybox.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/prism.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/assets/owl.carousel.css') }}" />
@@ -51,5 +51,10 @@
     <script src="{{ asset('frontend/plugins/owl.carousel.min.js') }}"></script> --}}
 
     <script src="{{ asset('js/app.js') }}"></script>
+
+    <!-- plugin: slickslider -->
+    <script type="text/javascript" src="{{ asset('frontend/plugins/slickslider/slick.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontend/plugins/slickslider/slick-slider.js') }}"></script>
+
 </body>
 </html>
