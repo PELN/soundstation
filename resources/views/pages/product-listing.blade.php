@@ -130,6 +130,7 @@
 				<div id="filter-result">
 					<div id="loader">
 						<h2>LOADING....</h2>
+						<img src="{{ asset('storage/loader.gif') }}">
 					</div>
 					<div class="row"></div>
 				</div>
@@ -143,9 +144,9 @@
 								<div class="img-wrap">
 									<!-- <span class="badge badge-danger"> NEW </span> -->
 									@if($product->path)
-										<img src="{{ asset('storage/'.$product->path) }}">
+										<img src="{{ asset('storage/product-images/'.$product->path) }}">
 									@else
-										<img src="{{ asset('storage/image-coming-soon.jpg') }}">
+										<img src="{{ asset('storage/product-images/image-coming-soon.jpg') }}">
 									@endforelse
 								</div> <!-- img-wrap.// -->
 								<figcaption class="info-wrap">

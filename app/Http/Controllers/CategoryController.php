@@ -99,7 +99,7 @@ class CategoryController extends Controller
         
         $collection = $products->orderBy('products.created_at', 'DESC')
         ->groupby('products.id')
-        ->paginate(3);
+        ->paginate(9);
         // ->get();
 
         return $collection;

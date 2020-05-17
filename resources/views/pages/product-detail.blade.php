@@ -32,16 +32,16 @@
 				@forelse ($product->images as $image)
 					@if($loop->first)
 						<div class="img-big-wrap">
-							<a href="#"><img src="{{ asset('storage/'.$image->path) }}"></a>
+							<a href="#"><img src="{{ asset('storage/product-images/'.$image->path) }}"></a>
 						</div> <!-- img-big-wrap.// -->
 					@else
 						<div class="thumbs-wrap">
-							<a href="#" class="item-thumb"> <img width="152px;" src="{{ asset('storage/'.$image->path) }}"></a>
+							<a href="#" class="item-thumb"> <img width="152px;" src="{{ asset('storage/product-images/'.$image->path) }}"></a>
 						</div> <!-- thumbs-wrap.// -->
 					@endif
 				@empty
 					<div class="img-big-wrap">
-						<a href="#"><img src="{{ asset('storage/image-coming-soon.jpg') }}"></a>
+						<a href="#"><img src="{{ asset('storage/product-images/image-coming-soon.jpg') }}"></a>
 					</div> <!-- img-big-wrap.// -->
 				@endforelse
 			</article> <!-- gallery-wrap .end// -->
@@ -180,9 +180,9 @@
 							<div class="img-wrap">
 								<!-- <span class="badge badge-danger"> NEW </span> -->
 								@if($product->path)
-									<img src="{{ asset('storage/'.$product->path) }}">
+									<img src="{{ asset('storage/product-images/'.$product->path) }}">
 								@else
-									<img src="{{ asset('storage/image-coming-soon.jpg') }}">
+									<img src="{{ asset('storage/product-images/image-coming-soon.jpg') }}">
 								@endforelse
 							</div> <!-- img-wrap.// -->
 							<figcaption class="info-wrap">
