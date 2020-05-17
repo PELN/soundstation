@@ -88,16 +88,17 @@ class CategoryController extends Controller
         'images.path', 'categories.category', 'categories.category_slug', 'genres.genre', 'artists.artist']);
 
         if ($sort == 'newest'){
-            $products->orderBy('products.created_at', 'ASC');
-        } else if ($sort == 'oldest'){
             $products->orderBy('products.created_at', 'DESC');
+        } else if ($sort == 'oldest'){
+            $products->orderBy('products.created_at', 'ASC');
         } else if ($sort == 'price-low') {
             $products->orderBy('products.price', 'ASC');
         } else if ($sort == 'price-high') {
             $products->orderBy('products.price', 'DESC');
         }
         
-        $collection = $products->groupby('products.id')
+        $collection = $products->orderBy('products.created_at', 'DESC')
+        ->groupby('products.id')
         ->paginate(3);
         // ->get();
 
