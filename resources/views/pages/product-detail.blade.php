@@ -5,9 +5,9 @@
 
 <section class="section-content padding-y bg">
 <div class="container">
-
 @if(count($product) == 0)
-	<h1>SORRY, NO PRODUCT FOUND</h1>
+	<h2>Product was not found</h2>
+	<a href="/">Go to Homepage</a>
 @else
 
 <!-- ========================= SECTION PAGETOP ========================= -->

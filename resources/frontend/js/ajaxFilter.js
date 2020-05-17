@@ -1,7 +1,6 @@
 // require('../../js/bootstrap');
 
-// $(document).ready(function() {
-
+$(document).ready(function() {
     $('.genre').click(function(){
         // if checked, add to genres
         const genres = [];
@@ -139,29 +138,19 @@
             removeProducts();
             $("#loader").hide();
 
+            
             if(response.data.length === 0){
-                $('#all-products').show();
+                $('#all-products').show(); // show deafult products
+                setGetParameter('page', '1'); // redirect to page 1 if no results match
             } else {
                 $('#all-products').hide();
-            }
+            };
 
-            // redirect to page 1 if no results match
-            if(response.data.length === 0) {
-                setGetParameter('page', '1');
-                // $('#pagination').children().remove();
-                // $('#filter-result .row').append(
-                //     '<div>' +
-                //         '<h1>No results match</h1>' +
-                //     '</div>'
-                // )
-            }
-            
             // count filtered products
             $('#filteredCount').text(response.collection.total + ' Products found');
             $('#filteredCount').show();
             $('#categoryCount').hide();
 
-            // TODO: FIX - why does it refresh page on clicks?
             $('#filter-result .row').html(response.data); // render data in product-listing blade
             
         }).fail(function (err) {
@@ -225,5 +214,5 @@
             history.replaceState({path:removeParam}, '', removeParam);
         };
     };
-// });
+});
 

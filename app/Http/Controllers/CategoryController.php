@@ -36,10 +36,10 @@ class CategoryController extends Controller
             'input' => $input,
             'product' => $collection])->render();
         
-        $products = view('components.product', [
+        $products = view('components.filtered-product', [
             'products' => $collection])->render();
 
-        if (Request::ajax()) { 
+        if (Request::ajax()) {
             return response()->json([
                 'data' => $products,
                 'paginator' => $paginator,

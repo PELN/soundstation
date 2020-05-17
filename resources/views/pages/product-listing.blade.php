@@ -4,7 +4,12 @@
 @section('content')
 
 @if(count($category) == 0)
-	<h1>SORRY, NO PRODUCTS FOUND</h1>
+<section class="section-content padding-y bg">
+	<div class="container">
+		<h1>Page does not exist</h1>
+		<a href="/">Go to Homepage</a>
+	</div>
+</section>
 @else
 
 <!-- ========================= SECTION PAGETOP ========================= -->

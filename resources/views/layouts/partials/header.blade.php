@@ -36,14 +36,16 @@
 	</div>
 
 	<div class="col-lg-6 col-12 col-sm-12">
-		<div class="input-group w-100">
-			<input type="text" id="txtSearch" class="form-control" placeholder="Search">
-			<div class="input-group-append">
-				<button class="btn btn-primary" id="searchBtn" type="submit">
-				<i class="fa fa-search"></i>
-				</button>
+		{{-- <form> --}}
+			<div class="input-group w-100">
+				<input type="text" id="txtSearch" class="form-control" placeholder="Search" minlength="2" maxlength="50">
+				<div class="input-group-append">
+					<button class="btn btn-primary" id="searchBtn" type="submit">
+					<i class="fa fa-search"></i>
+					</button>
+				</div>
 			</div>
-		</div>
+		{{-- </form> --}}
 		<div id="searchResults"></div>
 	</div> <!-- col.// -->
 

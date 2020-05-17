@@ -25,23 +25,28 @@ class SearchController extends Controller
     }
 
     public function ajaxSearch(Request $request)
-    {
-        // TODO : VALIDATE INPUT FIELD?!?!?
-        $input = Request::all();
-        $query = $input['query'];
-        
-        $products = $this->searchProducts($query);
-        $artists = $this->searchArtists($query);
+    {  
+        try{
+            $input = Request::all();
+            $query = $input['query'];
 
-        $searchResults = view('components.search-result-box', [
-            'products' => $products,
-            'artists' => $artists,
-            'query' => $query])->render();
+            // TODO : SANITIZE INPUT FIELD?
 
-        if (Request::ajax()) { 
-            return response()->json([
-                'searchResults' => $searchResults
-            ]);
+            $products = $this->searchProducts($query);
+            $artists = $this->searchArtists($query);
+
+            $searchResults = view('components.search-result-box', [
+                'products' => $products,
+                'artists' => $artists,
+                'query' => $query])->render();
+
+            if (Request::ajax()) { 
+                return response()->json([
+                    'searchResults' => $searchResults
+                ]);
+            }
+        }  catch (Exception $e){
+            abort(404);
         }
     }
 
