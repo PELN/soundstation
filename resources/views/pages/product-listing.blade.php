@@ -126,11 +126,10 @@
 					</div>
 				</header><!-- sect-heading -->
 
-
 				<div id="filter-result">
 					<div id="loader">
-						<h2>LOADING....</h2>
-						<img src="{{ asset('storage/loader.gif') }}">
+						<img style="width:60%; z-index: 999; position: relative;" src="{{ asset('storage/loader.gif') }}">
+						{{-- <h4>LOADING....</h4> --}}
 					</div>
 					<div class="row"></div>
 				</div>
