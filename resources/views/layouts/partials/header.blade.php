@@ -21,6 +21,14 @@
 				<li><a class="dropdown-item" href="#">French </a></li>
 		    </ul>
 		</li>
+
+		<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+			Logout
+		</a>
+		<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+			{{ csrf_field() }}
+		</form>
+
 	</ul> <!-- list-inline //  -->
   </div> <!-- navbar-collapse .// -->
 </div> <!-- container //  -->
@@ -56,8 +64,8 @@
 				<div class="text">
 					<!-- <span class="text-muted">Welcome!</span> -->
 					<div> 
-						<a href="#">Sign in</a>
-						<!--  |  <a href="#"> Register</a> -->
+						<a href="/login">Sign in</a>
+						{{-- |  <a href="/register"> Register</a> --}}
 					</div>
 				</div>
             </div>

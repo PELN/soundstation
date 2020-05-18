@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
-    
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/bootstrap.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/responsive.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/ui.css') }}" />
-
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"/>
     
     <!-- plugin: slickslider -->
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/slickslider/slick-theme.css') }}" />
@@ -22,6 +23,9 @@
 
     <!-- Font awesome 5 -->
     <!-- <link href="fonts/fontawesome/css/all.min.css" type="text/css" rel="stylesheet"> -->
+    
+    {{-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"/> --}}
+
 </head>
 <body>
     @include('layouts.partials.header')
@@ -30,14 +34,15 @@
     </main>
     @include('layouts.partials.footer')
 
+    <!-- Scripts -->
     <script src="{{ asset('frontend/js/bootstrap-ecommerce/jquery-2.0.0.min.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap-ecommerce/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap-ecommerce/script.js') }}"></script>
     <script src="{{ asset('frontend/js/components/ajaxFilter.js') }}"></script>
     <script src="{{ asset('frontend/js/components/ajaxSearch.js') }}"></script>
-    <script src="{{ asset('frontend/js/app.js') }}"></script>
+    <script src="{{ mix('frontend/js/app.js') }}"></script>
 
-    <!-- plugin: slickslider -->
+    <!-- Plugin: slickslider -->
     <script type="text/javascript" src="{{ asset('frontend/plugins/slickslider/slick.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('frontend/plugins/slickslider/slick-slider.js') }}"></script>
 

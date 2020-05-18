@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/', 'PagesController@index')->name('pages.index');
 Route::get('/about', 'PagesController@about')->name('pages.about');
 Route::get('/cart', 'PagesController@cart')->name('pages.cart');
@@ -28,6 +31,3 @@ Route::get('/{slug}', 'CategoryController@show')->name('category.show')->where('
 
 Route::get('{category}/ajaxSearch', 'SearchController@ajaxSearch')->name('search.ajaxSearch');
 Route::get('/{category}/{slug}', 'ProductController@show')->name('product.show');
-
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
