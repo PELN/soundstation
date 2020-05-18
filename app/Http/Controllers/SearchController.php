@@ -18,7 +18,7 @@ class SearchController extends Controller
             'input' => $input,
             'product' => $products])->render();
 
-        return view('pages.search-result-page', [
+        return view('pages.search_result_page', [
             'products' => $products,
             'query' => $query
         ]);
@@ -35,7 +35,7 @@ class SearchController extends Controller
             $products = $this->searchProducts($query);
             $artists = $this->searchArtists($query);
 
-            $searchResults = view('components.search-result-box', [
+            $searchResults = view('components.search_result_box', [
                 'products' => $products,
                 'artists' => $artists,
                 'query' => $query])->render();

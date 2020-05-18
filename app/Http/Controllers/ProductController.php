@@ -25,7 +25,7 @@ class ProductController extends Controller
         // get related products for slider (by category and genre)
         $relatedProducts = $this->showRelatedProducts($product, $category, $subset);
 
-        return view('pages.product-detail', [
+        return view('pages.product_detail', [
             'category' => $category,
             'product' => $product,
             'splitDescLines' => $splitDescLines,

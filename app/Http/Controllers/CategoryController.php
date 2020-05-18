@@ -16,7 +16,7 @@ class CategoryController extends Controller
 
         $products = $this->getData($input, $slug);
         
-        return view('pages.product-listing', [
+        return view('pages.product_listing', [
             'input' => $input,
             'category' => $category,
             'genres' => $genres,
@@ -36,7 +36,7 @@ class CategoryController extends Controller
             'input' => $input,
             'product' => $collection])->render();
         
-        $products = view('components.filtered-product', [
+        $products = view('components.filtered_product', [
             'products' => $collection])->render();
 
         if (Request::ajax()) {
