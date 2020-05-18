@@ -11,6 +11,7 @@
 </section>
 <!-- ========================= SECTION INTRO END// ========================= -->
 
+@include('layouts.partials.session_msg')
 
 <!-- ========================= SECTION SPECIAL ========================= -->
 <section class="section-specials padding-y border-bottom">

@@ -24,6 +24,8 @@
 </section>
 <!-- ========================= SECTION INTRO END// ========================= -->
 
+@include('layouts.partials.session_msg')
+
 <!-- ============================ COMPONENT 2 ================================= -->
 <div class="card">
 	<div class="row no-gutters">

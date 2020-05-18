@@ -3,6 +3,9 @@
 
 @section('content')
 <section class="section-content padding-y">
+
+    @include('layouts.partials.session_msg')
+
 	<div class="container">
         @if (count($products) > 0 || count($artists) > 0)
             <h2>Search results for "{{$query}}"</h2>

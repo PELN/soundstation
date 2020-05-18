@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Validator;
+use Redirect;
+
 
 class CartController extends Controller
 {
@@ -28,13 +30,14 @@ class CartController extends Controller
                 'artist' => $request->artist
             )
         ));
-        return redirect()->route('cart.index')->with('success_msg', 'Product was added to cart');
+        
+        return Redirect::back()->with('success_msg', 'Product was added to cart');
     }
 
     // Remove product from cart
     public function remove(Request $request){
         \Cart::remove($request->id);
-        return redirect()->route('cart.index')->with('success_msg', 'Product was removed from cart');
+        return Redirect::back()->with('success_msg', 'Product was removed from cart');
     }
 
     // Update quantity of product in cart
@@ -46,13 +49,13 @@ class CartController extends Controller
                     'value' => $request->quantity
                 ),
         ));
-        return redirect()->route('cart.index')->with('success_msg', 'Cart was updated');
+        return Redirect::back()->with('success_msg', 'Cart was updated');
     }
 
     // Clear all products in cart
     public function clear(){
         \Cart::clear();
-        return redirect()->route('cart')->with('success_msg', 'Cart was cleared');
+        return Redirect::back()->with('success_msg', 'Cart was cleared');
     }
 
 }

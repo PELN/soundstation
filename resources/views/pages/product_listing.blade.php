@@ -29,6 +29,8 @@
 </section>
 <!-- ========================= SECTION INTRO END// ========================= -->
 
+@include('layouts.partials.session_msg')
+
 {{-- @if(request()->slug === 'autographs' || request()->slug === 'record-awards' || request()->slug === 'posters-postcards-artwork' || request()->slug === 'tour-programmes-folders-books' || request()->slug === 'mischellaneous') --}}
 	{{-- @foreach($categories as $category)
 		@if($category->items->count() > 0)
