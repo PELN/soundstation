@@ -109,7 +109,7 @@
 								</a>
 								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="width: 450px; padding: 0px; border-color: #9DA0A2">
 									<ul class="list-group" style="margin: 20px;">
-										@include('layouts.partials.cart_dropdown')
+										@include('components.cart_dropdown')
 									</ul>
 								</div>
 							</li>

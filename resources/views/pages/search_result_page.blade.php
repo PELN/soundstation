@@ -30,15 +30,31 @@
                                                 {{-- <del class="price-old">$1980</del> --}}
                                             </div> <!-- price-wrap.// -->
                                         </div>
-                                        {{-- <a href="#" class="btn btn-block btn-primary">Add to cart </a> --}}
                                         <div class="form-row">
-                                            <div class="col">
-                                                <a href="#" class="btn  btn-primary w-100"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </a>
-                                            </div> <!-- col.// -->
-                                            <div class="col">
-                                                <a href="#" class="btn  btn-light"> <i class="fas fa-heart"></i></a>
-                                            </div> <!-- col.// -->
-                                        </div> <!-- form row.// -->
+											<div class="col">
+												<form action="{{ route('cart.store') }}" method="POST">
+													{{ csrf_field() }}
+													<input type="hidden" value="{{ $product->id }}" id="id" name="id">
+													<input type="hidden" value="{{ $product->name }}" id="name" name="name">
+													<input type="hidden" value="{{ $product->artist }}" id="artist" name="artist">
+													<input type="hidden" value="{{ $product->price }}" id="price" name="price">
+													<input type="hidden" value="{{ $product->path }}" id="path" name="path">
+													<input type="hidden" value="{{ $product->slug }}" id="slug" name="slug">
+													<input type="hidden" value="{{ $product->category_slug }}" id="category_slug" name="category_slug">
+													<input type="hidden" value="1" class="quantity" name="quantity">
+													<div class="card-footer" style="background-color: white;">
+														<div class="row">
+															<button class="btn btn-secondary btn-sm" title="add to cart">
+																<i class="fa fa-shopping-cart"></i> add to cart
+															</button>
+															<div class="col">
+																<a href="#" class="btn btn-light"> <i class="fas fa-heart"></i></a>
+															</div>
+														</div>
+													</div>
+												</form>
+											</div> <!-- col.// -->
+										</div> <!-- form row.// -->
                                     </figcaption>
                                 </figure>
                                 </a>

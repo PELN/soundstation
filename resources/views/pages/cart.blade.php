@@ -52,7 +52,7 @@
         <h4>{{ \Cart::getTotalQuantity()}} Product(s) In Your Cart</h4><br>
         @else
             <h4>No Product(s) In Your Cart</h4><br>
-            <a href="/" class="btn btn-dark">Continue Shopping</a>
+            {{-- <a href="/" class="btn btn-dark">Continue Shopping</a> --}}
         @endif
 
         <div class="row">
@@ -128,22 +128,24 @@
                         </table>
                     @endforeach
 
-                    <div class="card-body border-top">
-                        <div class="card-body">
-                            <form>
-                                <div class="form-group">
-                                    <label>Have coupon?</label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" name="" placeholder="Coupon code">
-                                        <span class="input-group-append"> 
-                                            <button class="btn btn-primary">Apply</button>
-                                        </span>
+                    <hr>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="card-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label>Have coupon?</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" name="" placeholder="Coupon code">
+                                            <span class="input-group-append"> 
+                                                <button class="btn btn-primary">Apply</button>
+                                            </span>
+                                        </div>
                                     </div>
-                                </div>
-                            </form>
+                                </form>
                             </div> <!-- card-body.// -->
-                        </div>  <!-- card .// -->
-                        <div class="card">
+                        </div>
+                        <div class="col-6">
                             <div class="card-body">
                                 @if(count($cartCollection)>0)
                                     <dl class="dlist-align">
@@ -159,18 +161,16 @@
                                         <dd class="text-right  h5"><strong>DKK {{ \Cart::getTotal() }}</strong></dd>
                                     </dl>
                                     <hr>
-                                    {{-- <p class="text-center mb-3">
-                                        <img src="images/misc/payments.png" height="26">
-                                    </p> --}}
                                 @endif
                             </div> <!-- card-body.// -->
-                        </div>  <!-- card .// -->
-                    
+                        </div>
+                    </div>
+
                     </div>
 
                     <div class="card-body">
                         <a href="#" class="btn btn-primary float-md-right"> Go to checkout <i class="fa fa-chevron-right"></i> </a>
-                        <a href="#" class="btn btn-light"> <i class="fa fa-chevron-left"></i> Continue shopping </a>
+                        <a href="#" class="btn btn-ligh float-md-left"> <i class="fa fa-chevron-left"></i> Continue shopping </a>
                     </div>
 
                 </div> <!-- card.// -->
@@ -180,15 +180,10 @@
             </div>
 
             </main> <!-- col.// -->
-
-
         </div> <!-- row .//  -->
-
     </div> <!-- container .//  -->
 </section>
 <!-- ========================= SECTION CONTENT END// ========================= -->
-
-
 
 
 <!-- ========================= SECTION  ========================= -->
@@ -210,11 +205,6 @@
     </div><!-- container // -->
 </section>
 <!-- ========================= SECTION  END// ========================= -->
-
-
-
-
-
 
 
 @endsection

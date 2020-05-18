@@ -7,12 +7,14 @@ use Validator;
 
 class CartController extends Controller
 {
+    // Show all products in cart
     public function cart()  {
         $cartCollection = \Cart::getContent();
         // dd($cartCollection);
-        return view('pages.cart')->withTitle('E-COMMERCE STORE | CART')->with(['cartCollection' => $cartCollection]);;
+        return view('pages.cart')->with(['cartCollection' => $cartCollection]);
     }
-
+    
+    // Add product to cart 
     public function add(Request $request){
         \Cart::add(array(
             'id' => $request->id,
@@ -29,11 +31,13 @@ class CartController extends Controller
         return redirect()->route('cart.index')->with('success_msg', 'Product was added to cart');
     }
 
+    // Remove product from cart
     public function remove(Request $request){
         \Cart::remove($request->id);
         return redirect()->route('cart.index')->with('success_msg', 'Product was removed from cart');
     }
 
+    // Update quantity of product in cart
     public function update(Request $request){
         \Cart::update($request->id,
             array(
@@ -43,6 +47,12 @@ class CartController extends Controller
                 ),
         ));
         return redirect()->route('cart.index')->with('success_msg', 'Cart was updated');
+    }
+
+    // Clear all products in cart
+    public function clear(){
+        \Cart::clear();
+        return redirect()->route('cart')->with('success_msg', 'Cart was cleared');
     }
 
 }

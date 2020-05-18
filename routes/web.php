@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 // Route::middleware(['IsAdmin'])->prefix('admin')->name('admin')->group(function() {
-    
+
 // });
 
 Route::get('/admin/home', 'HomeController@adminHome')->name('admin.home')->middleware('is_admin');
@@ -26,7 +26,6 @@ Route::get('/home', 'HomeController@userHome')->name('home');
 
 Route::get('/', 'PagesController@index')->name('pages.index');
 Route::get('/about', 'PagesController@about')->name('pages.about');
-// Route::get('/cart', 'PagesController@cart')->name('pages.cart');
 
 Route::get('/cart', 'CartController@cart')->name('cart.index');
 Route::post('/add', 'CartController@add')->name('cart.store');
