@@ -95,8 +95,25 @@
 						<a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-heart"></i></a>
 					</div>
 					<div class="widget-header mr-3">
-						<a href="/cart" class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></a>
-						<span class="badge badge-pill badge-danger notify">0</span>
+						{{-- <a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></a>
+						<span class="badge badge-pill badge-danger notify">0</span> --}}
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item dropdown">
+								<a id="navbarDropdown" class="nav-link"
+								   href="#" role="button" data-toggle="dropdown"
+								   aria-haspopup="true" aria-expanded="false"> 
+								   {{-- removed class dropdown-toggle after nav-link --}}
+								   	<span class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i> 
+									<span class="badge badge-pill badge-danger notify">{{ \Cart::getTotalQuantity()}}</span>
+									</span>
+								</a>
+								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="width: 450px; padding: 0px; border-color: #9DA0A2">
+									<ul class="list-group" style="margin: 20px;">
+										@include('layouts.partials.cart_dropdown')
+									</ul>
+								</div>
+							</li>
+						</ul>
 					</div>
 				</div> <!-- widgets-wrap.// -->
 			</div> <!-- col.// -->

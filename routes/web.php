@@ -17,12 +17,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-Route::get('admin/home', 'HomeController@adminHome')->name('admin.home')->middleware('is_admin');
+// Route::middleware(['IsAdmin'])->prefix('admin')->name('admin')->group(function() {
+    
+// });
+
+Route::get('/admin/home', 'HomeController@adminHome')->name('admin.home')->middleware('is_admin');
 Route::get('/home', 'HomeController@userHome')->name('home');
 
 Route::get('/', 'PagesController@index')->name('pages.index');
 Route::get('/about', 'PagesController@about')->name('pages.about');
-Route::get('/cart', 'PagesController@cart')->name('pages.cart');
+// Route::get('/cart', 'PagesController@cart')->name('pages.cart');
+
+Route::get('/cart', 'CartController@cart')->name('cart.index');
+Route::post('/add', 'CartController@add')->name('cart.store');
+Route::post('/update', 'CartController@update')->name('cart.update');
+Route::post('/remove', 'CartController@remove')->name('cart.remove');
+Route::post('/clear', 'CartController@clear')->name('cart.clear');
 
 Route::get('/ajaxSearch', 'SearchController@ajaxSearch')->name('search.ajaxSearch');
 Route::get('/search-result-page', 'SearchController@index')->name('search.index');
@@ -32,3 +42,4 @@ Route::get('/{slug}', 'CategoryController@show')->name('category.show')->where('
 
 Route::get('{category}/ajaxSearch', 'SearchController@ajaxSearch')->name('search.ajaxSearch');
 Route::get('/{category}/{slug}', 'ProductController@show')->name('product.show');
+

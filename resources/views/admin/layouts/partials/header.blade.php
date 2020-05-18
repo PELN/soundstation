@@ -1,19 +1,3 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title')</title>
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- Styles -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/bootstrap.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/responsive.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/ui.css') }}" />
-    <link rel="stylesheet" href="{{ mix('frontend/css/app.css') }}">    
-    <script src="https://kit.fontawesome.com/f5a4073c65.js" crossorigin="anonymous"></script>
-</head>
-<body>
 <header class="section-header">
     <section class="header-main border-bottom">
         <div class="container">
@@ -89,51 +73,3 @@
         </div> <!-- container.// -->
     </section> <!-- header-main .// -->
 </header> <!-- section-header.// -->
-
-<!-- ========================= SECTION PAGETOP ========================= -->
-<section class="section-pagetop bg">
-    <div class="container">
-        <h2 class="title-page text-secondary">Admin Dashboard</h2>
-    </div> <!-- container //  -->
-</section>
-<!-- ========================= SECTION INTRO END// ========================= -->
-    
-<!-- ========================= SECTION CONTENT ========================= -->
-<section class="section-content padding-y">
-    <div class="container">
-        <div class="row">
-            <aside class="col-md-3">
-                <ul class="list-group">
-                    <a class="list-group-item active" href="#"> Products </a>
-                    <a class="list-group-item" href="#"> Orders </a>
-                    <a class="list-group-item" href="#"> Returns </a>
-                    <a class="list-group-item" href="#"> Mail list </a>
-                    <a class="list-group-item" href="#"> Settings </a>
-                </ul>
-            </aside> <!-- col.// -->
-            <main class="col-md-9">
-                <article class="card  mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title mb-4"> Product management</h5>	
-                        <div class="row">
-                        
-
-
-
-                        </div> <!-- row.// -->
-                    </div> <!-- card-body .// -->
-                </article> <!-- card.// -->
-            </main> <!-- col.// -->
-        </div>    
-    </div> <!-- container .//  -->
-</section>
-<!-- ========================= SECTION CONTENT END// ========================= -->
-
- <!-- Scripts -->
- <script src="{{ asset('frontend/js/bootstrap-ecommerce/jquery-2.0.0.min.js') }}"></script>
- <script src="{{ asset('frontend/js/bootstrap-ecommerce/bootstrap.bundle.min.js') }}"></script>
- <script src="{{ asset('frontend/js/bootstrap-ecommerce/script.js') }}"></script>
- <script src="{{ mix('frontend/js/app.js') }}"></script>
-
-</body>
-</html>
