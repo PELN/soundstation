@@ -7,7 +7,7 @@
 <!-- ========================= SECTION PAGETOP ========================= -->
 <section class="section-pagetop bg">
     <div class="container">
-        <h2 class="title-page">My account</h2>
+        <h2 class="title-page text-secondary">My account</h2>
     </div> <!-- container //  -->
 </section>
 <!-- ========================= SECTION INTRO END// ========================= -->
@@ -23,8 +23,6 @@
                     <a class="list-group-item" href="#"> My wishlist </a>
                     <a class="list-group-item" href="#"> Return and refunds </a>
                     <a class="list-group-item" href="#">Settings </a>
-                    <a class="list-group-item" href="#"> My Selling Items </a>
-                    <a class="list-group-item" href="#"> Received orders </a>
                 </ul>
             </aside> <!-- col.// -->
             <main class="col-md-9">
@@ -32,22 +30,22 @@
                 <article class="card mb-3">
                     <div class="card-body">
                         <figure class="icontext">
-                                <div class="icon">
+                                {{-- <div class="icon">
                                     <img class="rounded-circle img-sm border" src="images/avatars/avatar3.jpg">
-                                </div>
+                                </div> --}}
                                 <div class="text">
-                                    <strong> Mr. Jackson Someone </strong> <br> 
-                                    myloginname@gmail.com <br> 
+                                    <strong> {{ Auth::user()->name }} </strong> <br> 
+                                    {{ Auth::user()->email }} <br> 
                                     <a href="#">Edit</a>
                                 </div>
                         </figure>
                         <hr>
-                        <p>
+                        {{-- <p>
                             <i class="fa fa-map-marker text-muted"></i> &nbsp; My address:  
                             <br>
                             Tashkent city, Street name, Building 123, House 321 &nbsp 
                             <a href="#" class="btn-link"> Edit</a>
-                        </p>
+                        </p> --}}
         
                         <article class="card-group">
                             <figure class="card bg">
@@ -66,12 +64,6 @@
                                 <div class="p-3">
                                     <h5 class="card-title">12</h5>
                                     <span>Awaiting delivery</span>
-                                </div>
-                            </figure>
-                            <figure class="card bg">
-                                <div class="p-3">
-                                    <h5 class="card-title">50</h5>
-                                    <span>Delivered items</span>
                                 </div>
                             </figure>
                         </article>

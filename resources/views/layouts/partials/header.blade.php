@@ -75,7 +75,7 @@
 										@if( Auth::user()->is_admin==1 )
 											<a class="dropdown-item" href="{{ route('admin.home') }}">Dashboard</a>
 										@else
-											<a class="dropdown-item" href="{{ route('user.home') }}">Profile</a>
+											<a class="dropdown-item" href="{{ route('home') }}">Profile</a>
 										@endif
 
 										<a class="dropdown-item" href="{{ route('logout') }}"

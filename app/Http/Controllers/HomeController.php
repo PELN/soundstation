@@ -23,7 +23,12 @@ class HomeController extends Controller
      */
     public function userHome()
     {
-        return view('pages.user_home');
+        if(auth()->user()->is_admin == 0){
+            return view('pages.user_home');
+        } else {
+            return redirect('admin/home');
+        }
+
     }
 
     /**
