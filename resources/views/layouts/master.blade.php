@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/slickslider/slick.css') }}" />
 
     <link rel="stylesheet" href="{{ mix('frontend/css/app.css') }}">
-    <link rel="stylesheet" href="{{ mix('frontend/css/base.css') }}">
+    {{-- <link rel="stylesheet" href="{{ mix('frontend/css/base.css') }}"> --}}
     
     <script src="https://kit.fontawesome.com/f5a4073c65.js" crossorigin="anonymous"></script>
 

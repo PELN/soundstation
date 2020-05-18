@@ -18,6 +18,10 @@ class PagesController extends Controller
         return view('pages.about');
     }
 
+    public function cart() {
+        return view('pages.cart');
+    }
+
     protected function getAllProducts()
     {
         $products = DB::table('products')

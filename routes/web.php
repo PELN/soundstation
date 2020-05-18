@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'PagesController@index')->name('pages.index');
 Route::get('/about', 'PagesController@about')->name('pages.about');
+Route::get('/cart', 'PagesController@cart')->name('pages.cart');
 
 Route::get('/ajaxSearch', 'SearchController@ajaxSearch')->name('search.ajaxSearch');
 Route::get('/search-result-page', 'SearchController@index')->name('search.index');
