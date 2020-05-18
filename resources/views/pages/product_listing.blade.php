@@ -174,10 +174,12 @@
 								{{ csrf_field() }}
 								<input type="hidden" value="{{ $product->id }}" id="id" name="id">
 								<input type="hidden" value="{{ $product->name }}" id="name" name="name">
+								<input type="hidden" value="{{ $product->artist }}" id="artist" name="artist">
 								<input type="hidden" value="{{ $product->price }}" id="price" name="price">
-								<input type="hidden" value="{{ $product->path }}" id="img" name="img">
+								<input type="hidden" value="{{ $product->path }}" id="path" name="path">
 								<input type="hidden" value="{{ $product->slug }}" id="slug" name="slug">
-								<input type="hidden" value="1" id="quantity" name="quantity">
+								<input type="hidden" value="{{ $product->category_slug }}" id="category_slug" name="category_slug">
+								<input type="hidden" value="1" class="quantity" name="quantity">
 								<div class="card-footer" style="background-color: white;">
 									<div class="row">
 										<button class="btn btn-secondary btn-sm" class="tooltip-test" title="add to cart">

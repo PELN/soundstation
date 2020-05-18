@@ -25,3 +25,52 @@ $grey-color: gray;
 
 
 
+
+// BREAKPOINTS
+$breakpoint-tablet: 768px;
+
+
+// @media (min-width: 992px) {
+//     .container {
+//         max-width: 960px!important;
+//     }
+// }
+
+// @media (min-width: $breakpoint-tablet) {
+//     .container {
+//         max-width: 800px!important;
+//     }
+// }
+
+// @media (min-width: 576px) {
+//     .container {
+//         max-width: 540px!important;
+//     }
+// }
+
+
+
+
+
+// $grid-columns:      12;
+// $grid-gutter-width: 30px;
+
+// $grid-breakpoints: (
+//   // Extra small screen / phone
+//   xs: 0,
+//   // Small screen / phone
+//   sm: 576px,
+//   // Medium screen / tablet
+//   md: 768px,
+//   // Large screen / desktop
+//   lg: 992px,
+//   // Extra large screen / wide desktop
+//   xl: 1200px
+// );
+
+// $container-max-widths: (
+//   sm: 540px,
+//   md: 720px,
+//   lg: 960px,
+//   xl: 1140px
+// );
