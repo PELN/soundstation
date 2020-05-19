@@ -1,0 +1,53 @@
+.mobile-nav {
+    height: 80px;
+    padding: 0!important;
+}
+
+#navbarUser .dropdown-menu{
+    position: absolute!important;
+}
+
+#navbarBurger {
+    position: relative;
+    top: 0px;
+    background: white;
+    padding: 20px;
+    z-index: 2;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: $breakpoint-small) {
+
+    .cart-menu-mobile {
+        margin-top: 25px;
+    }
+    
+    .mobile-nav.logo {
+        height: 60px;
+        padding-left: 10px;
+    }
+
+    .float-md-right {
+        float: right ;
+    }
+
+
+}
+
+// /* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: $breakpoint-small) {
+
+    .float-md-right {
+        float: right ;
+    }
+
+}
+
+
+@media only screen and (min-width: $breakpoint-medium) {
+
+   #mobile-header{
+       display: none;
+   }
+
+}

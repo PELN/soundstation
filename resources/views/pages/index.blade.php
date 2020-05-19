@@ -3,6 +3,8 @@
 
 @section('content')
 
+@include('layouts.partials.session_msg')
+
 <!-- ========================= SECTION INTRO ========================= -->
 <section class="section-intro">
 	<div class="intro-banner-wrap">
@@ -11,7 +13,6 @@
 				<h1>New, Used and Rare -</h1>
 				<h2>Vinyl, CD’s, DVD’s and Memorabilia</h2>
 				<h3>Since 1991</h3>
-			
 				<div class="row">
 					<a class="btn btn-outline-primary float-left">33 21 40 43</a>
 					<a class="btn btn-outline-primary float-right">info@soundstation.dk</a>
@@ -23,7 +24,6 @@
 </section>
 <!-- ========================= SECTION INTRO END// ========================= -->
 
-@include('layouts.partials.session_msg')
 
 <!-- ========================= SECTION SPECIAL ========================= -->
 <section class="section-specials padding-y border-bottom">
@@ -124,7 +124,7 @@
 														<i class="fa fa-shopping-cart"></i> add to cart
 													</button>
 													<div class="col">
-														<a href="#" class="btn btn-light"> <i class="fas fa-heart"></i></a>
+														<a href="#" class="btn btn-light"> <i class="fa fa-heart-o" aria-hidden="true"></i> </a>
 													</div>
 												</div>
 											</div>

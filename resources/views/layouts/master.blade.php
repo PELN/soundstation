@@ -22,7 +22,7 @@
 
 </head>
 <body>
-    @include('layouts.partials.header')
+    @include('layouts.partials.mobile_header')
     <main>
         @yield('content')
     </main>

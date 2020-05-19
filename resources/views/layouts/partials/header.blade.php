@@ -92,7 +92,7 @@
 						</ul>
 					</div>
 					<div class="widget-header">
-						<a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-heart"></i></a>
+						<a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
 					</div>
 					<div class="widget-header mr-3">
 						{{-- <a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></a>

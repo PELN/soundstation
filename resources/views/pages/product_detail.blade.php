@@ -10,19 +10,21 @@
 	<a href="/">Go to Homepage</a>
 @else
 
-<!-- ========================= SECTION PAGETOP ========================= -->
-<section class="section-pagetop bg">
-	<div class="container">
+<!-- ========================= BREADCRUMBS ========================= -->
+{{-- <section class="section-pagetop bg"> --}}
+	{{-- <div class="container"> --}}
+	<div id="breadcrumb-container">
 		<nav>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="/">Home</a></li>
-			<li class="breadcrumb-item"><a href="{{ URL::to("{$category->category_slug}") }}">{{$category->category}}</a></li>
-			<li class="breadcrumb-item"><a href="{{ URL::to("{$category->category_slug}/{$product->slug}") }}">{{$product->name}}</a></li>
-		</ol>
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="/">Home</a></li>
+				<li class="breadcrumb-item"><a href="{{ URL::to("{$category->category_slug}") }}">{{$category->category}}</a></li>
+				<li class="breadcrumb-item"><a href="{{ URL::to("{$category->category_slug}/{$product->slug}") }}">{{$product->name}}</a></li>
+			</ol>
 		</nav>
-	</div> <!-- container //  -->
-</section>
-<!-- ========================= SECTION INTRO END// ========================= -->
+	</div>
+	{{-- </div> <!-- container //  --> --}}
+{{-- </section> --}}
+<!-- ========================= BREADCRUMBS END// ========================= -->
 
 @include('layouts.partials.session_msg')
 
@@ -89,10 +91,10 @@
 					</div> <!-- col.// -->
 
 					<div class="col">
-						<a href="#" class="btn  btn-primary w-100"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </a>
+						<a href="#" class="btn  btn-green w-100"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </a>
 					</div> <!-- col.// -->
 					<div class="col">
-						<a href="#" class="btn  btn-light"> <i class="fas fa-heart"></i>  </a>
+						<a href="#" class="btn btn-light"> <i class="fa fa-heart-o" aria-hidden="true"></i> </a>
 					</div> <!-- col.// -->
 				</div> <!-- row.// -->
 
@@ -215,7 +217,7 @@
 															<i class="fa fa-shopping-cart"></i> add to cart
 														</button>
 														<div class="col">
-															<a href="#" class="btn btn-light"> <i class="fas fa-heart"></i></a>
+															<a href="#" class="btn btn-light"> <i class="fa fa-heart-o" aria-hidden="true"></i> </a>
 														</div>
 													</div>
 												</div>

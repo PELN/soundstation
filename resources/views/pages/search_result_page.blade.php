@@ -8,7 +8,7 @@
 
 	<div class="container">
         @if (count($products) > 0 || count($artists) > 0)
-            <h2>Search results for "{{$query}}"</h2>
+            <h2 class="title">Search results for "{{$query}}"</h2>
             <p>{{$products->total()}} Products Found</p>
                 <div id="all-results">
                     <div class="row">
@@ -51,7 +51,7 @@
 																<i class="fa fa-shopping-cart"></i> add to cart
 															</button>
 															<div class="col">
-																<a href="#" class="btn btn-light"> <i class="fas fa-heart"></i></a>
+																<a href="#" class="btn btn-light"> <i class="fa fa-heart-o" aria-hidden="true"></i> </a>
 															</div>
 														</div>
 													</div>

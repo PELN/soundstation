@@ -1,14 +1,18 @@
 
-
 // BASE
 @import 'base/base';
 
 // LAYOUTS
-@import 'layouts/header';
-@import 'layouts/footer';
-@import 'layouts/intro-banner';
+@import 'layouts/partials/header';
+@import 'layouts/partials/footer';
+@import 'layouts/partials/mobile-header';
+
+
 
 // COMPONENTS
-@import 'components/breadcrumbs';
+@import 'layouts/breadcrumbs';
 
 
+// PAGES
+@import 'pages/index';
+@import 'pages/product-detail';

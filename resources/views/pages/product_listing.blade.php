@@ -178,7 +178,7 @@
 																<i class="fa fa-shopping-cart"></i> add to cart
 															</button>
 															<div class="col">
-																<a href="#" class="btn btn-light"> <i class="fas fa-heart"></i></a>
+																<a href="#" class="btn btn-light"> <i class="fa fa-heart-o" aria-hidden="true"></i> </a>
 															</div>
 														</div>
 													</div>

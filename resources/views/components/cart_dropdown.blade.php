@@ -2,7 +2,7 @@
     @foreach(\Cart::getContent() as $item)
         <li class="list-group-item">
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-3">
                     <a href="{{ $item->attributes->category_slug }}/{{ $item->attributes->slug }}">
                         @if($item->attributes->path)
                             <img src="{{ asset('storage/product-images/'.$item->attributes->path) }}" class="img-sm" width="200" height="200">
@@ -11,13 +11,13 @@
                         @endforelse
                     </a>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-6">
                     <a href="{{ $item->attributes->category_slug }}/{{ $item->attributes->slug }}"><b>{{$item->name}}</b></a>
                     <br><small>{{$item->attributes->artist}}</small>
                     <br><small>Qty: {{$item->quantity}}</small>
                 </div>
             
-                <div class="col-lg-3">
+                <div class="col-3">
                     <p>DKK {{ \Cart::get($item->id)->getPriceSum() }}</p>
                     <form action="{{ route('cart.remove') }}" method="POST">
                         {{ csrf_field() }}
