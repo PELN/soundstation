@@ -1,3 +1,4 @@
+
 #main-nav {
     width: 85vw;
     display: flex;
@@ -14,15 +15,24 @@
     position: absolute!important;
 }
 
+
+
 @media only screen and (max-width: $breakpoint-medium) {
     #header {
         display: none;
     }
 
-    
-
 }
 
+
+@media only screen and (min-width: $breakpoint-medium) {
+    .notify{
+        top: 2px!important;
+        right: -7px!important;
+    }
+
+    
+}
 
 // TOP NAVBAR
 

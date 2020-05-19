@@ -1,12 +1,12 @@
 <header id="header" class="section-header">
-	<nav class="navbar navbar-light navbar-expand p-0 border-bottom">
+	<nav class="navbar navbar-light navbar-expand p-0 border-bottom ">
 		<div class="container">
 			<ul class="navbar-nav d-none d-md-flex mr-auto">
                 <li class="nav-item">Store opening hours: Mon-Fri: 8-17</li>
 			</ul>
 			<ul class="navbar-nav">
 				<li class="nav-item dropdown">
-                    <li class="nav-item"><a class="nav-link" href="#">About us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">About us</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">FAQ</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Grading guide</a></li>

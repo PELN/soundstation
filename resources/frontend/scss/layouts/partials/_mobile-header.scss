@@ -1,18 +1,46 @@
 .mobile-nav {
-    height: 80px;
+    // height: 80px;
     padding: 0!important;
+    background-color: $white-color;
 }
 
-#navbarUser .dropdown-menu{
+.mobile-nav.logo {
+    height: 60px;
+    padding-left: 10px;
+}
+
+.fa-shopping-cart, .fa-user {
+    color: $grey-color !important;
+}
+
+#navbar-user .dropdown-menu{
     position: absolute!important;
 }
 
-#navbarBurger {
+#navbar-burger {
     position: relative;
     top: 0px;
-    background: white;
+    background: $white-color;
+}
+
+.burger-container {
     padding: 20px;
-    z-index: 2;
+}
+
+.notify{
+    font-size: 55%;
+    position: absolute;
+    top: -5px;
+    right: -7px;
+}
+
+.widget-header {
+    margin-bottom: 0!important;
+}
+
+.search-bar {
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 /* Extra small devices (phones, 600px and down) */
@@ -21,16 +49,10 @@
     .cart-menu-mobile {
         margin-top: 25px;
     }
-    
-    .mobile-nav.logo {
-        height: 60px;
-        padding-left: 10px;
-    }
 
     .float-md-right {
         float: right ;
     }
-
 
 }
 
@@ -44,10 +66,15 @@
 }
 
 
-@media only screen and (min-width: $breakpoint-medium) {
+@media only screen and (min-width: 769px) {
 
-   #mobile-header{
+   #mobile-header {
        display: none;
    }
 
 }
+
+// @media only screen and (max-width: $breakpoint-medium) {
+
+  
+// }
