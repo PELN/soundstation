@@ -22,6 +22,8 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a class="dropdown-item" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <div class="dropdown-divider"></div>
+
                                     @if (Route::has('register'))
                                         <a class="dropdown-item" href="{{ route('register') }}">{{ __('Register') }}</a>
                                     @endif
@@ -39,6 +41,7 @@
                                     @else
                                         <a class="dropdown-item" href="{{ route('home') }}">Profile</a>
                                     @endif
+                                    <div class="dropdown-divider"></div>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
@@ -88,23 +91,26 @@
                 </div>
                 {{-- <div class="search-results"></div> --}}
 
-                <ul class="navbar-nav">
+                <ul id="navbar-category" class="navbar-nav">
                     @foreach($categories as $category)
                         @if($category->items->count() > 0)
-                            <li class="nav-item dropdown">
-                                <a class="nav-link pl-0" data-toggle="dropdown" href="{{ route('category.show', $category->category_slug) }}" 
-                                id="{{ $category->category_slug}}">{{ $category->category }} <i class="fa fa-chevron-down"></i></a>
-                                <div class="dropdown-menu" aria-labelledby="{{ $category->category_slug }}">
+                            <li class="nav-item">
+                                <a class="nav-link pl-0 navbar-toggle collapsed" role="button" data-toggle="collapse" href="{{ route('category.show', $category->category_slug) }}" 
+                                id="{{ $category->category_slug}}" data-target="#category-dropdown">{{ $category->category }} <i class="fa fa-chevron-down"></i></a>
+                                <div id="category-dropdown" class="navbar-nav dropdown-menu collapse" aria-labelledby="{{ $category->category_slug }}">
                                     @foreach($category->items as $item)
                                         <a class="dropdown-item" href="{{ route('category.show', $item->category_slug) }}">{{ $item->category }}</a>
+                                        @if (!$loop->last)
+                                            <div class="dropdown-divider"></div>
+                                        @endif
                                     @endforeach
                                 </div>
                             </li>
-                            @else
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('category.show', $category->category_slug) }}">{{ $category->category }}</a>
-                            </li>
-                            @endif
+                        @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('category.show', $category->category_slug) }}">{{ $category->category }}</a>
+                        </li>
+                        @endif
                     @endforeach
 
                     <li class="nav-item">
@@ -112,18 +118,22 @@
                         <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">FAQ</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Grading guide</a></li>
-                        <a href="#" class="nav-link navbar-toggle collapsed" role="button" data-toggle="collapse" data-target="#navbarLanguage" 
+                        <a href="#" class="nav-link navbar-toggle collapsed" role="button" data-toggle="collapse" data-target="#navbar-language" 
                             aria-expanded="false" aria-controls="navbar"> English <i class="fa fa-chevron-down"></i></a>
-                        <ul id="navbarLanguage" class="navbar-nav dropdown-menu collapse" style="margin:0 padding: 0;">
+                        <ul id="navbar-language" class="navbar-nav dropdown-menu collapse" style="margin:0 padding: 0;">
                             <li><a class="dropdown-item" href="#">Arabic</a></li>
+                            <div class="dropdown-divider"></div>
                             <li><a class="dropdown-item" href="#">Russian </a></li>
+                            <div class="dropdown-divider"></div>
                             <li><a class="dropdown-item" href="#">Danish </a></li>
+                            <div class="dropdown-divider"></div>
                             <li><a class="dropdown-item" href="#">Spanish </a></li>
+                            <div class="dropdown-divider"></div>
                             <li><a class="dropdown-item" href="#">German </a></li>
+                            <div class="dropdown-divider"></div>
                             <li><a class="dropdown-item" href="#">French </a></li>
                         </ul>
                     </li>
-
                 </ul>
             </div>
         </div>
