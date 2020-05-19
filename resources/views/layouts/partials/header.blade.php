@@ -1,5 +1,5 @@
 <header class="section-header">
-	<nav class="navbar navbar-dark navbar-expand p-0 bg-primary">
+	<nav class="navbar navbar-light navbar-expand p-0 border-bottom">
 		<div class="container">
 			<ul class="navbar-nav d-none d-md-flex mr-auto">
 				<li class="nav-item"><a class="nav-link" href="#">Home</a></li>

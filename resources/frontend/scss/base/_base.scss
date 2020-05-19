@@ -1,27 +1,135 @@
 // COLORS
-$font-color: #2ba13f;
+$black-color: #000;
+$white-color: #fff;
+
+$white-smoke-color: #f7f7f7;
+$white-whisper-color: #EFECEC;
+
+$dark-grey-color: #1D1D1D;
+$grey-color: #2F2F2F;
+$medium-grey-color: #494949;
+$light-grey-color: #707070;
+$lighter-grey-color: rgba(0, 0, 0, 0.5);
+
 $primary-color: #FF7700;
-$grey-color: gray;
+
+$green-color: #57A769;
 
 
 // BACKGROUNDS
 .bg-primary {
     background-color: $primary-color!important;
 }
+.bg-secondary {
+    background-color: $white-smoke-color!important;
+}
 
+// TEXT
+
+
+// BUTTONS
+.btn-primary {
+    color: #fff;
+    background-color: $primary-color!important;
+    border-color: $primary-color!important;
+}
+
+.btn-outline-primary {
+    color: $primary-color!important;
+    background-color: transparent;
+    border-color: $primary-color!important;
+}
+.btn-outline-primary:hover {
+    color: $white-color!important;
+    background-color: $primary-color!important;
+    border-color: $primary-color!important;
+}
+
+// FONTS
+
+// MONTSERRAT
+@font-face {
+    font-family: Montserrat-regular;
+    src: url('/frontend/fonts/Montserrat/Montserrat-Regular.ttf');
+}
+@font-face {
+    font-family: Montserrat-thin;
+    src: url('/frontend/fonts/Montserrat/Montserrat-Thin.ttf');
+}
+@font-face {
+    font-family: Montserrat-extra-light;
+    src: url('/frontend/fonts/Montserrat/Montserrat-ExtraLight.ttf');
+}
+@font-face {
+    font-family: Montserrat-light;
+    src: url('/frontend/fonts/Montserrat/Montserrat-Light.ttf');
+}
+
+@font-face {
+    font-family: Montserrat-medium;
+    src: url('/frontend/fonts/Montserrat/Montserrat-Medium.ttf');
+}
+@font-face {
+    font-family: Montserrat-semi-bold;
+    src: url('/frontend/fonts/Montserrat/Montserrat-SemiBold.ttf');
+}
+@font-face {
+    font-family: Montserrat-bold;
+    src: url('/frontend/fonts/Montserrat/Montserrat-Bold.ttf');
+}
+
+
+// HELVETICA NEUE
+@font-face {
+    font-family: HelveticaNeue-light;
+    src: url('/frontend/fonts/HelveticaNeue/HelveticaNeue-LightExt.otf');
+}
+@font-face {
+    font-family: HelveticaNeue-thin;
+    src: url('/frontend/fonts/HelveticaNeue/HelveticaNeue-Thin.otf');
+}
+@font-face {
+    font-family: HelveticaNeue-medium;
+    src: url('/frontend/fonts/HelveticaNeue/HelveticaNeue-Medium.otf');
+}
+@font-face {
+    font-family: HelveticaNeue-bold;
+    src: url('/frontend/fonts/HelveticaNeue/HelveticaNeue-BoldCond.otf');
+}
+
+
+h1{
+    font-family: Montserrat-medium;
+}
+h2, h3 {
+    font-family: Montserrat-light;
+}
+h4, h5 {
+    font-family: Montserrat-medium;
+}
+h2.title {
+    font-family: Montserrat-medium;
+}
 
 // FONT SIZES
 
+// .navbar-light .navbar-nav .nav-link {
+//     font-family: HelveticaNeue-light!important;
+// }
 
+// p {
+//     font-family: HelveticaNeue-light!important;
+// }
 
-
-// TYPOGRAPHY
-
-
+// a {
+//     font-family: HelveticaNeue-light!important;
+// }
 
 
 // ICONS 
-
+.fa .fa-heart {
+    color: $white-color!important;
+}
 
 
 

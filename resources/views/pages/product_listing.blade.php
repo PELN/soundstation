@@ -16,7 +16,7 @@
 <section class="section-pagetop bg">
 	<div class="container">
 		@if($category)
-			<h2>{{$category->category}}</h2>
+			<h2 class="title">{{$category->category}}</h2>
 		@endif
 		<nav>
 		<ol class="breadcrumb">

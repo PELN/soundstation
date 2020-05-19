@@ -6,7 +6,19 @@
 <!-- ========================= SECTION INTRO ========================= -->
 <section class="section-intro">
 	<div class="intro-banner-wrap">
-		<img src="{{ asset('storage/banner-request.jpg') }}" class="w-100 img-fluid">
+		<div class="intro-banner-overlay">
+			<div class="intro-banner-text">
+				<h1>New, Used and Rare -</h1>
+				<h2>Vinyl, CD’s, DVD’s and Memorabilia</h2>
+				<h3>Since 1991</h3>
+			
+				<div class="row">
+					<a class="btn btn-outline-primary float-left">33 21 40 43</a>
+					<a class="btn btn-outline-primary float-right">info@soundstation.dk</a>
+				</div>
+				{{-- <img src="{{ asset('storage/Vinyl-records-player_1600x1200.jpg') }}" class="w-100 img-fluid"> --}}
+			</div>
+		</div>
 	</div>
 </section>
 <!-- ========================= SECTION INTRO END// ========================= -->
