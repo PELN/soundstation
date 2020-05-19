@@ -1,0 +1,26 @@
+.list-group {
+    margin: 10px!important;
+    
+}
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 8px 8px 5px 8px;
+    margin-bottom: -8px;
+    background-color: #fff;
+    border: none;
+}
+
+.cta-button {
+    background-color: $green-color;
+    color: white;
+    &:hover {
+        color: white;
+        background-color: $green-hover-color;
+    }
+}
+
+.cart-menu-desktop {
+    border-color: $border-color!important;
+}

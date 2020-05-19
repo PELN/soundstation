@@ -8,9 +8,10 @@
 @import 'layouts/partials/mobile-header';
 
 
+@import 'layouts/breadcrumbs';
 
 // COMPONENTS
-@import 'layouts/breadcrumbs';
+@import 'components/cart-dropdown';
 
 
 // PAGES

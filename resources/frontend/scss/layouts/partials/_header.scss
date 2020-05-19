@@ -15,7 +15,13 @@
     position: absolute!important;
 }
 
+.dropdown-toggle::after{
+    color: $light-grey-color!important;
+}
 
+.category-dropdown {
+    margin-top: 6px;
+}
 
 @media only screen and (max-width: $breakpoint-medium) {
     #header {
@@ -31,6 +37,10 @@
         right: -7px!important;
     }
 
+    .cart-menu-desktop {
+        margin-top: 8px;
+        width: 300px!important;
+    }
     
 }
 

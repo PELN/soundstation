@@ -46,24 +46,28 @@
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: $breakpoint-small) {
 
-    .cart-menu-mobile {
-        margin-top: 25px;
-    }
-
-    .float-md-right {
-        float: right ;
-    }
 
 }
 
 // /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: $breakpoint-small) {
 
+
+
+}
+
+@media only screen and (max-width: $breakpoint-medium) {
     .float-md-right {
         float: right ;
     }
 
+    .cart-menu-mobile {
+        margin-top: 8px;
+        width: 350px;
+    }
+  
 }
+
 
 
 @media only screen and (min-width: 769px) {
@@ -74,7 +78,3 @@
 
 }
 
-// @media only screen and (max-width: $breakpoint-medium) {
-
-  
-// }

@@ -56,6 +56,7 @@
 									</a>
 									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 										<a class="dropdown-item" href="{{ route('login') }}">{{ __('Login') }}</a>
+										<div class="dropdown-divider"></div>
 										@if (Route::has('register'))
 											<a class="dropdown-item" href="{{ route('register') }}">{{ __('Register') }}</a>
 										@endif
@@ -73,6 +74,7 @@
 											@else
 												<a class="dropdown-item" href="{{ route('home') }}">Profile</a>
 											@endif
+											<div class="dropdown-divider"></div>
 
 											<a class="dropdown-item" href="{{ route('logout') }}"
 											onclick="event.preventDefault();
@@ -103,7 +105,7 @@
 										<span class="badge badge-pill badge-danger notify">{{ \Cart::getTotalQuantity()}}</span>
 										</span>
 									</a>
-									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="width: 450px; padding: 0px; border-color: #9DA0A2">
+									<div class="cart-menu-desktop dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="width: 450px; padding: 0px; border-color: #9DA0A2">
 										<ul class="list-group" style="margin: 20px;">
 											@include('components.cart_dropdown')
 										</ul>
@@ -127,7 +129,7 @@
 								<a class="nav-link" href="{{ route('category.show', $category->category_slug) }}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" v-pre
 								id="{{ $category->category_slug}}">{{ $category->category }} <i class="fa fa-chevron-down"></i></a>
 
-								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="{{ $category->category_slug }}">
+								<div class="category-dropdown dropdown-menu dropdown-menu-right" aria-labelledby="{{ $category->category_slug }}">
 									@foreach($category->items as $item)
 										<a class="dropdown-item" href="{{ route('category.show', $item->category_slug) }}">{{ $item->category }}</a>
 									@endforeach
