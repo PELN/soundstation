@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Validator;
 use Redirect;
 
-
 class CartController extends Controller
 {
     // Show all products in cart

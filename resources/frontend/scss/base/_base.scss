@@ -4,7 +4,6 @@ $primary-color: #FF7700;
 $grey-color: gray;
 
 
-
 // BACKGROUNDS
 .bg-primary {
     background-color: $primary-color!important;
@@ -27,6 +26,7 @@ $grey-color: gray;
 
 
 // BREAKPOINTS
+$breakpoint-mobile: 576px;
 $breakpoint-tablet: 768px;
 
 
@@ -42,12 +42,24 @@ $breakpoint-tablet: 768px;
 //     }
 // }
 
-// @media (min-width: 576px) {
-//     .container {
-//         max-width: 540px!important;
-//     }
-// }
+@media (max-width: $breakpoint-mobile) {
+    .form-inline {
+        justify-content: space-between;
+        margin-top: 15px;
+    }
+    // .container {
+    //     max-width: 540px!important;
+    // }
+}
 
+
+@media (max-width: $breakpoint-tablet) {
+    .form-inline {
+        justify-content: space-between;
+        margin-top: 15px;
+    }
+
+}
 
 
 
