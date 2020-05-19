@@ -37,13 +37,13 @@
 											<div class="col">
 												<form action="{{ route('cart.store') }}" method="POST">
 													{{ csrf_field() }}
-													<input type="hidden" value="{{ $product->id }}" id="id" name="id">
-													<input type="hidden" value="{{ $product->name }}" id="name" name="name">
-													<input type="hidden" value="{{ $product->artist }}" id="artist" name="artist">
-													<input type="hidden" value="{{ $product->price }}" id="price" name="price">
-													<input type="hidden" value="{{ $product->path }}" id="path" name="path">
-													<input type="hidden" value="{{ $product->slug }}" id="slug" name="slug">
-													<input type="hidden" value="{{ $product->category_slug }}" id="category_slug" name="category_slug">
+													<input type="hidden" value="{{ $product->id }}" class="id" name="id">
+													<input type="hidden" value="{{ $product->name }}" class="name" name="name">
+													<input type="hidden" value="{{ $product->artist }}" class="artist" name="artist">
+													<input type="hidden" value="{{ $product->price }}" class="price" name="price">
+													<input type="hidden" value="{{ $product->path }}" class="path" name="path">
+													<input type="hidden" value="{{ $product->slug }}" class="slug" name="slug">
+													<input type="hidden" value="{{ $product->category_slug }}" class="category_slug" name="category_slug">
 													<input type="hidden" value="1" class="quantity" name="quantity">
 													<div class="card-footer" style="background-color: white;">
 														<div class="row">

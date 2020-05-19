@@ -1,30 +1,30 @@
 
 $(document).ready(function() {
-    $('#txtSearch').on('keyup', function(){
-        const query = $('#txtSearch').val();
+    $('.txt-search').on('keyup', function(){
+        const query = $('.txt-search').val();
         // console.log(query);
 
         $.ajax({
             type:"GET",
             url: 'ajaxSearch',
-            data: { query: $('#txtSearch').val() },
+            data: { query: $('.txt-search').val() },
             success: function(response) {
-                // console.log(response);
+                // console.log(response.searchResults);
                 if( query == "" ) {
-                    $('#searchResults').html("");
+                    $('.search-results').html("");
                 } else {
-                    $('#searchResults').fadeIn();  
+                    $('.search-results').fadeIn();  
                     // render the search-result-box.blade file to header search results 
-                    $("#searchResults").html(response.searchResults);
+                    $('.search-results').html(response.searchResults);
 
-                    $('#searchBtn').on('click', function(){
-                        $('#searchResults').fadeOut();
+                    $('.search-btn').on('click', function(){
+                        $('.search-results').fadeOut();
                         window.location="/search-result-page?search="+query;
                     });
     
-                    $('#txtSearch').on('keypress',function(e) {
+                    $('.txt-search').on('keypress',function(e) {
                         if(e.which == 13) {
-                            $('#searchResults').fadeOut();
+                            $('.search-results').fadeOut();
                             window.location="/search-result-page?search="+query;
                         }
                     });

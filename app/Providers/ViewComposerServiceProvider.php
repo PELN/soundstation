@@ -20,5 +20,9 @@ class ViewComposerServiceProvider extends ServiceProvider
         View::composer('layouts.partials.mobile_header', function ($view) {
             $view->with('categories', Category::orderByRaw('-category ASC')->where('menu', 1)->get()->nest());
         });
+
+        View::composer('layouts.partials.header', function ($view) {
+            $view->with('categories', Category::orderByRaw('-category ASC')->where('menu', 1)->get()->nest());
+        });
     }
 }

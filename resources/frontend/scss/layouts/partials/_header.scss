@@ -1,3 +1,29 @@
+#main-nav {
+    width: 85vw;
+    display: flex;
+    justify-content: center;
+}
+#nav-categories {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#nav-categories .dropdown-menu {
+    position: absolute!important;
+}
+
+@media only screen and (max-width: $breakpoint-medium) {
+    #header {
+        display: none;
+    }
+
+    
+
+}
+
+
 // TOP NAVBAR
 
 

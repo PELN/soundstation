@@ -23,6 +23,7 @@
 </head>
 <body>
     @include('layouts.partials.mobile_header')
+    @include('layouts.partials.header')
     <main>
         @yield('content')
     </main>
