@@ -75,7 +75,7 @@ a {
     background-color: $green-color;
     border-color: $green-color;
     &:hover {
-        opacity: 0.8;
+        background-color: $green-hover-color;
         color: $white-color;
     }
 }

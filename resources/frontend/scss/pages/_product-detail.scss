@@ -10,13 +10,18 @@
     margin-bottom: 0px;
 }
 
-.gallery-wrap {
+#gallery-container {
     display: flex;
+    align-items: center;
     justify-content: center;
 }
 
 .gallery-wrap .img-big-wrap img {
     height: 300px;
+}
+
+.item-thumb img {
+    width: 120px;
 }
 
 // description - show more/less

@@ -144,9 +144,9 @@
 
                 </div> <!-- card.// -->
 
-            <div class="alert alert-success mt-3">
-                <p class="icontext"><i class="icon text-success fa fa-truck"></i> Free Delivery within 1-2 weeks</p>
-            </div>
+                <div class="alert alert-success mt-3">
+                    <p class="icontext"><i class="icon text-success fa fa-truck"></i> Free Delivery within 1-2 weeks</p>
+                </div>
 
             </main> <!-- col.// -->
         </div> <!-- row .//  -->

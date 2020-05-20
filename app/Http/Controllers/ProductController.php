@@ -42,6 +42,8 @@ class ProductController extends Controller
         ->leftJoin('images', 'images.product_id', '=', 'products.id')
         ->leftJoin('genre_product', 'products.id', '=', 'genre_product.product_id')
         ->leftJoin('genres', 'genre_product.genre_id', '=', 'genres.id')
+        ->leftJoin('artist_product', 'products.id', '=', 'artist_product.product_id')
+        ->leftJoin('artists', 'artist_product.artist_id', '=', 'artists.id')
         ->where('name', '!=', $product->name)
         ->where('category_slug', $category->category_slug)
         ->where(function($query) use ($genres) {

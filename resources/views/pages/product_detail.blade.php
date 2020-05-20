@@ -31,16 +31,16 @@
 <!-- ============================ COMPONENT 2 ================================= -->
 <div class="card">
 	<div class="row no-gutters">
-		<aside class="col-sm-6 border-right">
+		<aside id="gallery-container" class="col-sm-6 border-right">
 			<article class="gallery-wrap">
 				@forelse ($product->images as $image)
 					@if($loop->first)
-						<div class="img-big-wrap">
+						<div class="img-big-wrap mt-4 mb-4">
 							<a href="#"><img src="{{ asset('storage/product-images/'.$image->path) }}"></a>
 						</div> <!-- img-big-wrap.// -->
 					@else
-						<div class="thumbs-wrap">
-							<a href="#" class="item-thumb"> <img width="152px;" src="{{ asset('storage/product-images/'.$image->path) }}"></a>
+						<div class="thumbs-wrap mb-4">
+							<a href="#" class="item-thumb"> <img src="{{ asset('storage/product-images/'.$image->path) }}"></a>
 						</div> <!-- thumbs-wrap.// -->
 					@endif
 				@empty
@@ -54,34 +54,16 @@
 		<main class="col-sm-6">
 			<article class="content-body">
 				<h2 class="title">{{$product->name}}</h2>
-
-				<h3>{{ $product->artists->implode('artist', ', ') }}</h3>
-
-				{{-- <h4>Genres</h4>
-				<ul class="list-normal cols-two">
-				@foreach ($product->genres as $genre)
-					<li>{{$genre->genre}}</li>
-				@endforeach
-				</ul>
-				<h4>Subgenre</h4>
-				<ul class="list-normal cols-two">
-				@foreach ($product->subgenres as $subgenre)
-					<li>{{$subgenre->subgenre}}</li>
-				@endforeach
-				</ul> --}}
-
-				<div class="mt-5">
-				<a href="#">Delivery information</a>
-				<br><a href="#">Return information</a>
-				</div>
+				<h5 class="mb-4">{{ $product->artists->implode('artist', ', ') }}</h5>
+				
 				<div class="h3 mb-2">
-					<var class="price h4">DKK {{$product->price}}</var> 
+					<h6 class="price">DKK {{$product->price}}</h6> 
 				</div> <!-- price-wrap.// -->
 
 				@if($product->quantity >= 1)
-					<div class="badge badge-success">In stock</div>
+					<div class="badge badge-success mb-3">In stock</div>
 				@else
-					<div class="badge badge-danger">Not in stock</div>
+					<div class="badge badge-danger mb-3">Not in stock</div>
 				@endif
 				
 				<div class="form-row">
@@ -94,13 +76,38 @@
 						</select>
 					</div> <!-- col.// -->
 
-					<div class="col">
-						<a href="#" class="btn btn-green w-100"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i></a>
-					</div> <!-- col.// -->
-					<div class="col">
-						<a href="#" class="btn btn-light"> <i class="fa fa-heart-o" aria-hidden="true"></i></a>
-					</div> <!-- col.// -->
+					<form action="{{ route('cart.store') }}" method="POST">
+						{{ csrf_field() }}
+						<input type="hidden" value="{{ $product->id }}" class="id" name="id">
+						<input type="hidden" value="{{ $product->name }}" class="name" name="name">
+						@foreach ($product->artists as $artist)
+						<input type="hidden" value="{{ $artist->artist }}" class="artist" name="artist">
+						@endforeach	
+						<input type="hidden" value="{{ $product->price }}" class="price" name="price">
+						@foreach ($product->images as $image)
+						<input type="hidden" value="{{ $image->path }}" class="path" name="path">
+						@endforeach
+						<input type="hidden" value="{{ $product->slug }}" class="slug" name="slug">
+						<input type="hidden" value="{{ $product->category_slug }}" class="category_slug" name="category_slug">
+						<input type="hidden" value="1" class="quantity" name="quantity">
+						<div class="ml-4" style="background-color: white;">
+							<div class="row">
+								<div class="col-8">
+									<button class="btn btn-green w-100" title="add to cart">
+										Add to cart
+									</button>
+								</div>
+								<div class="col-4">
+									<a href="#" class="btn btn-light"> <i class="fa fa-heart-o" aria-hidden="true"></i> </a>
+								</div>
+							</div>
+						</div>
+					</form>
 				</div> <!-- row.// -->
+						
+				<div class="alert alert-success mt-3">
+					<i class="icon text-success fa fa-truck"></i> Free Delivery within 1-2 weeks
+				</div>
 
 			</article> <!-- product-info-aside .// -->
 		</main> <!-- col.// -->
@@ -221,7 +228,7 @@
 												{{ csrf_field() }}
 												<input type="hidden" value="{{ $product->id }}" class="id" name="id">
 												<input type="hidden" value="{{ $product->name }}" class="name" name="name">
-												<input type="hidden" value="{{ $product->artist }}" class="artist" name="artist">
+												<input type="hidden" value="{{ $artist->artist }}" class="artist" name="artist">
 												<input type="hidden" value="{{ $product->price }}" class="price" name="price">
 												<input type="hidden" value="{{ $product->path }}" class="path" name="path">
 												<input type="hidden" value="{{ $product->slug }}" class="slug" name="slug">
