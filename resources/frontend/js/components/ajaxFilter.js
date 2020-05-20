@@ -39,10 +39,12 @@ $(document).ready(function() {
         };
     });
 
-   $('#sort-by').on('change', function(e) {
-        const selectedValue = $("#sort-by option:selected").val();
-        localStorage.setItem("sort", selectedValue);
-        addUrlParam(document.location.search, 'sort', selectedValue);
+   $('.sort-by').on('change', function(e) {
+        const value = e.target.value;
+        // console.log(value);
+        // const selectedValue = $(".sort-by option:selected").val();
+        localStorage.setItem("sort", value);
+        addUrlParam(document.location.search, 'sort', value);
    });
     
 

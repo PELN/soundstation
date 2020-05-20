@@ -62,7 +62,7 @@
 							<span class="filteredCount mr-md-auto"></span>
 						</div>
 						<div class="col-6">
-							<select id="sort-by" class="mr-2 form-control">
+							<select class="sort-by mr-2 form-control">
 								<option value="newest">Newest products</option>
 								<option value="oldest">Oldest products</option>
 								<option value="price-low">Price (Low)</option>
@@ -137,7 +137,7 @@
 					<div class="form-inline">
 						<span class="categoryCount mr-md-auto">{{$products->total()}} Products found</span>
 						<span class="filteredCount mr-md-auto"></span>
-						<select id="sort-by" class="mr-2 form-control">
+						<select class="sort-by mr-2 form-control">
 							<option value="newest">Newest products</option>
 							<option value="oldest">Oldest products</option>
 							<option value="price-low">Price (Low)</option>
