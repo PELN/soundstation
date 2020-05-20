@@ -192,7 +192,7 @@
 								</div> <!-- img-wrap.// -->
 								<figcaption class="info-wrap">
 									<div class="fix-height">
-										<a href="#" class="title">{{$product->name}}</a>
+										<a href="#" class="title"><span class="text-wrap">{{$product->name}}</span></a>
 										<p class="artist">{{$product->artist}}</p>
 										<div class="price-wrap mt-2">
 											<span class="price">DKK {{$product->price}}</span>
@@ -213,10 +213,12 @@
 												<input type="hidden" value="1" class="quantity" name="quantity">
 												<div class="card-footer" style="background-color: white;">
 													<div class="row">
-														<button class="btn btn-secondary btn-sm" title="add to cart">
-															<i class="fa fa-shopping-cart"></i> add to cart
-														</button>
-														<div class="col">
+														<div class="col-8">
+															<button class="btn btn-outline-secondary" title="add to cart">
+																Add to cart
+															</button>
+														</div>
+														<div class="col-4">
 															<a href="#" class="btn btn-light"> <i class="fa fa-heart-o" aria-hidden="true"></i> </a>
 														</div>
 													</div>

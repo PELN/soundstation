@@ -43,7 +43,7 @@
 						<input type="text" class="txt-search form-control" placeholder="Search for a title or artist" minlength="2" maxlength="50">
 						<div class="input-group-append">
 							<button class="btn btn-primary search-btn" type="submit">
-							<i class="fa fa-search"></i>
+								<i class="fa fa-search"></i>
 							</button>
 						</div>
 					</div>

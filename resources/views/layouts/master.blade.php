@@ -42,7 +42,6 @@
     <script type="text/javascript" src="{{ asset('frontend/plugins/slickslider/slick-slider.js') }}"></script>
 
     <script>
-    
         // hide/show filter options based on screen size (product_listing)
         $(document).ready(function(){
             $('#mobile-filter-container').hide();
@@ -82,10 +81,8 @@
                 else{
                     $('#filter-card').show();
                 }
-
             });
         });
-
     </script>
    
 </body>

@@ -13,7 +13,7 @@
                     </div> <!-- img-wrap.// -->
                     <figcaption class="info-wrap">
                         <div class="fix-height">
-                            <a href="#" class="title">{{$product->name}}</a>
+                            <a href="#" class="title"><span class="text-wrap">{{$product->name}}</span></a>
                             <p class="artist">{{$product->artist}}</p>
                             <div class="price-wrap mt-2">
                                 <span class="price">DKK {{$product->price}}</span>

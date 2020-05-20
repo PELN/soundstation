@@ -50,7 +50,6 @@
 			<aside class="col-md-3">
 
 				<div id="mobile-filter-container">
-					
 					<div class="row">
 						<div class="col-2">
 							<button class="filter-btn btn-light">
@@ -169,7 +168,7 @@
 									</div> <!-- img-wrap.// -->
 									<figcaption class="info-wrap">
 										<div class="fix-height">
-											<a href="#" class="title">{{$product->name}}</a>
+											<a href="#" class="title"><span class="text-wrap">{{$product->name}}</span></a>
 											<p class="artist">{{$product->artist}}</p>
 											<div class="price-wrap mt-2">
 												<span class="price">DKK {{$product->price}}</span>
