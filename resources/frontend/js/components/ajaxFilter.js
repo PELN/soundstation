@@ -115,7 +115,7 @@ $(document).ready(function() {
         $('#filter-result .row').empty();
     }
     $('#loader').hide(); // hide loader if no filter has been set
-    $('#filteredCount').hide(); // hide filtered count if no filter has been set
+    $('.filteredCount').hide(); // hide filtered count if no filter has been set
 
     function ajaxFunc(paramsObj) {
         $.ajax({
@@ -147,9 +147,9 @@ $(document).ready(function() {
             };
 
             // count filtered products
-            $('#filteredCount').text(response.collection.total + ' Products found');
-            $('#filteredCount').show();
-            $('#categoryCount').hide();
+            $('.filteredCount').text(response.collection.total + ' Products found');
+            $('.filteredCount').show();
+            $('.categoryCount').hide();
 
             $('#filter-result .row').html(response.data); // render data in product-listing blade
             

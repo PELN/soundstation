@@ -36,6 +36,7 @@ p {
 a {
     color: #0056b3;
     // color: #505050;
+
     &:hover {
         color: #357dcb;  
     }
@@ -146,6 +147,12 @@ h2.title {
     font-family: Montserrat-medium;
 }
 
+.text-grey {
+    color: $medium-grey-color;
+}
+
+
+
 // FONT SIZES
 
 
@@ -169,7 +176,7 @@ $breakpoint-xlarge: 1200px;
 
 @media only screen and (max-width: $breakpoint-large) {
     .container {
-        max-width: 790px;
+        max-width: 850px;
     }
 }
 

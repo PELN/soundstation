@@ -6,7 +6,7 @@
 @if(count($category) == 0)
 <section class="section-content padding-y bg">
 	<div class="container">
-		<h1>Page does not exist</h1>
+		<h1 class="text-grey">Page does not exist</h1>
 		<a href="/">Go to Homepage</a>
 	</div>
 </section>
@@ -16,7 +16,7 @@
 <section class="section-pagetop bg">
 	<div class="container">
 		@if($category)
-			<h2 class="title">{{$category->category}}</h2>
+			<h2 class="title text-grey">{{$category->category}}</h2>
 		@endif
 		<nav>
 		<ol class="breadcrumb">
@@ -48,15 +48,39 @@
 	<div class="container">
 		<div class="row">
 			<aside class="col-md-3">
-				<div class="card">
+
+				<div id="mobile-filter-container">
+					
+					<div class="row">
+						<div class="col-2">
+							<button class="filter-btn btn-light">
+								<i class="icon-control fa fa-filter"></i>
+							</button>
+						</div>
+						<div class="col-4">
+							<span class="categoryCount mr-md-auto">{{$products->total()}} Products found</span>
+							<span class="filteredCount mr-md-auto"></span>
+						</div>
+						<div class="col-6">
+							<select id="sort-by" class="mr-2 form-control">
+								<option value="newest">Newest products</option>
+								<option value="oldest">Oldest products</option>
+								<option value="price-low">Price (Low)</option>
+								<option value="price-high">Price (High)</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				
+				<div id="filter-card" class="card">
 					<article class="filter-group">
 						<header class="card-header">
-							<a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" class="">
+							<a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true">
 								<i class="icon-control fa fa-chevron-down"></i>
 								<h6 class="title">Condition</h6>
 							</a>
 						</header>
-						<div class="filter-content collapse show" id="collapse_1" style="">
+						<div id="collapse_1" class="filter-content collapse show">
 							<div class="card-body">
 								<label class="custom-control custom-radio">
 								<input type="radio" name="myfilter_radio" checked="" class="condition custom-control-input" value="any">
@@ -85,7 +109,7 @@
 								<h6 class="title">Genre </h6>
 							</a>
 						</header>
-						<div class="filter-content collapse show" id="collapse_2" style="">
+						<div id="collapse_2" class="filter-content collapse show">
 							<div class="card-body">
 								@foreach($genres as $genre)
 								<div class="checkbox-filter">
@@ -108,30 +132,23 @@
 				</div> <!-- card.// -->
 			</aside> <!-- col.// -->
 
-			<main class="col-md-9">
-				<header class="border-bottom mb-4 pb-3">
+			<main class="col-lg-9 col-md-9 col-sm-12 col-12">
+				<header id="filter-container" class="border-bottom mb-4 pb-3">
 					<div class="form-inline">
-						<span id="categoryCount" class="mr-md-auto">{{$products->total()}} Products found</span>
-						<span id="filteredCount" class="mr-md-auto"></span>
+						<span class="categoryCount mr-md-auto">{{$products->total()}} Products found</span>
+						<span class="filteredCount mr-md-auto"></span>
 						<select id="sort-by" class="mr-2 form-control">
 							<option value="newest">Newest products</option>
 							<option value="oldest">Oldest products</option>
 							<option value="price-low">Price (Low)</option>
 							<option value="price-high">Price (High)</option>
-						</select>
-						{{-- <div class="btn-group">
-							<a href="#" class="btn btn-outline-secondary" data-toggle="tooltip" title="List view"> 
-								<i class="fa fa-bars"></i></a>
-							<a href="#" class="btn  btn-outline-secondary active" data-toggle="tooltip" title="Grid view"> 
-								<i class="fa fa-th"></i></a>
-						</div> --}}
+						</select>						
 					</div>
 				</header><!-- sect-heading -->
 
 				<div id="filter-result">
 					<div id="loader">
-						<img style="width:60%; z-index: 999; position: relative;" src="{{ asset('storage/loader.gif') }}">
-						{{-- <h4>LOADING....</h4> --}}
+						<img class="loader-img" src="{{ asset('storage/loader.gif') }}">
 					</div>
 					<div class="row"></div>
 				</div>
@@ -139,7 +156,7 @@
 				<div id="all-products">
 					<div class="row">
 						@foreach ($products as $product)
-						<div class="col-md-4">
+						<div class="col-lg-4 col-md-4 col-sm-6 col-6">
 							<a href="{{ URL::to("{$category->category_slug}/{$product->slug}") }}">
 								<figure class="card card-product-grid">
 									<div class="img-wrap">
@@ -174,10 +191,12 @@
 													<input type="hidden" value="1" class="quantity" name="quantity">
 													<div class="card-footer" style="background-color: white;">
 														<div class="row">
-															<button class="btn btn-secondary btn-sm" title="add to cart">
-																<i class="fa fa-shopping-cart"></i> add to cart
-															</button>
-															<div class="col">
+															<div class="col-8">
+																<button class="btn btn-outline-secondary" title="add to cart">
+																	Add to cart
+																</button>
+															</div>
+															<div class="col-4">
 																<a href="#" class="btn btn-light"> <i class="fa fa-heart-o" aria-hidden="true"></i> </a>
 															</div>
 														</div>

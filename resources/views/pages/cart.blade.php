@@ -6,7 +6,7 @@
 <!-- ========================= SECTION PAGETOP ========================= -->
 <section class="section-pagetop bg">
     <div class="container">
-        <h2 class="title-page text-secondary">Shopping cart</h2>
+        <h2 class="title text-grey">Shopping cart</h2>
     </div> <!-- container //  -->
 </section>
 <!-- ========================= SECTION INTRO END// ========================= -->

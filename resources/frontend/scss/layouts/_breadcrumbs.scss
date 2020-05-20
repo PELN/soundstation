@@ -1,4 +1,8 @@
 .breadcrumb-item a{
-    color: $grey-color;
+    color: #0056b3;
     text-decoration: underline;
+
+    &:hover {
+        color: #357dcb;  
+    }
 }

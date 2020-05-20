@@ -1,6 +1,6 @@
 @if (count($products) > 0)
     @foreach ($products as $product)
-        <div class="col-md-4">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-6">
             <a href="{{ URL::to("{$product->category_slug}/{$product->slug}") }}">
                 <figure class="card card-product-grid">
                     <div class="img-wrap">
@@ -34,11 +34,13 @@
                                     <input type="hidden" value="1" class="quantity" name="quantity">
                                     <div class="card-footer" style="background-color: white;">
                                         <div class="row">
-                                            <button class="btn btn-secondary btn-sm" title="add to cart">
-                                                <i class="fa fa-shopping-cart"></i> add to cart
-                                            </button>
-                                            <div class="col">
-                                                <a href="#" class="btn btn-light"> <i class="fas fa-heart"></i></a>
+                                            <div class="col-8">
+                                                <button class="btn btn-outline-secondary" title="add to cart">
+                                                    Add to cart
+                                                </button>
+                                            </div>
+                                            <div class="col-4">
+                                                <a href="#" class="btn btn-light"> <i class="fa fa-heart-o" aria-hidden="true"></i> </a>
                                             </div>
                                         </div>
                                     </div>
