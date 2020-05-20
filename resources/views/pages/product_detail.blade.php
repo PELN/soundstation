@@ -57,7 +57,7 @@
 
 				<h3>{{ $product->artists->implode('artist', ', ') }}</h3>
 
-				<h4>Genres</h4>
+				{{-- <h4>Genres</h4>
 				<ul class="list-normal cols-two">
 				@foreach ($product->genres as $genre)
 					<li>{{$genre->genre}}</li>
@@ -68,9 +68,13 @@
 				@foreach ($product->subgenres as $subgenre)
 					<li>{{$subgenre->subgenre}}</li>
 				@endforeach
-				</ul>
+				</ul> --}}
 
-				<div class="h3 mb-4"> 
+				<div class="mt-5">
+				<a href="#">Delivery information</a>
+				<br><a href="#">Return information</a>
+				</div>
+				<div class="h3 mb-2">
 					<var class="price h4">DKK {{$product->price}}</var> 
 				</div> <!-- price-wrap.// -->
 
@@ -91,10 +95,10 @@
 					</div> <!-- col.// -->
 
 					<div class="col">
-						<a href="#" class="btn  btn-green w-100"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </a>
+						<a href="#" class="btn btn-green w-100"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i></a>
 					</div> <!-- col.// -->
 					<div class="col">
-						<a href="#" class="btn btn-light"> <i class="fa fa-heart-o" aria-hidden="true"></i> </a>
+						<a href="#" class="btn btn-light"> <i class="fa fa-heart-o" aria-hidden="true"></i></a>
 					</div> <!-- col.// -->
 				</div> <!-- row.// -->
 
@@ -157,10 +161,22 @@
 		<hr>
 		
 		<h5>Description</h5>
-		{{-- Split description in lines with regex --}}
-		@foreach ($splitDescLines as $line)
-			<p>{{$line}}</p>
-		@endforeach
+		<div class="product-description">
+			{{-- Split description in lines with regex --}}
+			@if ($product->description)		
+				<div class="description-text">
+				@foreach ($splitDescLines as $line)
+					<p>{{$line}}</p>
+				@endforeach
+				</div>
+				<div id="show-more" onclick="showMore(this)">
+					<button class="btn btn-outline-secondary">SHOW MORE</button>
+				</div>
+				<div id="show-less" onclick="showLess(this)">
+					<button class="btn btn-outline-secondary">SHOW LESS</button>
+				</div>
+			@endif
+		</div>
 
 	</div> <!-- card-body.// -->
 </article> <!-- card.// -->

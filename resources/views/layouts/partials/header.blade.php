@@ -149,6 +149,9 @@
 							</li>
 						@endif
 					@endforeach
+					<li class="nav-item">
+						<a class="nav-link" href="#">Gift card</a>
+					</li>
 				</ul>
 			</div>
 		</div> <!-- container .// -->

@@ -114,6 +114,10 @@
                     @endforeach
 
                     <li class="nav-item">
+						<a class="nav-link" href="#">Gift card</a>
+                    </li>
+                    
+                    <li class="nav-item">
                         <li class="nav-item"><a class="nav-link" href="#">About us</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">FAQ</a></li>
@@ -134,6 +138,7 @@
                             <li><a class="dropdown-item" href="#">French </a></li>
                         </ul>
                     </li>
+
                 </ul>
             </div>
         </div>

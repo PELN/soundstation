@@ -41,6 +41,7 @@
     <script type="text/javascript" src="{{ asset('frontend/plugins/slickslider/slick.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('frontend/plugins/slickslider/slick-slider.js') }}"></script>
 
+
     <script>
         // hide/show filter options based on screen size (product_listing)
         $(document).ready(function(){
@@ -84,6 +85,23 @@
             });
         });
     </script>
-   
+    
+    <script>
+        // show more/less - product detail description
+        $('#show-less').hide();
+        function showMore(target){
+            let prev = target.previousElementSibling;
+            prev.style.height = prev.scrollHeight + "px";
+            target.style.display = "none";   
+            $('#show-less').show();
+        }
+        function showLess(target){
+            let prev = target.previousElementSibling.previousElementSibling;
+            prev.style.height = 330 + "px";
+            target.style.display = "none";
+            $('#show-more').show();
+        }
+    </script>
+
 </body>
 </html>
