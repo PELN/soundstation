@@ -35,6 +35,8 @@
     <script src="{{ asset('frontend/js/bootstrap-ecommerce/script.js') }}"></script>
     <script src="{{ asset('frontend/js/components/ajaxFilter.js') }}"></script>
     <script src="{{ asset('frontend/js/components/ajaxSearch.js') }}"></script>
+    <script src="{{ asset('frontend/js/components/showMoreOrLess.js') }}"></script>
+    <script src="{{ asset('frontend/js/components/showOrHideFilter.js') }}"></script>
     <script src="{{ mix('frontend/js/app.js') }}"></script>
 
     <!-- Plugin: slickslider -->
@@ -42,7 +44,7 @@
     <script type="text/javascript" src="{{ asset('frontend/plugins/slickslider/slick-slider.js') }}"></script>
 
 
-    <script>
+    {{-- <script>
         // hide/show filter options based on screen size (product_listing)
         $(document).ready(function(){
             $('#mobile-filter-container').hide();
@@ -84,9 +86,9 @@
                 }
             });
         });
-    </script>
+    </script> --}}
     
-    <script>
+    {{-- <script>
         // show more/less - product detail description
         $('#show-less').hide();
         function showMore(target){
@@ -101,7 +103,7 @@
             target.style.display = "none";
             $('#show-more').show();
         }
-    </script>
+    </script> --}}
 
 </body>
 </html>
