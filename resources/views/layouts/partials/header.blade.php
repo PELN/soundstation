@@ -2,7 +2,7 @@
 	<nav class="navbar navbar-light navbar-expand p-0 border-bottom ">
 		<div class="container">
 			<ul class="navbar-nav d-none d-md-flex mr-auto">
-                <li class="nav-item">Store opening hours: Mon-Fri: 8-17</li>
+                <li class="nav-item ml-4">Store opening hours: Mon-Fri: 8-17</li>
 			</ul>
 			<ul class="navbar-nav">
 				<li class="nav-item dropdown">
@@ -10,13 +10,18 @@
                     <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">FAQ</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Grading guide</a></li>
-					<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"> English </a>
+					<a href="#" class="nav-link dropdown-toggle mr-4" data-toggle="dropdown"> English </a>
 					<ul class="dropdown-menu dropdown-menu-right" style="max-width: 100px;">
 						<li><a class="dropdown-item" href="#">Arabic</a></li>
+						<div class="dropdown-divider"></div>
 						<li><a class="dropdown-item" href="#">Russian </a></li>
+						<div class="dropdown-divider"></div>
 						<li><a class="dropdown-item" href="#">Danish </a></li>
+						<div class="dropdown-divider"></div>
 						<li><a class="dropdown-item" href="#">Spanish </a></li>
+						<div class="dropdown-divider"></div>
 						<li><a class="dropdown-item" href="#">German </a></li>
+						<div class="dropdown-divider"></div>
 						<li><a class="dropdown-item" href="#">French </a></li>
 					</ul>
 				</li>
@@ -106,7 +111,7 @@
 										</span>
 									</a>
 									<div class="cart-menu-desktop dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="width: 450px; padding: 0px; border-color: #9DA0A2">
-										<ul class="list-group" style="margin: 20px;">
+										<ul class="list-group">
 											@include('components.cart_dropdown')
 										</ul>
 									</div>
@@ -132,6 +137,9 @@
 								<div class="category-dropdown dropdown-menu dropdown-menu-right" aria-labelledby="{{ $category->category_slug }}">
 									@foreach($category->items as $item)
 										<a class="dropdown-item" href="{{ route('category.show', $item->category_slug) }}">{{ $item->category }}</a>
+										@if (!$loop->last)
+											<div class="dropdown-divider"></div>
+										@endif
 									@endforeach
 								</div>
 							</li>

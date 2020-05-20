@@ -12,7 +12,7 @@
                     </a>
                 </div>
                 <div class="col-8">
-                    <a href="{{ $item->attributes->category_slug }}/{{ $item->attributes->slug }}"><b>{{$item->name}}</b></a>
+                    <a href="{{ $item->attributes->category_slug }}/{{ $item->attributes->slug }}">{{$item->name}}</a>
                     <br><small>{{$item->attributes->artist}}</small>
                     <br><small>Qty: {{$item->quantity}}</small>
                     <div class="row">

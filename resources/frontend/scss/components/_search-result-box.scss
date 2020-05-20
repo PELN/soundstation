@@ -1,0 +1,39 @@
+.search-results .list-group{
+    display: block; 
+    position: absolute; 
+    z-index: 1;
+    min-width: 92%;
+}
+.search-results .no-result {
+    display: block; 
+    position: absolute; 
+    z-index: 1; 
+}
+
+.search-results .list-group-item {
+    margin-bottom: 0!important;
+}
+
+#search-item:first-child {
+    border-top-left-radius: 0!important;
+    border-top-right-radius: 0!important;
+}
+
+#search-item:last-child {
+    border-bottom-right-radius: 0!important;
+    border-bottom-left-radius: 0!important;
+}
+
+#more-results {
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+#more-results:last-child {
+    border-top-left-radius: 0!important;
+    border-top-right-radius: 0!important;
+}
+
+.search-product .title {
+    color: $lighter-grey-color;
+    font-family: Montserrat-semi-bold;
+}
