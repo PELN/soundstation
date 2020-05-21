@@ -17,6 +17,9 @@ $primary-color: #FF7700;
 $green-color: #57A769;
 $green-hover-color: rgb(78, 147, 94);
 
+$blue-link-color: #0056b3;
+$blue-link-hover-color: #357dcb;
+
 $border-color: #dee2e6;
 
 
@@ -27,6 +30,9 @@ $border-color: #dee2e6;
 .bg-secondary {
     background-color: $white-smoke-color!important;
 }
+.bg {
+    background-color: $white-smoke-color!important;
+}
 
 // TEXT
 p {
@@ -34,12 +40,33 @@ p {
 }
 
 a {
-    color: #0056b3;
+    color: $blue-link-color;
     // color: #505050;
 
     &:hover {
-        color: #357dcb;  
+        color: $blue-link-hover-color;
+        text-decoration: underline;
     }
+}
+
+.text-underline {
+    text-decoration: underline;
+}
+
+.text-grey {
+    color: $medium-grey-color;
+}
+
+
+// NAVIGATION LNKS
+.navbar-light .navbar-nav .nav-link {
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.navbar-light .navbar-nav .nav-link.active {
+    text-decoration: underline;
 }
 
 
@@ -48,7 +75,16 @@ a {
     border-color: $border-color;
     -webkit-box-shadow: none;
     box-shadow: 0px 3px 13px -4px rgba(0, 0, 0, 0.253);
-  }
+}
+
+.custom-radio .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: $primary-color;
+}
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: $primary-color;
+}
+
 
 // BUTTONS
 .btn-primary {
@@ -69,7 +105,6 @@ a {
     }
 }
 
-
 .btn-green {
     color: $white-color;
     background-color: $green-color;
@@ -79,6 +114,31 @@ a {
         color: $white-color;
     }
 }
+
+.btn-outline-secondary {
+    color: $light-grey-color;
+    border-color: $light-grey-color;
+}
+
+.btn-outline-secondary:hover {
+    color: $white-color;
+    background-color: $light-grey-color;
+    border-color: $light-grey-color;
+}
+
+
+
+// PAGINATION
+.page-item.active .page-link {
+    z-index: 1;
+    color: $white-color;
+    background-color: $primary-color;
+    border-color: $primary-color
+}
+.page-link {
+    color: $blue-link-color;
+}
+
 
 
 // FONTS
@@ -147,10 +207,6 @@ h2.title {
     font-family: Montserrat-medium;
 }
 
-.text-grey {
-    color: $medium-grey-color;
-}
-
 
 
 // FONT SIZES
@@ -183,52 +239,52 @@ $breakpoint-xlarge: 1200px;
 // https://www.w3schools.com/howto/howto_css_media_query_breakpoints.asp
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-    h1 {
-        color: red;
+    // h1 {
+    //     color: red;
+    //     font-size: 35px;
+    // }
+    h2 {
+        font-size: 25px;
+    }
+    h3 {
+        font-size: 20px;
     }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-    h1 {
-        color: yellow;
+    // h1 {
+    //     color: yellow;
+    // }
+    h3 {
+        font-size: 20px;
     }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-    h1 {
-        color: green;
-    }
+    // h1 {
+    //     color: green;
+    // }
+    // h3 {
+    //     font-size: 20px;
+    // }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-    h1 {
-        color: blue;
-    }
+    // h1 {
+    //     color: blue;
+    // }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-    h1 {
-        color: purple;
-    }
+    // h1 {
+    //     color: purple;
+    // }
 }
 
-
-
-// @media (min-width: 992px) {
-//     .container {
-//         max-width: 960px!important;
-//     }
-// }
-
-// @media (min-width: $breakpoint-tablet) {
-//     .container {
-//         max-width: 800px!important;
-//     }
-// }
 
 // @media (max-width: $breakpoint-mobile) {
 //     // .form-inline {
@@ -249,12 +305,3 @@ $breakpoint-xlarge: 1200px;
 
 // }
 
-
-
-
-// $container-max-widths: (
-//   sm: 540px,
-//   md: 720px,
-//   lg: 960px,
-//   xl: 1140px
-// );

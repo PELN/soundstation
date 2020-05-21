@@ -44,66 +44,33 @@
     <script type="text/javascript" src="{{ asset('frontend/plugins/slickslider/slick-slider.js') }}"></script>
 
 
-    {{-- <script>
-        // hide/show filter options based on screen size (product_listing)
-        $(document).ready(function(){
-            $('#mobile-filter-container').hide();
+    <script>
+        var pathname = window.location.pathname;
+        console.log('pathname',pathname);
 
-            if ($(window).width() < 768 && $(window).load()) {
-                    $('filter-card').hide();
-                }
-                $('.filter-btn').on('click', function() {
-                        console.log('clicked on filter');
-                        $('#filter-card').toggle();
-                    });
+        // Get
+        var status = localStorage.getItem("status");
+        var elHref = localStorage.getItem("elementsHref")
+        $(".nav-item a[href$='"+elHref+"']").addClass(status);
 
-                if($(window).load()){
-                    if ($(window).width() < 768) {
-                        $('#filter-card').hide();
-                        $('#mobile-filter-container').show();
-                        $('#filter-container').hide();
-                    }
-                }
-
-            $(window).resize(function() {
-                if ($(window).width() < 768 && $(window).load()) {
-                    $('#filter-card').hide();
-                    $('#mobile-filter-container').show();
-                    $('#filter-container').hide();
-                }
-                else {
-                    $('#filter-card').show();
-                    $('#mobile-filter-container').hide();
-                    $('#filter-container').show();
-                }
-                if($(window).load()){
-                    if ($(window).width() < 768) {
-                        $('#filter-card').hide();
-                    }
-                }
-                else{
-                    $('#filter-card').show();
-                }
-            });
+        $(".nav-item a").bind('click', function () {
+            // Set
+            localStorage.setItem("status", "active");
+            localStorage.setItem("elementsHref", $(this).attr("href"))
+            $(".nav-item a").removeClass(localStorage.getItem("status"));
+            $(this).addClass(localStorage.getItem("status"));
         });
-    </script> --}}
+
+        if(pathname == "/" || pathname == "/search-result-page"){
+            $(".nav-item a").removeClass(localStorage.getItem("status"));
+        }
+
+        // TODO:
+        // change active based on which product has been clicked on??
+        // change active if click on link with #
+
+    </script>
     
-    {{-- <script>
-        // show more/less - product detail description
-        $('#show-less').hide();
-        function showMore(target){
-            let prev = target.previousElementSibling;
-            prev.style.height = prev.scrollHeight + "px";
-            target.style.display = "none";   
-            $('#show-less').show();
-        }
-        function showLess(target){
-            let prev = target.previousElementSibling.previousElementSibling;
-            prev.style.height = 330 + "px";
-            target.style.display = "none";
-            $('#show-more').show();
-        }
-    </script> --}}
 
 </body>
 </html>

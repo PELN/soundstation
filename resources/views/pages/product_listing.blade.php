@@ -21,7 +21,7 @@
 		<nav>
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="/">Home</a></li>
-			<li class="breadcrumb-item"><a href="{{ URL::to("{$category->category_slug}") }}">{{$category->category}}</a></li>
+			<li class="breadcrumb-item text-underline"><a href="{{ URL::to("{$category->category_slug}") }}">{{$category->category}}</a></li>
 			{{-- <li class="breadcrumb-item"><a href="{{ URL::to("{$category->category_slug}/{$product->slug}") }}">{{$product->name}}</a></li> --}}
 		</ol>
 		</nav>
@@ -71,12 +71,11 @@
 					</div>
 				</div>
 				
-				<div id="filter-card" class="card">
+				<div id="filter-card" class="card mb-4">
 					<article class="filter-group">
 						<header class="card-header">
 							<a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true">
-								<i class="icon-control fa fa-chevron-down"></i>
-								<h6 class="title">Condition</h6>
+								<h6 class="title">Condition <i class="icon-control fa fa-chevron-down"></i></h6>
 							</a>
 						</header>
 						<div id="collapse_1" class="filter-content collapse show">
@@ -104,8 +103,7 @@
 					<article class="filter-group">
 						<header class="card-header">
 							<a href="#" data-toggle="collapse" data-target="#collapse_2" aria-expanded="true" class="">
-								<i class="icon-control fa fa-chevron-down"></i>
-								<h6 class="title">Genre </h6>
+								<h6 class="title">Genre <i class="icon-control fa fa-chevron-down"></i></h6>
 							</a>
 						</header>
 						<div id="collapse_2" class="filter-content collapse show">

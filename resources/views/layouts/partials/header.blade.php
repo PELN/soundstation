@@ -130,7 +130,7 @@
 				<ul id="nav-categories" class="navbar-nav">
 					@foreach($categories as $category)
 						@if($category->items->count() > 0)
-							<li class="nav-item dropdown">			
+							<li class="nav-item dropdown">
 								<a class="nav-link" href="{{ route('category.show', $category->category_slug) }}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" v-pre
 								id="{{ $category->category_slug}}">{{ $category->category }} <i class="fa fa-chevron-down"></i></a>
 

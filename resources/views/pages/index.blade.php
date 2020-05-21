@@ -14,8 +14,8 @@
 				<h2>Vinyl, CD’s, DVD’s and Memorabilia</h2>
 				<h3>Since 1991</h3>
 				<div class="row">
-					<a class="btn btn-outline-primary float-left">33 21 40 43</a>
-					<a class="btn btn-outline-primary float-right">info@soundstation.dk</a>
+					<a class="btn btn-primary ml-3 mr-3 mt-3">33 21 40 43</a>
+					<a class="btn btn-outline-primary mt-3">info@soundstation.dk</a>
 				</div>
 				{{-- <img src="{{ asset('storage/Vinyl-records-player_1600x1200.jpg') }}" class="w-100 img-fluid"> --}}
 			</div>
@@ -32,12 +32,12 @@
 			<div class="col-md-4">	
 				<figure class="itemside">
 					<div class="aside">
-						<span class="icon-sm rounded-circle bg-primary">
-							<i class="fa fa-money-bill-alt white"></i>
+						<span class="icon-sm rounded-circle bg-primary mr-3">
+							<i class="fas fa-tags white"></i>
 						</span>
 					</div>
 					<figcaption class="info">
-						<h6 class="title">Reasonable prices</h6>
+						<h6 class="title">6000+ products</h6>
 						<p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 						tempor incididunt ut labor </p>
 					</figcaption>
@@ -46,7 +46,7 @@
 			<div class="col-md-4">
 					<figure class="itemside">
 						<div class="aside">
-							<span class="icon-sm rounded-circle bg-danger">
+							<span class="icon-sm rounded-circle bg-danger mr-3">
 								<i class="fa fa-comment-dots white"></i>
 							</span>
 						</div>
@@ -60,7 +60,7 @@
 			<div class="col-md-4">
 				<figure class="itemside">
 					<div class="aside">
-						<span class="icon-sm rounded-circle bg-success">
+						<span class="icon-sm rounded-circle bg-success mr-3">
 							<i class="fa fa-truck white"></i>
 						</span>
 					</div>
@@ -76,17 +76,16 @@
 </section>
 <!-- ========================= SECTION SPECIAL END// ========================= -->
 
-
 <!-- ========================= SECTION CONTENT ========================= -->
-<section class="section-content">
+<section class="section-content mt-5 mb-5">
 	<div class="container">
 		<header class="section-heading">
 			<a href="/vinyls" class="btn btn-outline-primary float-right">See all</a>
-			<h3 class="section-title">New Arrivals</h3>
+			<h2 class="section-title title text-grey">New Arrivals</h2>
 		</header><!-- sect-heading -->
 		<div class="row">
 			@foreach ($products as $product)
-				<div class="col-md-3">
+				<div class="col-lg-4 col-md-4 col-sm-6 col-6">
 					<a href="{{ URL::to("{$product->category_slug}/{$product->slug}") }}">
 						<figure class="card card-product-grid">
 							<div class="img-wrap">
