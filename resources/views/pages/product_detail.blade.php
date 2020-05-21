@@ -10,6 +10,8 @@
 	<a href="/">Go to Homepage</a>
 @else
 
+@include('layouts.partials.session_msg')
+
 <!-- ========================= BREADCRUMBS ========================= -->
 {{-- <section class="section-pagetop bg"> --}}
 	{{-- <div class="container"> --}}
@@ -26,7 +28,6 @@
 {{-- </section> --}}
 <!-- ========================= BREADCRUMBS END// ========================= -->
 
-@include('layouts.partials.session_msg')
 
 <!-- ============================ COMPONENT 2 ================================= -->
 <div class="card">
@@ -54,7 +55,7 @@
 		<main class="col-sm-6">
 			<article class="content-body">
 				<h2 class="title">{{$product->name}}</h2>
-				<h5 class="mb-4">{{ $product->artists->implode('artist', ', ') }}</h5>
+				<h5 class="mb-5">{{ $product->artists->implode('artist', ', ') }}</h5>
 				
 				<div class="h3 mb-2">
 					<h6 class="price">DKK {{$product->price}}</h6> 
@@ -259,16 +260,6 @@
 	</div>
 </section>
 <!-- ============== COMPONENT SLIDER CUSTOM .end // ============= -->
-	
-	{{-- <figure class="card card-product-grid">
-		<div class="img-wrap"> 
-			<img src="{{ asset('storage/'.$product->path) }}"> 
-		</div>
-		<figcaption class="info-wrap text-center">
-			<h6 class="title text-truncate"> <a href="/">{{$product->name}}</a></h6>
-			<h6 class="title text-truncate"> <a href="/">{{$product->genre}}</a></h6>
-		</figcaption>
-	</figure> --}}
 
 @endif
 @endsection

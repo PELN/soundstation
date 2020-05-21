@@ -13,7 +13,9 @@ class ProductController extends Controller
         $category = Category::where('category_slug', $category)->first();
         $product = Product::where('slug', $slug)->first();
         $genres = $product->genres;
-        $subset = $genres->map(function ($genre) {
+        $collection = collect($genres);
+        
+        $subset = $collection->map(function ($genre) {
             return collect($genre->toArray())
                 ->only(['genre'])
                 ->all();
