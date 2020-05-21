@@ -2,7 +2,7 @@
 	<nav class="navbar navbar-light navbar-expand p-0 border-bottom ">
 		<div class="container">
 			<ul class="navbar-nav d-none d-md-flex mr-auto">
-                <li class="nav-item ml-4">Store opening hours: Mon-Fri: 8-17</li>
+                <li class="nav-item ml-4">Store opening hours: Weekdays 8-17</li>
 			</ul>
 			<ul class="navbar-nav">
 				<li class="nav-item dropdown">
