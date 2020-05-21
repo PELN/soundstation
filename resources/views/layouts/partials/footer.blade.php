@@ -44,9 +44,9 @@
 				<aside class="col-md col-6">
 					<h6 class="title">Customer service</h6>
 					<ul class="list-unstyled">
-						<li> <a href="#"> Grading guide </a></li>
+						<li> <a href="/grading-guide"> Grading guide </a></li>
 						<li> <a href="/about"> About us </a></li>
-						<li> <a href="#"> FAQ </a></li>
+						<li> <a href="/faq"> FAQ </a></li>
 
 						<li> <a href="/login">Login</a></li>
 						<li> <a href="/register">Register</a></li>

@@ -77,7 +77,7 @@
 <!-- ========================= SECTION SPECIAL END// ========================= -->
 
 <!-- ========================= SECTION CONTENT ========================= -->
-<section class="section-content pb-5 bg pt-5">
+<section class="section-content pb-5 pt-5">
 	<div class="container">
 		<header class="section-heading">
 			<a href="/vinyls" class="btn btn-outline-primary float-right">See all</a>
@@ -142,6 +142,7 @@
 </section>
 <!-- ========================= SECTION CONTENT END// ========================= -->
 
+<hr>
 
 <!-- ========================= SECTION REVIEWS ========================= -->
 

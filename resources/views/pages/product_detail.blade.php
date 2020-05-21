@@ -107,7 +107,7 @@
 				</div> <!-- row.// -->
 				
 				<div class="delivery mt-2">
-					<small>Delivery in Denmark is 2-3 working days.</small>
+					<small>Delivery in Denmark is 2 – 3 working days.</small>
 					<br><small>Delivery in Europe is 5 – 8 working days.</small>
 					<br><small>Delivery overseas is 6 – 14 working days.</small>
 				</div>
@@ -159,7 +159,7 @@
 					<dd class="col-sm-9 col-6">{{ $product->year[0]->year }}</dd>
 
 					<dt class="col-sm-3 col-6">Grading</dt>
-					<dd class="col-sm-9 col-6">{{ $product->gradings[0]->grading }}</dd>
+					<dd class="col-sm-9 col-6"><a href="#" role="button" data-toggle="modal" data-target="#exampleModalCenter">{{ $product->gradings[0]->grading }}</a></dd>
 
 					<dt class="col-sm-3 col-6">Comment</dt>
 					<dd class="col-sm-9 col-6">{{ $product->comment->comment }}</dd>
@@ -172,6 +172,89 @@
 				</dl>
 			</aside>
 		</div> <!-- row.// -->
+
+		{{-- GRADING MODAL --}}
+		<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <h5 class="modal-title" id="exampleModalLongTitle">Grading guide</h5>
+				  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+				<div class="modal-body">
+					<div class="table-responsive-sm">
+						<table class="table">
+							<thead>
+								<tr>
+								  <th scope="col">Grading</th>
+								  <th scope="col">Description</th>
+								</tr>
+							  </thead>
+							  <tbody>
+								<tr>
+								  <th scope="row">SS</th>
+								  <td>
+									  <strong>Still Sealed</strong>
+									<p>A record is sealed if it is factory sealed - not resealed. One can expect the record, cover, innersleeve and other inserts to be unused and new in every way.</p>
+									<p>Sleeves with saw cuts and drill hole can still be sealed. This can be seen from the description.</p>
+								  </td>
+								</tr>
+								<tr>
+									<th scope="row">M</th>
+									<td>
+										<strong>Mint (RC: Mint)</strong>
+										<p>The release is in every way perfect. The record is as new. The cover and extra items such as inserts, posters, lyric sheets, inner sleeves etc. are not damaged in any way.</p>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">M-/NM</th>
+									<td>
+										<strong>Near Mint - Mint Minus</strong>
+										<p>An almost perfect record. It will show no obvious signs of wear neither will the LP sleeve - no scratches or scuffs, no ringwear, seam splits, creases or other similar noticeable defects. This goes for any insert as well.</p>
+										<p>You can expect an M- 45 rpm 7" Single to have only minor defects like very light or almost invisible ringwear.</p>
+										<p>Sound Station never grades above M-</p>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">VG++</th>
+									<td>
+										<strong>Very Good Plus Plus</strong>
+										<p>The VG++ grade finds its use between VG+ and M- as a means of a more specific description. The record shows some signs of having been played or handled but it is in a beautiful shape. In itself it plays almost as new, but it might have a minor surface scratch or scuff on one or both sides. A very slight warp might appear but not a combination of the defects. None of these minor defects will affect play in any way.</p>
+										<p>The outer sleeve might have slight wear such as barely noticeable ring wear, small creases and/or insignificant tear on cover and/or any insert - but not a combination of these.</p>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">VG+</th>
+									<td>
+										<strong>Very Good Plus (RC: Excellent)</strong>
+										<p>The record will show some signs of wear - of having been played or handled but it has been taken very well care off.</p>
+										<p>The record might have two or three minor scratches or scuff on one or both sides that do not affect one's listening experience or the record might have a slight warp that does not affect play.</p>
+										<p>The label might have a light discoloration, slightly bent up corners, a tiny crease or tear. The center will not have been been misshapen by repeated play.</p>
+										<p>Picture sleeves and inserts show some ringwear or minor, general wear and can have small seam splits, stains, a cut out hole, indentation or cut corner. Even though a combination of these defects can be present, this is still a record in very good shape that would fit nicely into any collection.</p>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">VG</th>
+									<td>
+										<strong>Very Good (RC: Very Good)</strong>
+										<p>Many of the defects found in VG+ records will be more pronounced in a VG disc.</p>
+										<p>Scratches can affect play, groove wear can be noticeable - surface noise can be present especially in the songs softer passages or in intro and fade.</p>
+										<p>Labels can have tape, sticker or residue attached to it. Writing on label can occur as well as label tear.</p>
+										<p>Besides more pronounced defects mentioned under VG++ & VG+, tape & sticker and/or residue might be evident. A cover tear might be present as well as writing on the cover. All of the defects cannot be present though.</p>
+									</td>
+								</tr>
+						</table>
+					</div>
+				</div>
+				<div class="modal-footer">
+				  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			  </div>
+			</div>
+		  </div>
+
 		<hr>
 		
 		<h5>Description</h5>

@@ -45,29 +45,31 @@
 
 
     <script>
-        var pathname = window.location.pathname;
-        console.log('pathname',pathname);
+        // var pathname = window.location.pathname;
+        // console.log('pathname',pathname);
 
-        // Get
-        var status = localStorage.getItem("status");
-        var elHref = localStorage.getItem("elementsHref")
-        $(".nav-item a[href$='"+elHref+"']").addClass(status);
+        // // Get
+        // var status = localStorage.getItem("status");
+        // var elHref = localStorage.getItem("elementsHref")
+        // $(".nav-item a[href$='"+elHref+"']").addClass(status);
 
-        $(".nav-item a").bind('click', function () {
-            // Set
-            localStorage.setItem("status", "active");
-            localStorage.setItem("elementsHref", $(this).attr("href"))
-            $(".nav-item a").removeClass(localStorage.getItem("status"));
-            $(this).addClass(localStorage.getItem("status"));
-        });
+        // $(".nav-item a").bind('click', function () {
+        //     // Set
+        //     localStorage.setItem("status", "active");
+        //     localStorage.setItem("elementsHref", $(this).attr("href"))
+        //     $(".nav-item a").removeClass(localStorage.getItem("status"));
+        //     $(this).addClass(localStorage.getItem("status"));
+        // });
 
-        if(pathname == "/" || pathname == "/search-result-page"){
-            $(".nav-item a").removeClass(localStorage.getItem("status"));
-        }
+        // if(pathname == "/" || pathname == "/search-result-page"){
+        //     $(".nav-item a").removeClass(localStorage.getItem("status"));
+        // }
 
         // TODO:
         // change active based on which product has been clicked on??
         // change active if click on link with #
+        // if click on footer link, it does not work
+        // if click on top nav link it does nto work
 
     </script>
     
