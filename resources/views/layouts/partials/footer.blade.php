@@ -52,15 +52,6 @@
 						<li> <a href="/register">Register</a></li>
 					</ul>
 				</aside>
-				{{-- <aside class="col-md">
-					<h6 class="title">Social</h6>
-					<ul class="list-unstyled">
-						<li><a href="#"> <i class="fab fa-facebook"></i> Facebook </a></li>
-						<li><a href="#"> <i class="fab fa-twitter"></i> Twitter </a></li>
-						<li><a href="#"> <i class="fab fa-instagram"></i> Instagram </a></li>
-						<li><a href="#"> <i class="fab fa-youtube"></i> Youtube </a></li>
-					</ul>
-				</aside> --}}
 			</div> <!-- row.// -->
 		</section>	<!-- footer-top.// -->
 

@@ -127,6 +127,14 @@ a {
 }
 
 
+.btn-link {
+    color: $blue-link-color;
+    &:hover {
+        color: $blue-link-hover-color;
+    }
+}
+
+
 // PAGINATION
 .page-item.active .page-link {
     z-index: 1;
@@ -174,23 +182,23 @@ a {
 }
 
 
-// HELVETICA NEUE
-@font-face {
-    font-family: HelveticaNeue-light;
-    src: url('/frontend/fonts/HelveticaNeue/HelveticaNeue-LightExt.otf');
-}
-@font-face {
-    font-family: HelveticaNeue-thin;
-    src: url('/frontend/fonts/HelveticaNeue/HelveticaNeue-Thin.otf');
-}
-@font-face {
-    font-family: HelveticaNeue-medium;
-    src: url('/frontend/fonts/HelveticaNeue/HelveticaNeue-Medium.otf');
-}
-@font-face {
-    font-family: HelveticaNeue-bold;
-    src: url('/frontend/fonts/HelveticaNeue/HelveticaNeue-BoldCond.otf');
-}
+// // HELVETICA NEUE
+// @font-face {
+//     font-family: HelveticaNeue-light;
+//     src: url('/frontend/fonts/HelveticaNeue/HelveticaNeue-LightExt.otf');
+// }
+// @font-face {
+//     font-family: HelveticaNeue-thin;
+//     src: url('/frontend/fonts/HelveticaNeue/HelveticaNeue-Thin.otf');
+// }
+// @font-face {
+//     font-family: HelveticaNeue-medium;
+//     src: url('/frontend/fonts/HelveticaNeue/HelveticaNeue-Medium.otf');
+// }
+// @font-face {
+//     font-family: HelveticaNeue-bold;
+//     src: url('/frontend/fonts/HelveticaNeue/HelveticaNeue-BoldCond.otf');
+// }
 
 
 h1{

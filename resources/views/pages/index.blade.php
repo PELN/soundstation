@@ -77,7 +77,7 @@
 <!-- ========================= SECTION SPECIAL END// ========================= -->
 
 <!-- ========================= SECTION CONTENT ========================= -->
-<section class="section-content mt-5 mb-5">
+<section class="section-content pb-5 bg pt-5">
 	<div class="container">
 		<header class="section-heading">
 			<a href="/vinyls" class="btn btn-outline-primary float-right">See all</a>
@@ -146,7 +146,7 @@
 <!-- ========================= SECTION REVIEWS ========================= -->
 
 <!-- ============== COMPONENT SLIDER CUSTOM  ============= -->
-<section class="section-content padding-y">
+<section class="section-content padding-y mt-4 mb-4">
 	<div class="container">
 		<div class="row">
 			<aside class="col-md-12">

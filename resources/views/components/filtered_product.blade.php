@@ -55,6 +55,6 @@
 
 @else 
 
-    <h2>No products match :(((</h2>
+    <h2 class="ml-3">No products match..</h2>
 
 @endif

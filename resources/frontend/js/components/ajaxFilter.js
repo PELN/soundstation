@@ -130,7 +130,7 @@ $(document).ready(function() {
             },
             // contentType: 'application/json; charset=utf-8',
         }).done(function (response) {
-            console.log('response from controller', response);
+            // console.log('response from controller', response);
             
             const paginator = response.paginator.replace(/ajaxFilter/g, response.slug);
             $('#pagination').children().remove();

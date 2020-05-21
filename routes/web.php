@@ -26,6 +26,8 @@ Route::get('/home', 'HomeController@userHome')->name('home');
 
 Route::get('/', 'PagesController@index')->name('pages.index');
 Route::get('/about', 'PagesController@about')->name('pages.about');
+Route::get('/faq', 'PagesController@faq')->name('pages.faq');
+Route::get('/grading-guide', 'PagesController@grading')->name('pages.grading');
 
 Route::get('/cart', 'CartController@cart')->name('cart.index');
 Route::post('/add', 'CartController@add')->name('cart.store');

@@ -4,7 +4,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-2 col-6">
                     <a href="/" class="brand-wrap">
-                        <img class="logo" src="{{ asset('storage/soundstationlogo.jpg') }}">
+                        <img class="logo" src="{{ asset('storage/assets/soundstationlogo.jpg') }}">
                     </a> <!-- brand-wrap.// -->
                 </div>
 

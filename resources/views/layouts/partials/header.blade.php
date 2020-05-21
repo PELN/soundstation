@@ -7,9 +7,8 @@
 			<ul class="navbar-nav">
 				<li class="nav-item dropdown">
                     <li class="nav-item"><a class="nav-link" href="/about">About us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">FAQ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Grading guide</a></li>
+					<li class="nav-item"><a class="nav-link" href="/faq">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/grading-guide">Grading guide</a></li>
 					<a href="#" class="nav-link dropdown-toggle mr-4" data-toggle="dropdown"> English </a>
 					<ul class="dropdown-menu dropdown-menu-right" style="max-width: 100px;">
 						<li><a class="dropdown-item" href="#">Arabic</a></li>
@@ -34,7 +33,7 @@
 			<div class="row align-items-center">
 				<div class="col-2">
 					<a href="/">
-						<img class="logo" src="{{ asset('storage/soundstationlogo.jpg') }}">
+						<img class="logo" src="{{ asset('storage/assets/soundstationlogo.jpg') }}">
 					</a>
 				</div>
 

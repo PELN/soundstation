@@ -145,7 +145,7 @@
 
 				<div id="filter-result">
 					<div id="loader">
-						<img class="loader-img" src="{{ asset('storage/loader.gif') }}">
+						<img class="loader-img" src="{{ asset('storage/assets/loader.gif') }}">
 					</div>
 					<div class="row"></div>
 				</div>

@@ -18,9 +18,13 @@ class PagesController extends Controller
         return view('pages.about');
     }
 
-    // public function cart() {
-    //     return view('pages.cart');
-    // }
+    public function faq() {
+        return view('pages.faq');
+    }
+
+    public function grading() {
+        return view('pages.grading_guide');
+    }
 
     protected function getAllProducts()
     {
@@ -32,7 +36,7 @@ class PagesController extends Controller
         ->leftJoin('artist_product', 'products.id', '=', 'artist_product.product_id')
         ->leftJoin('artists', 'artist_product.artist_id', '=', 'artists.id')
         ->orderBy('products.created_at', 'DESC')
-        ->limit(6)
+        ->limit(8)
         ->groupby('products.id')
         ->get();
         return $products;

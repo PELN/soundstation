@@ -105,10 +105,16 @@
 						</div>
 					</form>
 				</div> <!-- row.// -->
-						
-				<div class="alert alert-success mt-3">
-					<i class="icon text-success fa fa-truck"></i> Free Delivery within 1-2 weeks
+				
+				<div class="delivery mt-2">
+					<small>Delivery in Denmark is 2-3 working days.</small>
+					<br><small>Delivery in Europe is 5 – 8 working days.</small>
+					<br><small>Delivery overseas is 6 – 14 working days.</small>
 				</div>
+
+				{{-- <div class="alert alert-success mt-3">
+					<i class="icon text-success fa fa-truck"></i> Free Delivery within 1-2 weeks
+				</div> --}}
 
 			</article> <!-- product-info-aside .// -->
 		</main> <!-- col.// -->
@@ -124,45 +130,45 @@
 			<aside class="col-md-6">
 				<h5>Specifications</h5>
 				<dl class="row">
-				    <dt class="col-sm-3">Artist</dt>
-					<dd class="col-sm-9">{{ $product->artists->implode('artist', ', ') }}</dd>
+				    <dt class="col-sm-3 col-6">Artist</dt>
+					<dd class="col-sm-9 col-6">{{ $product->artists->implode('artist', ', ') }}</dd>
 
-					<dt class="col-sm-3">Format</dt>
-					<dd class="col-sm-9">{{ $product->formats->implode('format', ', ') }}</dd>
+					<dt class="col-sm-3 col-6">Format</dt>
+					<dd class="col-sm-9 col-6">{{ $product->formats->implode('format', ', ') }}</dd>
 
-					<dt class="col-sm-3">Label</dt>
-					<dd class="col-sm-9">{{ $product->labels->implode('label', ', ') }}</dd>
+					<dt class="col-sm-3 col-6">Label</dt>
+					<dd class="col-sm-9 col-6">{{ $product->labels->implode('label', ', ') }}</dd>
 
-					<dt class="col-sm-3">Catalogue no.</dt>
-					<dd class="col-sm-9">{{ $product->cataloguenumber->cat_no }}</dd>
+					<dt class="col-sm-3 col-6">Catalogue no.</dt>
+					<dd class="col-sm-9 col-6">{{ $product->cataloguenumber->cat_no }}</dd>
 
-					<dt class="col-sm-3">Country</dt>
-					<dd class="col-sm-9">{{ $product->country->implode('country', ', ') }}</dd>
+					<dt class="col-sm-3 col-6">Country</dt>
+					<dd class="col-sm-9 col-6">{{ $product->country->implode('country', ', ') }}</dd>
 				</dl>
 			</aside>
 			<aside class="col-md-6">
 				{{-- <h5>Features</h5> --}}
 				<dl class="row">
-					<dt class="col-sm-3">Condition</dt>
+					<dt class="col-sm-3 col-6">Condition</dt>
 					@if($product->media_condition == 0)
-						<dd class="col-sm-9">Used</dd>
+						<dd class="col-sm-9 col-6">Used</dd>
 					@else
-						<dd class="col-sm-9">New</dd>
+						<dd class="col-sm-9 col-6">New</dd>
 					@endif
-					<dt class="col-sm-3">Year</dt>
-					<dd class="col-sm-9">{{ $product->year[0]->year }}</dd>
+					<dt class="col-sm-3 col-6">Year</dt>
+					<dd class="col-sm-9 col-6">{{ $product->year[0]->year }}</dd>
 
-					<dt class="col-sm-3">Grading</dt>
-					<dd class="col-sm-9">{{ $product->gradings[0]->grading }}</dd>
+					<dt class="col-sm-3 col-6">Grading</dt>
+					<dd class="col-sm-9 col-6">{{ $product->gradings[0]->grading }}</dd>
 
-					<dt class="col-sm-3">Comment</dt>
-					<dd class="col-sm-9">{{ $product->comment->comment }}</dd>
+					<dt class="col-sm-3 col-6">Comment</dt>
+					<dd class="col-sm-9 col-6">{{ $product->comment->comment }}</dd>
 
-					<dt class="col-sm-3">Genre</dt>
-					<dd class="col-sm-9">{{ $product->genres->implode('genre', ', ') }}</dd>
+					<dt class="col-sm-3 col-6">Genre</dt>
+					<dd class="col-sm-9 col-6">{{ $product->genres->implode('genre', ', ') }}</dd>
 
-					<dt class="col-sm-3">Subgenre</dt>
-					<dd class="col-sm-9">{{ $product->subgenres->implode('subgenre', ', ') }}</dd>
+					<dt class="col-sm-3 col-6">Subgenre</dt>
+					<dd class="col-sm-9 col-6">{{ $product->subgenres->implode('subgenre', ', ') }}</dd>
 				</dl>
 			</aside>
 		</div> <!-- row.// -->

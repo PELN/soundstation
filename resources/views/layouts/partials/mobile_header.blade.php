@@ -7,7 +7,7 @@
         </div>
         <div class="col-4">
             <a href="/">
-                <img class="mobile-nav logo" src="{{ asset('storage/soundstationlogo.jpg') }}">
+                <img class="mobile-nav logo" src="{{ asset('storage/assets/soundstationlogo.jpg') }}">
             </a>
         </div>
 
@@ -118,10 +118,9 @@
                     </li>
                     
                     <li class="nav-item">
-                        <li class="nav-item"><a class="nav-link" href="#">About us</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">FAQ</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Grading guide</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about">About us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/faq">FAQ</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/grading-guide">Grading guide</a></li>
                         <a href="#" class="nav-link navbar-toggle collapsed" role="button" data-toggle="collapse" data-target="#navbar-language" 
                             aria-expanded="false" aria-controls="navbar"> English <i class="fa fa-chevron-down"></i></a>
                         <ul id="navbar-language" class="navbar-nav dropdown-menu collapse" style="margin:0 padding: 0;">
