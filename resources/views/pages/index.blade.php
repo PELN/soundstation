@@ -26,7 +26,7 @@
 
 
 <!-- ========================= SECTION SPECIAL ========================= -->
-<section class="section-specials padding-y border-bottom">
+{{-- <section class="section-specials padding-y border-bottom">
 	<div class="container">	
 		<div class="row">
 			<div class="col-md-4">	
@@ -73,7 +73,7 @@
 			</div><!-- col // -->
 		</div> <!-- row.// -->
 	</div> <!-- container.// -->
-</section>
+</section> --}}
 <!-- ========================= SECTION SPECIAL END// ========================= -->
 
 <!-- ========================= SECTION CONTENT ========================= -->
@@ -85,7 +85,7 @@
 		</header><!-- sect-heading -->
 		<div class="row">
 			@foreach ($products as $product)
-				<div class="col-lg-4 col-md-4 col-sm-6 col-6">
+				<div class="col-lg-3 col-md-4 col-sm-6 col-6">
 					<a href="{{ URL::to("{$product->category_slug}/{$product->slug}") }}">
 						<figure class="card card-product-grid">
 							<div class="img-wrap">
@@ -141,5 +141,104 @@
 	</div> <!-- container .//  -->
 </section>
 <!-- ========================= SECTION CONTENT END// ========================= -->
+
+
+<!-- ========================= SECTION REVIEWS ========================= -->
+
+<!-- ============== COMPONENT SLIDER CUSTOM  ============= -->
+<section class="section-content padding-y">
+	<div class="container">
+		<div class="row">
+			<aside class="col-md-12">
+				<div class="btn-group  float-right">
+					<button type="button" class="btn btn-primary slick-prev-custom"> <i class="fa fa-chevron-left"></i> </button>
+					<button type="button" class="btn btn-primary slick-next-custom"> <i class="fa fa-chevron-right"></i> </button>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h4>Reviews</h4>
+					</div>
+					<div class="col">
+						<p>4,6 / 5 on Facebook and Google</p>
+					</div>
+				</div>
+				<hr>
+				<div class="slider-custom-slick row">
+					<div class="item-slide p-2">
+						<figure class="card card-product-grid">
+							<figcaption class="info-wrap">
+								<div class="fix-height">
+									<h6>Ove Munch Ovesen</h6>
+									<p>Great ambiance - huge variety of LP’s - and service oriented staff there knows the music.</p>
+									<small>Septemper 13, 2019</small>
+									<img class="review-stars" src="{{ asset('storage/assets/5stars.png') }}">
+							</figcaption>
+						</figure>
+					</div>
+					<div class="item-slide p-2">
+						<figure class="card card-product-grid">
+							<figcaption class="info-wrap">
+								<div class="fix-height">
+									<h6>Dana Berry</h6>
+									<p>Great record shop! I was visiting Copenhagen and a relative recommended it. I only had time to visit one and so glad I came here. Rooms full of vinyl.</p>
+									<small>June 23, 2018</small>							
+									<img class="review-stars" src="{{ asset('storage/assets/5stars.png') }}">
+							</figcaption>
+						</figure>
+					</div>
+					<div class="item-slide p-2">
+						<figure class="card card-product-grid">
+							<figcaption class="info-wrap">
+								<div class="fix-height">
+									<h6>Farah Bishara</h6>
+									<p>One of the best record stores I’ve visited - ever. Huge collection of rock, pop, punk, reggae, hip-hop, Jazz, and everything in between!</p>
+									<small>April 5, 2019</small>							
+									<img class="review-stars" src="{{ asset('storage/assets/5stars.png') }}">
+							</figcaption>
+						</figure>
+					</div>
+					<div class="item-slide p-2">
+						<figure class="card card-product-grid">
+							<figcaption class="info-wrap">
+								<div class="fix-height">
+									<h6>Alexander Alyokhin</h6>
+									<p>I probably have never met more friendly person in any records store as owner of this place. He allowed me to dig into not yet sorted new arrivals, and I found a real gems in there.</p>
+									<small>November 18, 2019</small>
+									<img class="review-stars" src="{{ asset('storage/assets/5stars.png') }}">
+							</figcaption>
+						</figure>
+					</div>
+
+					<div class="item-slide p-2">
+						<figure class="card card-product-grid">
+							<figcaption class="info-wrap">
+								<div class="fix-height">
+									<h6>Jesper Wolf</h6>
+									<p>Best record shop in the universe because they have sealed GREEN DAY and AC/DC. good condition guys. good job guys.</p>
+									<small>January 10, 2018</small>
+									<img class="review-stars" src="{{ asset('storage/assets/5stars.png') }}">
+							</figcaption>
+						</figure>
+					</div>
+					<div class="item-slide p-2">
+						<figure class="card card-product-grid">
+							<figcaption class="info-wrap">
+								<div class="fix-height">
+									<h6>Petteri Neverady</h6>
+									<p>5/5 for shure. Great costumer service and selections were amazing! Records piled from floor to seiling in many rooms so theres about everything possible available. Loved it.</p>
+									<small>March 22, 2017</small>							
+									<img class="review-stars" src="{{ asset('storage/assets/5stars.png') }}">
+							</figcaption>
+						</figure>
+					</div>
+				</div> <!-- slider-items-slick.// -->
+			</aside> <!-- col.// -->
+		</div>
+	</div>
+</section>
+<!-- ============== COMPONENT SLIDER CUSTOM .end // ============= -->
+
+<!-- ========================= SECTION REVIEWS// ========================= -->
+
 
 @endsection

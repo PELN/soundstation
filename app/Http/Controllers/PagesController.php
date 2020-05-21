@@ -32,7 +32,7 @@ class PagesController extends Controller
         ->leftJoin('artist_product', 'products.id', '=', 'artist_product.product_id')
         ->leftJoin('artists', 'artist_product.artist_id', '=', 'artists.id')
         ->orderBy('products.created_at', 'DESC')
-        ->limit(12)
+        ->limit(6)
         ->groupby('products.id')
         ->get();
         return $products;
