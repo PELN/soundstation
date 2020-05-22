@@ -91,7 +91,7 @@ class SearchController extends Controller
         ->orWhere('artists.artist', 'LIKE', '%'.$query.'%')
         ->orderby('name', 'ASC')
         ->groupby('products.id')
-        ->paginate(4);
+        ->paginate(8);
         // ->get();
         return $products;
     }

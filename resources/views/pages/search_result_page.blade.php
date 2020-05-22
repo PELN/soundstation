@@ -13,7 +13,7 @@
                 <div id="all-results">
                     <div class="row">
                         @foreach ($products as $product)
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-6">
                             <a href="{{ URL::to("{$product->category_slug}/{$product->slug}") }}">
                                 <figure class="card card-product-grid">
                                     <div class="img-wrap">

@@ -62,7 +62,7 @@
 			<div class="col-md-8 text-md-center">
 				<span  class="px-2"><a href="#">Sitemap</a></span>
 				<span  class="px-2">VAT number: 30711653</span>
-				<span  class="px-2"><a href="#">Privacy policy</a></span>
+				<span  class="px-2"><a href="/faq">Privacy policy</a></span>
 			</div>
 			<div class="col-md-2 text-md-right text-muted">
 				<i class="fab fa-lg fa-cc-visa"></i>
