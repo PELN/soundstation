@@ -55,7 +55,7 @@
 		<main class="col-sm-6">
 			<article class="content-body">
 				<h2 class="title">{{$product->name}}</h2>
-				<h5 class="mb-5">{{ $product->artists->implode('artist', ', ') }}</h5>
+				<h5 class="mb-4">{{ $product->artists->implode('artist', ', ') }}</h5>
 				
 				<div class="h3 mb-2">
 					<h6 class="price">DKK {{$product->price}}</h6> 
@@ -106,10 +106,10 @@
 					</form>
 				</div> <!-- row.// -->
 				
-				<div class="delivery mt-2">
-					<small>Delivery in Denmark is 2 – 3 working days.</small>
-					<br><small>Delivery in Europe is 5 – 8 working days.</small>
-					<br><small>Delivery overseas is 6 – 14 working days.</small>
+				<div class="mt-2">
+					<small class="text-light-grey">Delivery in Denmark is 2 – 3 working days.</small>
+					<br><small class="text-light-grey">Delivery in Europe is 5 – 8 working days.</small>
+					<br><small class="text-light-grey">Delivery overseas is 6 – 14 working days.</small>
 				</div>
 
 				{{-- <div class="alert alert-success mt-3">

@@ -116,7 +116,7 @@ $(document).ready(function() {
     function removeProducts() {
         $('#filter-result .row').empty();
     }
-    $('#loader').hide(); // hide loader if no filter has been set
+    $('#loader-container').hide(); // hide loader if no filter has been set
     $('.filteredCount').hide(); // hide filtered count if no filter has been set
 
     function ajaxFunc(paramsObj) {
@@ -126,7 +126,7 @@ $(document).ready(function() {
             data: paramsObj,
             dataType: 'JSON',
             beforeSend: function() {
-                $("#loader").show();
+                $("#loader-container").fadeIn();
             },
             // contentType: 'application/json; charset=utf-8',
         }).done(function (response) {
@@ -138,7 +138,7 @@ $(document).ready(function() {
 
             // remove data
             removeProducts();
-            $("#loader").hide();
+            $("#loader-container").fadeOut();
 
             
             if(response.data.length === 0){

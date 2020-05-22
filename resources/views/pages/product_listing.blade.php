@@ -144,8 +144,10 @@
 				</header><!-- sect-heading -->
 
 				<div id="filter-result">
-					<div id="loader">
-						<img class="loader-img" src="{{ asset('storage/assets/loader.gif') }}">
+					<div id="loader-container" class="overlay">
+						<div id="loader">
+							<img class="loader-img" src="{{ asset('storage/assets/loader2.gif') }}">
+						</div>
 					</div>
 					<div class="row"></div>
 				</div>
