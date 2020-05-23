@@ -2,13 +2,9 @@
 // COLORS
 $black-color: #000;
 $white-color: #fff;
-
 $white-smoke-color: #f7f7f7;
-$white-whisper-color: #EFECEC;
 
-$dark-grey-color: #1D1D1D;
 $grey-color: #2F2F2F;
-$medium-grey-color: #494949;
 $light-grey-color: #707070;
 $lighter-grey-color: rgba(0, 0, 0, 0.5);
 
@@ -35,7 +31,8 @@ $border-color: #dee2e6;
 }
 
 // TEXT
-p {
+
+body {
     color: $grey-color;
 }
 
@@ -53,9 +50,9 @@ a {
     text-decoration: underline;
 }
 
-.text-grey {
-    color: $medium-grey-color;
-}
+// .text-grey {
+//     color: $medium-grey-color;
+// }
 
 .text-light-grey {
     color: $lighter-grey-color;
@@ -138,6 +135,20 @@ a {
     }
 }
 
+.btn-light {
+    color: $grey-color;
+}
+
+
+// BADGES
+.badge-success {
+    background-color: $green-color;
+}
+
+.notify {
+    background-color: $primary-color;
+}
+
 
 // PAGINATION
 .page-item.active .page-link {
@@ -147,7 +158,7 @@ a {
     border-color: $primary-color
 }
 .page-link {
-    color: $medium-grey-color;
+    color: $grey-color;
 }
 
 
@@ -184,26 +195,6 @@ a {
     font-family: Montserrat-bold;
     src: url('/frontend/fonts/Montserrat/Montserrat-Bold.ttf');
 }
-
-
-// // HELVETICA NEUE
-// @font-face {
-//     font-family: HelveticaNeue-light;
-//     src: url('/frontend/fonts/HelveticaNeue/HelveticaNeue-LightExt.otf');
-// }
-// @font-face {
-//     font-family: HelveticaNeue-thin;
-//     src: url('/frontend/fonts/HelveticaNeue/HelveticaNeue-Thin.otf');
-// }
-// @font-face {
-//     font-family: HelveticaNeue-medium;
-//     src: url('/frontend/fonts/HelveticaNeue/HelveticaNeue-Medium.otf');
-// }
-// @font-face {
-//     font-family: HelveticaNeue-bold;
-//     src: url('/frontend/fonts/HelveticaNeue/HelveticaNeue-BoldCond.otf');
-// }
-
 
 h1{
     font-family: Montserrat-medium;
