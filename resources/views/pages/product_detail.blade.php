@@ -130,45 +130,49 @@
 			<aside class="col-md-6">
 				<h5>Specifications</h5>
 				<dl class="row">
-				    <dt class="col-sm-3 col-6">Artist</dt>
-					<dd class="col-sm-9 col-6">{{ $product->artists->implode('artist', ', ') }}</dd>
+				    <dt class="col-sm-6 col-6">Artist</dt>
+					<dd class="col-sm-6 col-6">{{ $product->artists->implode('artist', ', ') }}</dd>
 
-					<dt class="col-sm-3 col-6">Format</dt>
-					<dd class="col-sm-9 col-6">{{ $product->formats->implode('format', ', ') }}</dd>
+					<dt class="col-sm-6 col-6">Format</dt>
+					<dd class="col-sm-6 col-6">{{ $product->formats->implode('format', ', ') }}</dd>
 
-					<dt class="col-sm-3 col-6">Label</dt>
-					<dd class="col-sm-9 col-6">{{ $product->labels->implode('label', ', ') }}</dd>
+					<dt class="col-sm-6 col-6">Label</dt>
+					<dd class="col-sm-6 col-6">{{ $product->labels->implode('label', ', ') }}</dd>
 
-					<dt class="col-sm-3 col-6">Catalogue no.</dt>
-					<dd class="col-sm-9 col-6">{{ $product->cataloguenumber->cat_no }}</dd>
+					<dt class="col-sm-6 col-6">Catalogue no.</dt>
+					<dd class="col-sm-6 col-6">{{ $product->cataloguenumber->cat_no }}</dd>
 
-					<dt class="col-sm-3 col-6">Country</dt>
-					<dd class="col-sm-9 col-6">{{ $product->country->implode('country', ', ') }}</dd>
+					<dt class="col-sm-6 col-6">Country</dt>
+					<dd class="col-sm-6 col-6">{{ $product->country->implode('country', ', ') }}</dd>
+
+					<dt class="col-sm-6 col-6">Year</dt>
+					<dd class="col-sm-6 col-6">{{ $product->year[0]->year }}</dd>
 				</dl>
 			</aside>
 			<aside class="col-md-6">
 				{{-- <h5>Features</h5> --}}
 				<dl class="row">
-					<dt class="col-sm-3 col-6">Condition</dt>
+					<dt class="col-sm-6 col-6 mt-4">Condition</dt>
 					@if($product->media_condition == 0)
-						<dd class="col-sm-9 col-6">Used</dd>
+						<dd class="col-sm-6 col-6 mt-4">Used</dd>
 					@else
-						<dd class="col-sm-9 col-6">New</dd>
+						<dd class="col-sm-6 col-6 mt-4">New</dd>
 					@endif
-					<dt class="col-sm-3 col-6">Year</dt>
-					<dd class="col-sm-9 col-6">{{ $product->year[0]->year }}</dd>
 
-					<dt class="col-sm-3 col-6">Grading</dt>
-					<dd class="col-sm-9 col-6"><a href="#" role="button" data-toggle="modal" data-target="#exampleModalCenter">{{ $product->gradings[0]->grading }}</a></dd>
+					<dt class="col-sm-6 col-6">Grading</dt>
+					<dd class="col-sm-6 col-6"><a href="#" role="button" data-toggle="modal" data-target="#exampleModalCenter">{{ $product->gradings[0]->grading }}</a></dd>
 
-					<dt class="col-sm-3 col-6">Comment</dt>
-					<dd class="col-sm-9 col-6">{{ $product->comment->comment }}</dd>
+					<dt class="col-sm-6 col-6">Comment</dt>
+					<dd class="col-sm-6 col-6">{{ $product->comment->comment }}</dd>
 
-					<dt class="col-sm-3 col-6">Genre</dt>
-					<dd class="col-sm-9 col-6">{{ $product->genres->implode('genre', ', ') }}</dd>
+					<dt class="col-sm-6 col-6">Genre</dt>
+					<dd class="col-sm-6 col-6">{{ $product->genres->implode('genre', ', ') }}</dd>
 
-					<dt class="col-sm-3 col-6">Subgenre</dt>
-					<dd class="col-sm-9 col-6">{{ $product->subgenres->implode('subgenre', ', ') }}</dd>
+					<dt class="col-sm-6 col-6">Subgenre</dt>
+					<dd class="col-sm-6 col-6">{{ $product->subgenres->implode('subgenre', ', ') }}</dd>
+
+					<dt class="col-sm-6 col-6">Vinyl Color</dt>
+					<dd class="col-sm-6 col-6">{{ $product->color[0]->color }}</dd>
 				</dl>
 			</aside>
 		</div> <!-- row.// -->

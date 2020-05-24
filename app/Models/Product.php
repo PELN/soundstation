@@ -17,6 +17,7 @@ use App\Models\Year;
 use App\Models\CatalogueNumber;
 use App\Models\Grading;
 use App\Models\Comment;
+use App\Models\Color;
 
 class Product extends Model
 {
@@ -161,4 +162,13 @@ class Product extends Model
     {
         return $this->hasOne(Comment::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function color()
+    {
+        return $this->belongsToMany(Color::class);
+    }
+    
 }
