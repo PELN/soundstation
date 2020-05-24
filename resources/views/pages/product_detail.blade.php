@@ -162,8 +162,10 @@
 					<dt class="col-sm-6 col-6">Grading</dt>
 					<dd class="col-sm-6 col-6"><a href="#" role="button" data-toggle="modal" data-target="#exampleModalCenter">{{ $product->gradings[0]->grading }}</a></dd>
 
-					<dt class="col-sm-6 col-6">Comment</dt>
-					<dd class="col-sm-6 col-6">{{ $product->comment->comment }}</dd>
+					@if($product->comment)
+						<dt class="col-sm-6 col-6">Comment</dt>
+						<dd class="col-sm-6 col-6">{{ $product->comment->comment }}</dd>
+					@endif
 
 					<dt class="col-sm-6 col-6">Genre</dt>
 					<dd class="col-sm-6 col-6">{{ $product->genres->implode('genre', ', ') }}</dd>
@@ -171,8 +173,10 @@
 					<dt class="col-sm-6 col-6">Subgenre</dt>
 					<dd class="col-sm-6 col-6">{{ $product->subgenres->implode('subgenre', ', ') }}</dd>
 
-					<dt class="col-sm-6 col-6">Vinyl Color</dt>
-					<dd class="col-sm-6 col-6">{{ $product->color[0]->color }}</dd>
+					@if($product->color[0])
+						<dt class="col-sm-6 col-6">Vinyl Color</dt>
+						<dd class="col-sm-6 col-6">{{ $product->color[0]->color }}</dd>
+					@endif
 				</dl>
 			</aside>
 		</div> <!-- row.// -->
