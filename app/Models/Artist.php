@@ -11,7 +11,6 @@ class Artist extends Model
     * @var string
     */
     protected $table = 'artists';
-    protected $fillable = 'artist';
 
     /**
     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany

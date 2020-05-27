@@ -12,11 +12,6 @@ class Image extends Model
      */
     protected $table = 'images';
 
-    /**
-     * @var array
-     */
-    protected $fillable = ['path', 'product_id'];
-
     public function product()
     {
         return $this->belongsTo(Product::class);

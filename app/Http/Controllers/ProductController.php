@@ -1,9 +1,9 @@
 <?php
+
 namespace App\Http\Controllers;
-// use Illuminate\Http\Request;
+
 use App\Models\Product;
 use App\Models\Category;
-// use App\Models\Image;
 use DB;
 
 class ProductController extends Controller
@@ -36,7 +36,7 @@ class ProductController extends Controller
     }
 
     // show related products by category and genre of the product being displayed
-    protected function showRelatedProducts($product, $category, $genres) 
+    private function showRelatedProducts($product, $category, $genres) 
     {
         // find products by category AND genres except the current product
         $products = DB::table('products')

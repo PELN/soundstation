@@ -11,7 +11,6 @@ class Country extends Model
     * @var string
     */
     protected $table = 'countries';
-    protected $fillable = 'country';
 
     /**
     * @return \Illuminate\Database\Eloquent\Relations\HasMany

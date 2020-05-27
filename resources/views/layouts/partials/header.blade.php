@@ -158,19 +158,3 @@
 </header> <!-- section-header.// -->
 
 
-
-{{-- get the requested slug for secondary menu --}}
-{{-- @if(request()->slug === 'autographs' || request()->slug === 'record-awards' || request()->slug === 'posters-postcards-artwork' || request()->slug === 'tour-programmes-folders-books' || request()->slug === 'mischellaneous')
-		<ul class="navbar-nav secondary">
-			@foreach($categories as $category)
-				@if($category->items->count() > 0)
-					@foreach($category->items as $item)
-					<li class="nav-item secondary">
-						<a class="nav-link secondary" href="{{ route('category.show', $item->category_slug) }}">{{ $item->category }}</a>
-					</li>
-					@endforeach
-				@endif
-			@endforeach
-		</ul>
-@endif
-</header> <!-- section-header.// --> --}}

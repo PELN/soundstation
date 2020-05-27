@@ -11,7 +11,6 @@ class Color extends Model
     * @var string
     */
     protected $table = 'colors';
-    protected $fillable = 'color';
 
     /**
     * @return \Illuminate\Database\Eloquent\Relations\HasMany

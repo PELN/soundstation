@@ -31,18 +31,6 @@
 
 @include('layouts.partials.session_msg')
 
-{{-- @if(request()->slug === 'autographs' || request()->slug === 'record-awards' || request()->slug === 'posters-postcards-artwork' || request()->slug === 'tour-programmes-folders-books' || request()->slug === 'mischellaneous') --}}
-	{{-- @foreach($categories as $category)
-		@if($category->items->count() > 0)
-			@foreach($category->items as $item)
-			<li class="nav-item secondary">
-				<a class="nav-link secondary" href="{{ route('category.show', $item->slug) }}">{{ $item->name }}</a>
-			</li>
-			@endforeach
-		@endif
-	@endforeach --}}
-{{-- @endif --}}
-
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-content padding-y">
 	<div class="container">

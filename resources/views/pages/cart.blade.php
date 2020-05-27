@@ -2,7 +2,7 @@
 @section('title', 'Cart')
 
 @section('content')
-    
+
 <!-- ========================= SECTION PAGETOP ========================= -->
 <section class="section-pagetop bg">
     <div class="container">

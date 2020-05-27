@@ -1,5 +1,3 @@
-// require('../../js/bootstrap');
-
 $(document).ready(function() {
     $('.genre').click(function(){
         // if checked, add to genres
@@ -41,8 +39,6 @@ $(document).ready(function() {
 
    $('.sort-by').on('change', function(e) {
         const value = e.target.value;
-        // console.log(value);
-        // const selectedValue = $(".sort-by option:selected").val();
         localStorage.setItem("sort", value);
         addUrlParam(document.location.search, 'sort', value);
    });
@@ -128,7 +124,6 @@ $(document).ready(function() {
             beforeSend: function() {
                 $("#loader-container").fadeIn();
             },
-            // contentType: 'application/json; charset=utf-8',
         }).done(function (response) {
             // console.log('response from controller', response);
             
@@ -140,7 +135,6 @@ $(document).ready(function() {
             removeProducts();
             $("#loader-container").fadeOut();
 
-            
             if(response.data.length === 0){
                 $('#all-products').show(); // show deafult products
                 setGetParameter('page', '1'); // redirect to page 1 if no results match

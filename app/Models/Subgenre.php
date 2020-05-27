@@ -11,7 +11,6 @@ class Subgenre extends Model
     * @var string
     */
     protected $table = 'subgenres';
-    protected $fillable = 'subgenre';
 
     /**
     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany

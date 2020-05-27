@@ -22,46 +22,13 @@ use App\Models\Color;
 class Product extends Model
 {
     /**
-     * @var string
-     */
+    * @var string
+    */
     protected $table = 'products';
 
     /**
-     * @var array
-     */
-    protected $fillable = [
-        'category_id', 'name', 'slug', 'quantity',
-        'price', 'sale_price', 'status', 'featured',
-    ];
-
-    /**
-     * @var array
-     */
-    protected $casts = [
-        'quantity'  =>  'integer',
-        'category_id'  =>  'integer',
-        'status'    =>  'boolean',
-        'featured'  =>  'boolean'
-    ];
-
-     /**
-     * @param $value
-     */
-    public function setNameAttribute($value)
-    {
-        $this->attributes['name'] = $value;
-        $this->attributes['slug'] = Str::slug($value);
-    }
-
-
-    public function scopePrice($query, $price)
-    {
-       $query->where('price','=', $price);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
+    * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+    */
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -108,8 +75,8 @@ class Product extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
+    * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    */
     public function country()
     {
         return $this->belongsToMany(Country::class);
@@ -132,8 +99,8 @@ class Product extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
+    * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    */
     public function year()
     {
         return $this->belongsToMany(Year::class);
@@ -148,8 +115,8 @@ class Product extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
+    * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    */
     public function gradings()
     {
         return $this->belongsToMany(Grading::class);
@@ -164,8 +131,8 @@ class Product extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
+    * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    */
     public function color()
     {
         return $this->belongsToMany(Color::class);

@@ -11,7 +11,6 @@ class Format extends Model
     * @var string
     */
     protected $table = 'formats';
-    protected $fillable = 'format';
 
     /**
     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany

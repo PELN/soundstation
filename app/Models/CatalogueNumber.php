@@ -11,7 +11,6 @@ class CatalogueNumber extends Model
      * @var string
      */
     protected $table = 'catalogue_numbers';
-    protected $fillable = 'cat_no';
 
     public function product()
     {

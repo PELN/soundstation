@@ -12,12 +12,6 @@ class Comment extends Model
      */
     protected $table = 'comments';
 
-    /**
-     * @var array
-     */
-    protected $fillable = ['comment', 'product_id'];
-
-
     public function product()
     {
         return $this->belongsTo(Product::class);

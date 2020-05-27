@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use Request;
 use App\Models\Product;
 use App\Models\Artist;
@@ -50,7 +52,7 @@ class SearchController extends Controller
         // }
     }
 
-    protected function searchProducts($query) 
+    private function searchProducts($query) 
     {
         $products = DB::table('products')
         ->join('categories', 'categories.id', '=', 'products.category_id')
@@ -67,7 +69,7 @@ class SearchController extends Controller
         return $products;
     }
 
-    protected function searchArtists($query)
+    private function searchArtists($query)
     {
         $artists = DB::table('artists')
         ->where('artist', 'LIKE', '%'.$query.'%')
@@ -78,7 +80,7 @@ class SearchController extends Controller
         return $artists;
     }
 
-    protected function getProducts($query)
+    private function getProducts($query)
     {
         $products = DB::table('products')
         ->join('categories', 'categories.id', '=', 'products.category_id')

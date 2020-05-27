@@ -11,7 +11,6 @@ class Grading extends Model
     * @var string
     */
     protected $table = 'gradings';
-    protected $fillable = 'grading';
     
     /**
     * @return \Illuminate\Database\Eloquent\Relations\HasMany

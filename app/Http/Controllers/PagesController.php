@@ -26,7 +26,7 @@ class PagesController extends Controller
         return view('pages.grading_guide');
     }
 
-    protected function getAllProducts()
+    private function getAllProducts()
     {
         $products = DB::table('products')
         ->join('categories', 'categories.id', '=', 'products.category_id')

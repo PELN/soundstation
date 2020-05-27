@@ -11,7 +11,6 @@ class Genre extends Model
     * @var string
     */
     protected $table = 'genres';
-    protected $fillable = 'genre';
 
     /**
     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany

@@ -11,7 +11,6 @@ class Year extends Model
     * @var string
     */
     protected $table = 'years';
-    protected $fillable = 'year';
     
     /**
     * @return \Illuminate\Database\Eloquent\Relations\HasMany

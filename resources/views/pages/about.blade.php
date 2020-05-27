@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @section('title', 'About')
-
 @section('content')
 <section class="section-content padding-y">
     <div class="container">
@@ -19,6 +18,16 @@
             </div>
         </div>
     </div>
-
 </section>
 @endsection
+
+{{-- 
+@extends('layouts.master')
+@section('title', 'Home')
+@section('content')
+<section>
+    <div>
+        <h2>Welcome</h2>
+    </div>
+</section>
+@endsection --}}

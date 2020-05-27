@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use DB;
 use Request;
 use App\Models\Category;
@@ -49,7 +51,7 @@ class CategoryController extends Controller
         }
     }
     
-    protected function getData($queryString, $category) 
+    private function getData($queryString, $category) 
     {
         $genreFilter = $queryString['genre'];
         $conditionFilter = $queryString['condition'];
@@ -82,7 +84,7 @@ class CategoryController extends Controller
             }
             $products->whereIn('media_condition', [0, 1]);
         }
-        
+
         $products->select(['products.id', 'products.category_id', 'products.name', 'products.slug',  'products.media_condition', 
         'products.quantity', 'products.price', 'products.sale_price', 'products.status', 'products.featured', 'products.created_at',
         'images.path', 'categories.category', 'categories.category_slug', 'genres.genre', 'artists.artist']);
@@ -107,13 +109,3 @@ class CategoryController extends Controller
 }
 
 
-
-// ***************************************************************
-// GETS PRODUCTS WITHIN A GENRE FROM REQUEST (FILTER)
-// https://laracasts.com/discuss/channels/general-discussion/confused-on-how-to-access-data-over-multiple-many-to-many-relations
-// $input = Request::all();
-// $genreFilter = $input['genre'];
-// $genres = Genre::with('products')->where('genre', $genreFilter)->get();
-// foreach($genres as $genre){
-//     dd($genre->products);
-// }

@@ -11,7 +11,6 @@ class Label extends Model
     * @var string
     */
     protected $table = 'labels';
-    protected $fillable = 'label';
 
     /**
     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
