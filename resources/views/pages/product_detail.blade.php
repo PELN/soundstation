@@ -130,23 +130,28 @@
 			<aside class="col-md-6">
 				<h5>Specifications</h5>
 				<dl class="row">
+					@if($product->artists[0])
 				    <dt class="col-sm-6 col-6">Artist</dt>
 					<dd class="col-sm-6 col-6">{{ $product->artists->implode('artist', ', ') }}</dd>
-
+					@endif
+					@if($product->labels[0])	
 					<dt class="col-sm-6 col-6">Format</dt>
 					<dd class="col-sm-6 col-6">{{ $product->formats->implode('format', ', ') }}</dd>
-
+					@endif
+					@if($product->labels[0])	
 					<dt class="col-sm-6 col-6">Label</dt>
 					<dd class="col-sm-6 col-6">{{ $product->labels->implode('label', ', ') }}</dd>
-
+					@endif
+					@if($product->cataloguenumber)	
 					<dt class="col-sm-6 col-6">Catalogue no.</dt>
 					<dd class="col-sm-6 col-6">{{ $product->cataloguenumber->cat_no }}</dd>
-
+					@endif
 					<dt class="col-sm-6 col-6">Country</dt>
 					<dd class="col-sm-6 col-6">{{ $product->country->implode('country', ', ') }}</dd>
-
+					@if($product->year[0])
 					<dt class="col-sm-6 col-6">Year</dt>
 					<dd class="col-sm-6 col-6">{{ $product->year[0]->year }}</dd>
+					@endif
 				</dl>
 			</aside>
 			<aside class="col-md-6">
@@ -166,13 +171,14 @@
 						<dt class="col-sm-6 col-6">Comment</dt>
 						<dd class="col-sm-6 col-6">{{ $product->comment->comment }}</dd>
 					@endif
-
+					@if($product->genres[0])
 					<dt class="col-sm-6 col-6">Genre</dt>
 					<dd class="col-sm-6 col-6">{{ $product->genres->implode('genre', ', ') }}</dd>
-
+					@endif
+					@if($product->subgenres[0])
 					<dt class="col-sm-6 col-6">Subgenre</dt>
 					<dd class="col-sm-6 col-6">{{ $product->subgenres->implode('subgenre', ', ') }}</dd>
-
+					@endif
 					@if($product->color[0])
 						<dt class="col-sm-6 col-6">Vinyl Color</dt>
 						<dd class="col-sm-6 col-6">{{ $product->color[0]->color }}</dd>
