@@ -17,11 +17,7 @@ class ViewComposerServiceProvider extends ServiceProvider
     // render categories for header view, using the nest
     public function boot()
     {
-        View::composer('layouts.partials.mobile_header', function ($view) {
-            $view->with('categories', Category::orderByRaw('-category ASC')->where('menu', 1)->get()->nest());
-        });
-
-        View::composer('layouts.partials.header', function ($view) {
+        View::composer(['layouts.partials.mobile_header', 'layouts.partials.header'], function ($view) {
             $view->with('categories', Category::orderByRaw('-category ASC')->where('menu', 1)->get()->nest());
         });
     }

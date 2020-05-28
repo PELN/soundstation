@@ -124,9 +124,7 @@ $(document).ready(function() {
             beforeSend: function() {
                 $("#loader-container").fadeIn();
             },
-        }).done(function (response) {
-            // console.log('response from controller', response);
-            
+        }).done(function (response) {            
             const paginator = response.paginator.replace(/ajaxFilter/g, response.slug);
             $('#pagination').children().remove();
             $('#pagination').append(paginator);

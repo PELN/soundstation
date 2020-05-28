@@ -13,8 +13,6 @@ class Category extends Model
 
     protected $table = 'categories';
 
-
-    // adjacency model relationships
     public function parent()
     {
         return $this->belongsTo(Category::class, 'parent_id');

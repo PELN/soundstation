@@ -51,12 +51,12 @@ class CategoryController extends Controller
         }
     }
     
-    private function getData($queryString, $category) 
+    private function getData($queryString, $category)
     {
         $genreFilter = $queryString['genre'];
         $conditionFilter = $queryString['condition'];
         $genreFilters = explode(',', $genreFilter);
-        $sort = $queryString['sort'];        
+        $sort = $queryString['sort'];
 
         $products = DB::table('products')
             ->join('categories', 'categories.id', '=', 'products.category_id')
@@ -84,11 +84,12 @@ class CategoryController extends Controller
             }
             $products->whereIn('media_condition', [0, 1]);
         }
-
-        $products->select(['products.id', 'products.category_id', 'products.name', 'products.slug',  'products.media_condition', 
-        'products.quantity', 'products.price', 'products.sale_price', 'products.status', 'products.featured', 'products.created_at',
-        'images.path', 'categories.category', 'categories.category_slug', 'genres.genre', 'artists.artist']);
-
+        
+        $products->select(['products.id', 'products.category_id', 'products.name', 'products.slug',  
+        'products.media_condition', 'products.quantity', 'products.price', 'products.sale_price', 
+        'products.status', 'products.featured', 'products.created_at', 'images.path', 'categories.category', 
+        'categories.category_slug', 'genres.genre', 'artists.artist']);
+        
         if ($sort == 'newest'){
             $products->orderBy('products.created_at', 'DESC');
         } else if ($sort == 'oldest'){
@@ -98,11 +99,10 @@ class CategoryController extends Controller
         } else if ($sort == 'price-high') {
             $products->orderBy('products.price', 'DESC');
         }
-        
+
         $collection = $products->orderBy('products.created_at', 'DESC')
         ->groupby('products.id')
         ->paginate(9);
-        // ->get();
 
         return $collection;
     }

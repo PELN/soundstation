@@ -97,14 +97,11 @@
 							<a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
 						</div>
 						<div class="widget-header mr-3">
-							{{-- <a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></a>
-							<span class="badge badge-pill badge-danger notify">0</span> --}}
 							<ul class="navbar-nav ml-auto">
 								<li class="nav-item dropdown">
 									<a id="navbarDropdown" class="nav-link"
 									href="#" role="button" data-toggle="dropdown"
 									aria-haspopup="true" aria-expanded="false"> 
-									{{-- removed class dropdown-toggle after nav-link --}}
 										<span class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i> 
 										<span class="badge badge-pill badge-danger notify">{{ \Cart::getTotalQuantity()}}</span>
 										</span>
@@ -130,9 +127,10 @@
 					@foreach($categories as $category)
 						@if($category->items->count() > 0)
 							<li class="nav-item dropdown">
-								<a class="nav-link" href="{{ route('category.show', $category->category_slug) }}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" v-pre
-								id="{{ $category->category_slug}}">{{ $category->category }} <i class="fa fa-chevron-down"></i></a>
-
+								<a class="nav-link" href="{{ route('category.show', $category->category_slug) }}" data-toggle="dropdown" 
+									role="button" aria-haspopup="true" aria-expanded="false" v-pre id="{{ $category->category_slug}}"> 
+									{{ $category->category }} <i class="fa fa-chevron-down"></i>
+								</a>
 								<div class="category-dropdown dropdown-menu dropdown-menu-right" aria-labelledby="{{ $category->category_slug }}">
 									@foreach($category->items as $item)
 										<a class="dropdown-item" href="{{ route('category.show', $item->category_slug) }}">{{ $item->category }}</a>
