@@ -8,7 +8,7 @@
  }
  function showLess(target){
      let prev = target.previousElementSibling.previousElementSibling;
-     prev.style.height = 330 + "px";
+     prev.style.height = 220 + "px";
      target.style.display = "none";
      $('#show-more').show();
  }

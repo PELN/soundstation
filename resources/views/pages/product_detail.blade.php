@@ -280,9 +280,12 @@
 					<p>{{$line}}</p>
 				@endforeach
 				</div>
+
+				
 				<div id="show-more" onclick="showMore(this)">
 					<button class="btn btn-outline-secondary">SHOW MORE</button>
 				</div>
+				
 				<div id="show-less" onclick="showLess(this)">
 					<button class="btn btn-outline-secondary">SHOW LESS</button>
 				</div>
