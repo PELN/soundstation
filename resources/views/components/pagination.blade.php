@@ -1,2 +1,2 @@
-{{ $product->appends($input)->links() }}
+{{ $products->appends($input)->links() }}
 
