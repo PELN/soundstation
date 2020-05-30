@@ -35,6 +35,7 @@ class PagesController extends Controller
         ->leftJoin('images', 'images.product_id', '=', 'products.id')
         ->leftJoin('artist_product', 'products.id', '=', 'artist_product.product_id')
         ->leftJoin('artists', 'artist_product.artist_id', '=', 'artists.id')
+        ->where('category_slug', 'vinyls')
         ->orderBy('products.created_at', 'DESC')
         ->limit(8)
         ->groupby('products.id')

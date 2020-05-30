@@ -131,7 +131,7 @@
 									role="button" aria-haspopup="true" aria-expanded="false" v-pre id="{{ $category->category_slug}}"> 
 									{{ $category->category }} <i class="fa fa-chevron-down"></i>
 								</a>
-								<div class="category-dropdown dropdown-menu dropdown-menu-right" aria-labelledby="{{ $category->category_slug }}">
+								<div class="category-dropdown dropdown-menu" aria-labelledby="{{ $category->category_slug }}">
 									@foreach($category->items as $item)
 										<a class="dropdown-item" href="{{ route('category.show', $item->category_slug) }}">{{ $item->category }}</a>
 										@if (!$loop->last)

@@ -72,6 +72,7 @@ class CategoryController extends Controller
                     $query->whereIn('genre', $genreFilters);
             });
         }
+
         if ($conditionFilter) {
             if ($conditionFilter == 'new'){
                 $products->where('media_condition', 1);
@@ -84,12 +85,13 @@ class CategoryController extends Controller
             }
             $products->whereIn('media_condition', [0, 1]);
         }
-        
+
         $products->select(['products.id', 'products.category_id', 'products.name', 'products.slug',  
         'products.media_condition', 'products.quantity', 'products.price', 'products.sale_price', 
         'products.status', 'products.featured', 'products.created_at', 'images.path', 'categories.category', 
-        'categories.category_slug', 'genres.genre', 'artists.artist']);
-        
+        'categories.category_slug', 'genres.genre', 'artists.artist'])
+        ->groupby('products.id');
+
         if ($sort == 'newest'){
             $products->orderBy('products.created_at', 'DESC');
         } else if ($sort == 'oldest'){
@@ -101,7 +103,6 @@ class CategoryController extends Controller
         }
 
         $collection = $products->orderBy('products.created_at', 'DESC')
-        ->groupby('products.id')
         ->paginate(9);
 
         return $collection;
