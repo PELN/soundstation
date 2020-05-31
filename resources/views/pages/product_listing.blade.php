@@ -45,8 +45,8 @@
 							</button>
 						</div>
 						<div class="col-4">
-							<span class="categoryCount mr-md-auto">{{$products->total()}} Products found</span>
-							<span class="filteredCount mr-md-auto"></span>
+							<span class="category-count mr-md-auto">{{$products->total()}} Products found</span>
+							<span class="filtered-count mr-md-auto"></span>
 						</div>
 						<div class="col-6">
 							<select class="sort-by mr-2 form-control">
@@ -120,8 +120,8 @@
 			<main class="col-lg-9 col-md-9 col-sm-12 col-12">
 				<header id="filter-container" class="border-bottom mb-4 pb-3">
 					<div class="form-inline">
-						<span class="categoryCount mr-md-auto">{{$products->total()}} Products found</span>
-						<span class="filteredCount mr-md-auto"></span>
+						<span class="category-count mr-md-auto">{{$products->total()}} Products found</span>
+						<span class="filtered-count mr-md-auto"></span>
 						<select class="sort-by mr-2 form-control">
 							<option value="newest">Newest products</option>
 							<option value="oldest">Oldest products</option>
@@ -147,7 +147,6 @@
 							<a href="{{ URL::to("{$category->category_slug}/{$product->slug}") }}">
 								<figure class="card card-product-grid">
 									<div class="img-wrap">
-										<!-- <span class="badge badge-danger"> NEW </span> -->
 										@if($product->path)
 											<img src="{{ asset('storage/product-images/'.$product->path) }}">
 										@else
@@ -163,7 +162,6 @@
 												{{-- <del class="price-old">$1980</del> --}}
 											</div> <!-- price-wrap.// -->
 										</div>
-										{{-- <a href="#" class="btn btn-block btn-primary">Add to cart </a> --}}
 										<div class="form-row">
 											<div class="col">
 												<form action="{{ route('cart.store') }}" method="POST">

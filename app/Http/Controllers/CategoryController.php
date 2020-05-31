@@ -36,7 +36,7 @@ class CategoryController extends Controller
 
         $paginator = view('components.pagination', [
             'input' => $input,
-            'products' => $collection])->render();
+            'product' => $collection])->render();
         
         $products = view('components.filtered_product', [
             'products' => $collection])->render();

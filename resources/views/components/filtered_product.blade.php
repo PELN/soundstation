@@ -4,7 +4,6 @@
             <a href="{{ URL::to("{$product->category_slug}/{$product->slug}") }}">
                 <figure class="card card-product-grid">
                     <div class="img-wrap">
-                        <!-- <span class="badge badge-danger"> NEW </span> -->
                         @if($product->path)
                             <img src="{{ asset('storage/product-images/'.$product->path) }}">
                         @else
@@ -52,9 +51,6 @@
             </a>
         </div> <!-- col.// -->
     @endforeach
-
 @else 
-
     <h2 class="ml-3">No products match..</h2>
-
 @endif
