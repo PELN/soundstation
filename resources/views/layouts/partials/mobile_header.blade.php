@@ -5,13 +5,13 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
-        <div class="col-4">
+        <div class="col-2">
             <a href="/">
                 <img class="mobile-nav logo" src="{{ asset('storage/assets/soundstationlogo.jpg') }}">
             </a>
         </div>
 
-        <div class="col-6">
+        <div class="col-8">
             <div class="widgets-wrap float-md-right">
                 <div class="widget-header">
                     <ul id="navbar-user" class="navbar-nav">
