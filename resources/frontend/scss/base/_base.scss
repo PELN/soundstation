@@ -31,14 +31,12 @@ $border-color: #dee2e6;
 }
 
 // TEXT
-
 body {
     color: $grey-color;
 }
 
 a {
     color: $blue-link-color;
-    // color: #505050;
 
     &:hover {
         color: $blue-link-hover-color;
@@ -49,10 +47,6 @@ a {
 .text-underline {
     text-decoration: underline;
 }
-
-// .text-grey {
-//     color: $medium-grey-color;
-// }
 
 .text-light-grey {
     color: $lighter-grey-color;
@@ -210,27 +204,17 @@ h2.title {
 }
 
 
-
-// FONT SIZES
-
-
-
-
 // ICONS 
 .fa-heart-o {
     color: $grey-color!important;
 }
 
 
-
 // BREAKPOINTS
-// $breakpoint-xsmall: 600px;
 $breakpoint-small: 600px;
 $breakpoint-medium: 768px;
 $breakpoint-large: 992px;
 $breakpoint-xlarge: 1200px;
-
-// $breakpoint-tablet: 768px;
 
 @media only screen and (max-width: $breakpoint-large) {
     .container {
@@ -238,13 +222,8 @@ $breakpoint-xlarge: 1200px;
     }
 }
 
-// https://www.w3schools.com/howto/howto_css_media_query_breakpoints.asp
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-    // h1 {
-    //     color: red;
-    //     font-size: 35px;
-    // }
     h2 {
         font-size: 25px;
     }
@@ -255,9 +234,6 @@ $breakpoint-xlarge: 1200px;
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-    // h1 {
-    //     color: yellow;
-    // }
     h3 {
         font-size: 20px;
     }
@@ -265,45 +241,15 @@ $breakpoint-xlarge: 1200px;
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-    // h1 {
-    //     color: green;
-    // }
-    // h3 {
-    //     font-size: 20px;
-    // }
+
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-    // h1 {
-    //     color: blue;
-    // }
+
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-    // h1 {
-    //     color: purple;
-    // }
+
 }
-
-
-// @media (max-width: $breakpoint-mobile) {
-//     // .form-inline {
-//     //     justify-content: space-between;
-//     //     margin-top: 15px;
-//     // }
-//     // .container {
-//     //     max-width: 540px!important;
-//     // }
-// }
-
-
-// @media (max-width: $breakpoint-tablet) {
-//     .form-inline {
-//         justify-content: space-between;
-//         margin-top: 15px;
-//     }
-
-// }
-
