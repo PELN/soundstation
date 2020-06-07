@@ -11,7 +11,6 @@ class CartController extends Controller
     // Show all products in cart
     public function cart()  {
         $cartCollection = \Cart::getContent();
-        // dd($cartCollection);
         return view('pages.cart')->with(['cartCollection' => $cartCollection]);
     }
     
@@ -56,5 +55,4 @@ class CartController extends Controller
         \Cart::clear();
         return Redirect::back()->with('success_msg', 'Cart was cleared');
     }
-
 }

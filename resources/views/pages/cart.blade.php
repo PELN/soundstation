@@ -59,32 +59,24 @@
                                     </td>
 
                                     <td>
-                                        {{-- <div class="row"> --}}
-                                            <form action="{{ route('cart.update') }}" method="POST">
-                                                {{ csrf_field() }}
-                                                {{-- <div class="row"> --}}
-                                                    <input type="hidden" value="{{ $item->id}}" class="id" name="id">
-                                                    <input type="number" class="form-control form-control-sm" value="{{ $item->quantity }}"
-                                                        class="quantity" name="quantity" style="width: 60px; margin-right: 10px;">
-                                                    <button class="btn btn-light btn-sm" style="margin-top: 10px;">Update </button>
-                                                    {{-- <i class="fa fa-edit"></i> --}}
-                                                {{-- </div> --}}
-                                            </form>
-                                        {{-- </div> --}}
+                                        <form action="{{ route('cart.update') }}" method="POST">
+                                            {{ csrf_field() }}
+                                                <input type="hidden" value="{{ $item->id}}" class="id" name="id">
+                                                <input type="number" class="form-control form-control-sm" value="{{ $item->quantity }}"
+                                                    class="quantity" name="quantity" style="width: 60px; margin-right: 10px;">
+                                                <button class="btn btn-light btn-sm" style="margin-top: 10px;">Update </button>
+                                        </form>
                                     </td>
 
                                     <td> 
                                         <div class="price-wrap"> 
                                             <var class="price">DKK {{ $item->price }}</var>
-                                            {{-- <small class="text-muted"> {{ \Cart::get($item->id)->getPriceSum() }} </small>  --}}
                                         </div> <!-- price-wrap .// -->
                                     </td>
 
                                     <td>
                                         <div class="row" style="justify-content: space-evenly;">
-                                            <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip"> <i class="fa fa-heart"></i></a> 
-                                            {{-- <a href="" class="btn btn-light"> Remove</a> --}}
-                                        
+                                            <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip"> <i class="fa fa-heart"></i></a>                                         
                                             <form action="{{ route('cart.remove') }}" method="POST">
                                                 {{ csrf_field() }}
                                                 <input type="hidden" value="{{ $item->id }}" class="id" name="id">

@@ -19,11 +19,10 @@
 			<h2 class="title text-grey">{{$category->category}}</h2>
 		@endif
 		<nav>
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="/">Home</a></li>
-			<li class="breadcrumb-item text-underline"><a href="{{ URL::to("{$category->category_slug}") }}">{{$category->category}}</a></li>
-			{{-- <li class="breadcrumb-item"><a href="{{ URL::to("{$category->category_slug}/{$product->slug}") }}">{{$product->name}}</a></li> --}}
-		</ol>
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="/">Home</a></li>
+				<li class="breadcrumb-item text-underline"><a href="{{ URL::to("{$category->category_slug}") }}">{{$category->category}}</a></li>
+			</ol>
 		</nav>
 	</div> <!-- container //  -->
 </section>

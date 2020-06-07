@@ -30,8 +30,7 @@
                         <h5 class="card-title mb-4"> Product management</h5>	
                         <div class="row">
                         
-
-
+                            {{-- content --}}
 
                         </div> <!-- row.// -->
                     </div> <!-- card-body .// -->

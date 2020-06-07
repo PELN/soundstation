@@ -10,6 +10,7 @@ use App\Models\Genre;
 
 class CategoryController extends Controller
 {
+    // category products request
     public function show($slug, Request $request)
     {
         $category = Category::where('category_slug', $slug)->where('menu', 1)->first();
@@ -26,6 +27,7 @@ class CategoryController extends Controller
         ]);
     }
 
+    // ajax requests
     public function ajaxFilter(Request $request)
     {
         $input = Request::all();            
@@ -51,6 +53,7 @@ class CategoryController extends Controller
         }
     }
     
+    // build the query to get data
     private function getData($queryString, $category)
     {
         $genreFilter = $queryString['genre'];

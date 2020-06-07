@@ -28,28 +28,22 @@ class SearchController extends Controller
 
     public function ajaxSearch(Request $request)
     {  
-        // try{
-            $input = Request::all();
-            $query = $input['query'];
+        $input = Request::all();
+        $query = $input['query'];
 
-            // TODO : SANITIZE INPUT FIELD?
+        $products = $this->searchProducts($query);
+        $artists = $this->searchArtists($query);
 
-            $products = $this->searchProducts($query);
-            $artists = $this->searchArtists($query);
+        $searchResults = view('components.search_result_box', [
+            'products' => $products,
+            'artists' => $artists,
+            'query' => $query])->render();
 
-            $searchResults = view('components.search_result_box', [
-                'products' => $products,
-                'artists' => $artists,
-                'query' => $query])->render();
-
-            if (Request::ajax()) { 
-                return response()->json([
-                    'searchResults' => $searchResults
-                ]);
-            }
-        // }  catch (Exception $e){
-        //     abort(404);
-        // }
+        if (Request::ajax()) { 
+            return response()->json([
+                'searchResults' => $searchResults
+            ]);
+        }
     }
 
     private function searchProducts($query) 
@@ -94,8 +88,6 @@ class SearchController extends Controller
         ->orderby('name', 'ASC')
         ->groupby('products.id')
         ->paginate(8);
-        // ->get();
         return $products;
     }
-
 }

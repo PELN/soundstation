@@ -1,5 +1,3 @@
-
-
 <!-- ========================= FOOTER ========================= -->
 <footer class="section-footer border-top bg">
 	<div class="container">

@@ -20,14 +20,3 @@
     </div>
 </section>
 @endsection
-
-{{-- 
-@extends('layouts.master')
-@section('title', 'Home')
-@section('content')
-<section>
-    <div>
-        <h2>Welcome</h2>
-    </div>
-</section>
-@endsection --}}

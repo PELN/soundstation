@@ -56,5 +56,4 @@ class ProductController extends Controller
         
         return $collection;
     }
-
 }

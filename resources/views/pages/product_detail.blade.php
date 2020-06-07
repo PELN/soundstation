@@ -13,19 +13,15 @@
 @include('layouts.partials.session_msg')
 
 <!-- ========================= BREADCRUMBS ========================= -->
-{{-- <section class="section-pagetop bg"> --}}
-	{{-- <div class="container"> --}}
-	<div id="breadcrumb-container">
-		<nav>
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="/">Home</a></li>
-				<li class="breadcrumb-item"><a href="{{ URL::to("{$category->category_slug}") }}">{{$category->category}}</a></li>
-				<li class="breadcrumb-item text-underline"><a href="{{ URL::to("{$category->category_slug}/{$product->slug}") }}">{{$product->name}}</a></li>
-			</ol>
-		</nav>
-	</div>
-	{{-- </div> <!-- container //  --> --}}
-{{-- </section> --}}
+<div id="breadcrumb-container">
+	<nav>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="/">Home</a></li>
+			<li class="breadcrumb-item"><a href="{{ URL::to("{$category->category_slug}") }}">{{$category->category}}</a></li>
+			<li class="breadcrumb-item text-underline"><a href="{{ URL::to("{$category->category_slug}/{$product->slug}") }}">{{$product->name}}</a></li>
+		</ol>
+	</nav>
+</div>
 <!-- ========================= BREADCRUMBS END// ========================= -->
 
 
@@ -111,11 +107,6 @@
 					<br><small class="text-light-grey">Delivery in Europe is 5 – 8 working days.</small>
 					<br><small class="text-light-grey">Delivery overseas is 6 – 14 working days.</small>
 				</div>
-
-				{{-- <div class="alert alert-success mt-3">
-					<i class="icon text-success fa fa-truck"></i> Free Delivery within 1-2 weeks
-				</div> --}}
-
 			</article> <!-- product-info-aside .// -->
 		</main> <!-- col.// -->
 	</div> <!-- row.// -->
@@ -155,7 +146,6 @@
 				</dl>
 			</aside>
 			<aside class="col-md-6">
-				{{-- <h5>Features</h5> --}}
 				<dl class="row">
 					<dt class="col-sm-6 col-6 mt-4">Condition</dt>
 					@if($product->media_condition == 0)

@@ -1,4 +1,3 @@
-{{-- @extends('auth.app') --}}
 @extends('layouts.master')
 @section('title', 'About')
 
@@ -30,23 +29,13 @@
                 <article class="card mb-3">
                     <div class="card-body">
                         <figure class="icontext">
-                                {{-- <div class="icon">
-                                    <img class="rounded-circle img-sm border" src="images/avatars/avatar3.jpg">
-                                </div> --}}
-                                <div class="text">
-                                    <strong> {{ Auth::user()->name }} </strong> <br> 
-                                    {{ Auth::user()->email }} <br> 
-                                    <a href="#">Edit</a>
-                                </div>
+                            <div class="text">
+                                <strong> {{ Auth::user()->name }} </strong> <br> 
+                                {{ Auth::user()->email }} <br> 
+                                <a href="#">Edit</a>
+                            </div>
                         </figure>
                         <hr>
-                        {{-- <p>
-                            <i class="fa fa-map-marker text-muted"></i> &nbsp; My address:  
-                            <br>
-                            Tashkent city, Street name, Building 123, House 321 &nbsp 
-                            <a href="#" class="btn-link"> Edit</a>
-                        </p> --}}
-        
                         <article class="card-group">
                             <figure class="card bg">
                                 <div class="p-3">
