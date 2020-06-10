@@ -14,8 +14,13 @@ PHP 7.2.21
 MYSQL 5.7.25
 
 ## setup guide
+
+It is necessary to have a local web server installed e.g. Mamp or Wamp
+
+
 Follow this guide
 https://devmarketer.io/learn/setup-laravel-project-cloned-github-com/
 
 
 Go to project directory in terminal and run the command: php artisan serve
+
