@@ -1,5 +1,7 @@
 # soundstation
-bachelorproject // redesign of soundstation.dk // laravel, mysql, javascript, jquery, bootstrap
+Bachelor case: Redesign of soundstation.dk
+
+Built with: Laravel, MySQL, JS, jQuery, Bootstrap
 
 ## Project setup
 
@@ -31,7 +33,8 @@ https://code.visualstudio.com/download
 
 ### Setup guide
 Follow this guide
+
 https://devmarketer.io/learn/setup-laravel-project-cloned-github-com/
 
-Go to project directory in terminal and run the command: php artisan serve
+Go to project directory in terminal and run the command: `php artisan serve`
 
