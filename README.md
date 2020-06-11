@@ -3,24 +3,28 @@ bachelorproject // redesign of soundstation.dk // laravel, mysql, javascript, jq
 
 ## Project setup
 
-For this project I have used “Mamp” to run a live web server with Apache, MySQL and PHP on a Mac OS operating system. 
-
-To install Laravel it is required to install “Composer” which is a dependency management tool in PHP. It will utilize a “composer.json” file with important application configuration. It is also necessary to use NPM (node-package-manager) which is a javascript dependency manager, to utilize the javascript dependencies such as “axios”, “sass” etc.
-
-
-Versions of the technologies used:
+### Versions of technologies used:
 Laravel 7.9.2
 PHP 7.2.21
 MYSQL 5.7.25
 
-## setup guide
+### Required Softwares:
+1. Web Server (mamp, xammp...)
+https://www.mamp.info/en/downloads/
+https://www.apachefriends.org/download.html
 
-It is necessary to have a local web server installed e.g. Mamp or Wamp
+2. Composer
+https://getcomposer.org/download/
 
+3. NPM
+https://www.npmjs.com/get-npm
 
+4. Editor of own choice
+https://code.visualstudio.com/download
+
+### Setup guide
 Follow this guide
 https://devmarketer.io/learn/setup-laravel-project-cloned-github-com/
-
 
 Go to project directory in terminal and run the command: php artisan serve
 
