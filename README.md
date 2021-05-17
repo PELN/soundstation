@@ -1,5 +1,5 @@
 # soundstation
-**Bachelor case:** Redesign of soundstation.dk
+**Case:** Redesign of soundstation.dk
 
 **Built with:** Laravel, MySQL, JS, jQuery, Bootstrap
 
